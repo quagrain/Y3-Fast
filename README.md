@@ -1,2 +1,2 @@
 # Y3-Fast
-A Ghanaian focused job board
+A Ghanaian focused job board platform
