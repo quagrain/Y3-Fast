@@ -24,7 +24,7 @@ CREATE TABLE `job_seekers` (
     date_of_birth DATE NOT NULL,
     occupation VARCHAR(50),
     description TEXT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Create the Employers table
@@ -34,7 +34,7 @@ CREATE TABLE `employers` (
     creation_date DATE NOT NULL,
     industry VARCHAR(50),
     tag_ids VARCHAR(255),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Create the Tags table
@@ -48,6 +48,7 @@ CREATE TABLE `job_req` (
     job_id INT AUTO_INCREMENT PRIMARY KEY,
     job_title VARCHAR(100) NOT NULL,
     job_description TEXT NOT NULL,
+    user_id INT NOT NULL,
     responsibility TEXT NOT NULL,
     experience VARCHAR(100),
     benefits TEXT,
@@ -57,7 +58,8 @@ CREATE TABLE `job_req` (
     salary DECIMAL(10, 2),
     gender ENUM('Male', 'Female', 'Other', 'Any'),
     application_deadline DATE,
-    published_on DATE NOT NULL
+    published_on DATE NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES employers(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Create the Applications table
@@ -67,5 +69,5 @@ CREATE TABLE `applications` (
     user_id INT NOT NULL,
     date_of_application DATE NOT NULL,
     FOREIGN KEY (job_id) REFERENCES job_req(job_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    FOREIGN KEY (user_id) REFERENCES job_seekers(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
