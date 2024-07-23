@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_free_result($stmt);
 
     if ($emailCount > 0) {
-        $query = "SELECT User_ID, rid, passwd FROM Users WHERE email = ?";
+        $query = "SELECT user_id, usertype, email, passwd FROM users WHERE email = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['role'] = $row['usertype'];
             if ($row['usertype']=='Admin') {
-                header("location: ../admin/dashboard.php");
+                header("location: ");
             } else if ($row['usertype']=='Jobseeker' || $row['usertype']=='Employer') {
                 header("location: ");
             }
