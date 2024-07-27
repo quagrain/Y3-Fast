@@ -246,7 +246,7 @@ jQuery(function($) {
 			  modules: {
 			    toolbar: toolbarOptions,
 			  },
-			  placeholder: 'Give a summary of what the role entails, company culture, and other relevant information',
+			  placeholder: 'Compose an epic...',
 			  theme: 'snow'  // or 'bubble'
 			});
 			var quill = new Quill('.editor-2', {
