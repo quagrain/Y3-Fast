@@ -242,7 +242,7 @@ jQuery(function($) {
 		];
 
 		if ( $('.editor').length > 0 ) {
-			var quill = new Quill('#editor-1', {
+			var quill = new Quill('.editor-1', {
 			  modules: {
 			    toolbar: toolbarOptions,
 			  },
