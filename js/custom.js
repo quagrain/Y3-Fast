@@ -246,10 +246,10 @@ jQuery(function($) {
 			  modules: {
 			    toolbar: toolbarOptions,
 			  },
-			  placeholder: 'Compose an epic...',
+			  placeholder: 'Give a summary of what the role entails, company culture, and other relevant information',
 			  theme: 'snow'  // or 'bubble'
 			});
-			var quill = new Quill('#editor-2', {
+			var quill = new Quill('.editor-2', {
 			  modules: {
 			    toolbar: toolbarOptions,
 			  },
