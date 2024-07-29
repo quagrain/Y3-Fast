@@ -58,7 +58,7 @@ CREATE TABLE `job_req` (
     salary DECIMAL(10, 2),
     gender ENUM('Male', 'Female', 'Other', 'Any'),
     application_deadline DATE,
-    published_on DATE NOT NULL,
+    published_on DATETIME NOT NULL DEFAULT NOW(),
     FOREIGN KEY (user_id) REFERENCES employers(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -75,4 +75,4 @@ CREATE TABLE `applications` (
 
 -- Insert Statement
 INSERT INTO `users` (email, passwd, username, usertype) 
-VALUES ('delalinsiah.asare@gmail.com', 'securepassword123', 'purplegeminii', 'JobSeeker');
+VALUES ('delalinsiah.asare@gmail.com', '$2y$10$bbHHhUFligdLvvK0uSvi7O84pyAkJmJEpgtGOA4X.Trf7XB3ZZLRK', 'purplegeminii', 'JobSeeker');
