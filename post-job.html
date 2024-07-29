@@ -169,15 +169,6 @@
                     <option>Upper East</option>
                   </select>
                 </div>
-
-                <div class="col mb-3 mb-md-0">
-                  <label for="job-type">Employment Status</label>
-                  <select class="form-control selectpicker border rounded" id="job-type" data-style="btn-black" title="Select Status">
-                    <option value="Part-Time">Part Time</option>
-                    <option value="Full-Time">Full Time</option>
-                    <option value="Contract">Contract</option>
-                  </select>
-                </div>
               </div>
 
               <div class="form-group">
@@ -188,19 +179,29 @@
               </div>
 
               <div class="form-group row">
-                <div class="col">
-                      <label for="experience">Experience (min. years)</label>
-                      <input id="experience" type="number" class="form-control" placeholder="2"/>
+                <div class="col-2">
+                  <label for="experience">Experience (min.)</label>
+                  <div class="input-group">
+                    <input id="experience" type="number" class="form-control" placeholder="2"/>
+                    <div class="input-group-append">
+                      <span class="input-group-text">years</span>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="col mb-3 mb-md-0">
+                <div class="col-2 mb-3 mb-md-0">
                   <label for="vacancy">Vacancy</label>
                   <input type="number" class="form-control" id="vacancy" placeholder="100" min="1", aria-valuemin="1">
                 </div>
 
                 <div class="col mb-3 mb-md-0">
-                  <label for="salary">Salary ($)</label>
-                  <input id="salary" type="number" class="form-control" placeholder="100,000" min="1" aria-valuemin="1"/>
+                  <label for="salary">Salary</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input id="salary" type="number" class="form-control" placeholder="100,000" min="1" aria-valuemin="1"/>
+                  </div>
                 </div>
 
                 <div class="col mb-3 mb-md-0">
@@ -210,6 +211,15 @@
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                     <option value="Any">Any</option>
+                  </select>
+                </div>
+
+                <div class="col mb-3 mb-md-0">
+                  <label for="job-type">Employment Status</label>
+                  <select class="form-control selectpicker border rounded" id="job-type" data-style="btn-black" title="Select Status">
+                    <option value="Part-Time">Part Time</option>
+                    <option value="Full-Time">Full Time</option>
+                    <option value="Contract">Contract</option>
                   </select>
                 </div>
               </div>
