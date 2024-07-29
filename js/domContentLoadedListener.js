@@ -31,19 +31,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (addResponsibilityButton && additionalResponsibilitiesContainer) {
         addResponsibilityButton.addEventListener("click", function() {
-            const newResponsibilityField = document.createElement("div");
-            newResponsibilityField.className = "input-group mb-3";
-            newResponsibilityField.innerHTML = `
-                <input class="form-control" type="text" placeholder="Additional responsibility">
-                <div class="input-group-append">
-                    <button class="btn btn-secondary btn-outline-black remove-responsibility" type="button">-</button>
-                </div>
-            `;
-            additionalResponsibilitiesContainer.appendChild(newResponsibilityField);
+            const existingFields = additionalResponsibilitiesContainer.querySelectorAll(".input-group").length;
+            if (existingFields < 10) {
+                const newResponsibilityField = document.createElement("div");
+                newResponsibilityField.className = "input-group mb-3";
+                newResponsibilityField.innerHTML = `
+                    <input class="form-control" type="text" placeholder="Additional responsibility">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-outline-black remove-responsibility" type="button">-</button>
+                    </div>
+                `;
+                additionalResponsibilitiesContainer.appendChild(newResponsibilityField);
 
-            newResponsibilityField.querySelector(".remove-responsibility").addEventListener("click", function() {
-                additionalResponsibilitiesContainer.removeChild(newResponsibilityField);
-            });
+                newResponsibilityField.querySelector(".remove-responsibility").addEventListener("click", function() {
+                    additionalResponsibilitiesContainer.removeChild(newResponsibilityField);
+                });
+            } else {
+                alert('You can only add up to 10 additional responsibilities.');
+            }
         });
     }
 
@@ -53,19 +58,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (addBenefitsButton && additionalBenefitsContainer) {
         addBenefitsButton.addEventListener("click", function() {
-            const newBenefitsField = document.createElement("div");
-            newBenefitsField.className = "input-group mb-3";
-            newBenefitsField.innerHTML = `
-                <input class="form-control" type="text" placeholder="Additional benefit">
-                <div class="input-group-append">
-                    <button class="btn btn-secondary btn-outline-black remove-benefit" type="button">-</button>
-                </div>
-            `;
-            additionalBenefitsContainer.appendChild(newBenefitsField);
+            const existingFields = additionalBenefitsContainer.querySelectorAll(".input-group").length;
+            if (existingFields < 10) {
+                const newBenefitsField = document.createElement("div");
+                newBenefitsField.className = "input-group mb-3";
+                newBenefitsField.innerHTML = `
+                    <input class="form-control" type="text" placeholder="Additional benefit">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-outline-black remove-benefit" type="button">-</button>
+                    </div>
+                `;
+                additionalBenefitsContainer.appendChild(newBenefitsField);
 
-            newBenefitsField.querySelector(".remove-benefit").addEventListener("click", function() {
-                additionalBenefitsContainer.removeChild(newBenefitsField);
-            });
+                newBenefitsField.querySelector(".remove-benefit").addEventListener("click", function() {
+                    additionalBenefitsContainer.removeChild(newBenefitsField);
+                });
+            } else {
+                alert('You can only add up to 10 additional benefits.');
+            }
         });
     }
 });
