@@ -1,4 +1,4 @@
-<header class="site-navbar mt-3">
+<header class="site-navbar mt-3" style="position: fixed; background-color: violet;">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div>
@@ -19,7 +19,7 @@
                     class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0"
                 >
                     <li>
-                        <a href="index.html" class="nav-link active"
+                        <a href="index.php" class="nav-link active"
                             >Home</a
                         >
                     </li>
