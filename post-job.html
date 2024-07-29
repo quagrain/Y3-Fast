@@ -120,12 +120,9 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <div class="row">
+            <div class="row justify-content-end">
               <div class="col-6">
                 <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a>
-              </div>
-              <div class="col-6">
-                <a href="#" class="btn btn-block btn-primary btn-md">Save Job</a>
               </div>
             </div>
           </div>
@@ -146,108 +143,110 @@
                 <label for="email">Email</label>
                 <input type="text" class="form-control" id="email" placeholder="you@yourdomain.com">
               </div>
+
               <div class="form-group">
                 <label for="job-title">Job Title</label>
                 <input type="text" class="form-control" id="job-title" placeholder="Product Designer">
               </div>
-              <div class="form-group">
-                <label for="job-location">Location</label>
-                <input type="text" class="form-control" id="job-location" placeholder="e.g. New York">
+
+              <div class="form-group row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label for="job-location">Location</label>
+                  <input type="text" class="form-control" id="job-location" placeholder="e.g. Tema">
+                </div>
+
+                <div class="col mb-3 mb-md-0">
+                  <label for="job-region">Job Region</label>
+                  <select class="form-control selectpicker border rounded" id="job-region" data-style="btn-black" data-live-search="true" title="Select Region">
+                    <option>Anywhere</option>
+                    <option>Greater Accra</option>
+                    <option>Central</option>
+                    <option>Eastern</option>
+                    <option>Bono</option>
+                    <option>Ahafo</option>
+                    <option>Western</option>
+                    <option>Oti</option>
+                    <option>Upper East</option>
+                  </select>
+                </div>
+
+                <div class="col mb-3 mb-md-0">
+                  <label for="job-type">Employment Status</label>
+                  <select class="form-control selectpicker border rounded" id="job-type" data-style="btn-black" title="Select Status">
+                    <option value="Part-Time">Part Time</option>
+                    <option value="Full-Time">Full Time</option>
+                    <option value="Contract">Contract</option>
+                  </select>
+                </div>
               </div>
 
               <div class="form-group">
-                <label for="job-region">Job Region</label>
-                <select class="selectpicker border rounded" id="job-region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Region">
-                      <option>Anywhere</option>
-                      <option>San Francisco</option>
-                      <option>Palo Alto</option>
-                      <option>New York</option>
-                      <option>Manhattan</option>
-                      <option>Ontario</option>
-                      <option>Toronto</option>
-                      <option>Kansas</option>
-                      <option>Mountain View</option>
-                    </select>
-              </div>
-
-              <div class="form-group">
-                <label for="job-type">Job Type</label>
-                <select class="selectpicker border rounded" id="job-type" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Job Type">
-                  <option>Part Time</option>
-                  <option>Full Time</option>
-                </select>
-              </div>
-
-
-              <div class="form-group">
-                <label for="job-description">Job Description</label>
-                <div class="editor" id="editor-1">
+                <label for="job_description">Job Description</label>
+                <div class="editor editor-1" id="job_description">
                   <p>Write Job Description!</p>
                 </div>
               </div>
 
+              <div class="form-group row">
+                <div class="col">
+                      <label for="experience">Experience (min. years)</label>
+                      <input id="experience" type="number" class="form-control" placeholder="2"/>
+                </div>
 
-              <h3 class="text-black my-5 border-bottom pb-2">Company Details</h3>
-              <div class="form-group">
-                <label for="company-name">Company Name</label>
-                <input type="text" class="form-control" id="company-name" placeholder="e.g. New York">
-              </div>
+                <div class="col mb-3 mb-md-0">
+                  <label for="vacancy">Vacancy</label>
+                  <input type="number" class="form-control" id="vacancy" placeholder="100" min="1", aria-valuemin="1">
+                </div>
 
-              <div class="form-group">
-                <label for="company-tagline">Tagline (Optional)</label>
-                <input type="text" class="form-control" id="company-tagline" placeholder="e.g. New York">
-              </div>
+                <div class="col mb-3 mb-md-0">
+                  <label for="salary">Salary ($)</label>
+                  <input id="salary" type="number" class="form-control" placeholder="100,000" min="1" aria-valuemin="1"/>
+                </div>
 
-              <div class="form-group">
-                <label for="job-description">Company Description (Optional)</label>
-                <div class="editor" id="editor-2">
-                  <p>Description</p>
+                <div class="col mb-3 mb-md-0">
+                  <label for="gender">Gender</label>
+                  <select class="form-control selectpicker border rounded" id="gender" data-style="btn-black" title="Preferred Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    <option value="Any">Any</option>
+                  </select>
                 </div>
               </div>
-              
+
               <div class="form-group">
-                <label for="company-website">Website (Optional)</label>
-                <input type="text" class="form-control" id="company-website" placeholder="https://">
+                <label for="benefits">Benefits</label>
+                <input id="benefits" class="form-control" type="text" placeholder="Dental care for employee and family members"/>
               </div>
 
               <div class="form-group">
-                <label for="company-website-fb">Facebook Username (Optional)</label>
-                <input type="text" class="form-control" id="company-website-fb" placeholder="companyname">
+                <label for="responsibility">Responsibility</label>
+                  <input id="responsibility" class="form-control" type="text" placeholder="Managing a team of artists to create family-friendly animations">
               </div>
 
               <div class="form-group">
-                <label for="company-website-tw">Twitter Username (Optional)</label>
-                <input type="text" class="form-control" id="company-website-tw" placeholder="@companyname">
-              </div>
-              <div class="form-group">
-                <label for="company-website-tw">Linkedin Username (Optional)</label>
-                <input type="text" class="form-control" id="company-website-tw" placeholder="companyname">
-              </div>
-
-              <div class="form-group">
-                <label for="company-website-tw d-block">Upload Logo</label> <br>
-                <label class="btn btn-primary btn-md btn-file">
-                  Browse File<input type="file" hidden>
+                <label for="application_deadline">
+                  Application Deadline <span class="icon-calendar pl-2"></span>
                 </label>
+                <input id="application_deadline" class="form-control" type="date" min="<script>document.write(new Date().getFullYear());</script>" />
+                <script>
+                  document.addEventListener("DOMContentLoaded", function() {
+                    const dateInput = document.getElementById("application_deadline");
+                    const today = new Date().toISOString().split('T')[0];
+                    dateInput.setAttribute('min', today);
+                  });
+                </script>
               </div>
 
+              <div class="row justify-content-center">
+                <div class="col-6 mt-5">
+                  <a href="#" class="btn btn-block btn-primary btn-md">Post Job</a>
+                </div>
+              </div>
             </form>
           </div>
 
          
-        </div>
-        <div class="row align-items-center mb-5">
-          
-          <div class="col-lg-4 ml-auto">
-            <div class="row">
-              <div class="col-6">
-                <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a>
-              </div>
-              <div class="col-6">
-                <a href="#" class="btn btn-block btn-primary btn-md">Save Job</a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
