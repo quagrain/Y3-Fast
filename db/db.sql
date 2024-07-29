@@ -50,7 +50,7 @@ CREATE TABLE `job_req` (
     job_description TEXT NOT NULL,
     user_id INT NOT NULL,
     responsibility TEXT NOT NULL,
-    experience VARCHAR(100),
+    experience INT DEFAULT 0,
     benefits TEXT,
     vacancy INT,
     status ENUM('Full-Time', 'Part-Time', 'Contract') NOT NULL,
