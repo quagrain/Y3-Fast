@@ -110,23 +110,29 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 mb-5">
                     <h2 class="mb-4">Sign Up To JobBoard</h2>
-                    <form action="#" class="p-4 border rounded shadow">
+                    <form action="#" class="p-4 border rounded shadow" novalidate>
 
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="text-black" for="email">Email</label>
-                                <input type="text" id="email" class="form-control" placeholder="Email address">
+                                <input type="email" id="email" class="form-control" placeholder="Email address" required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address.
+                                </div>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-7 mb-3 mb-md-0">
                                 <label class="text-black" for="username">Username</label>
-                                <input type="text" id="username" class="form-control" placeholder="Username">
+                                <input type="text" id="username" class="form-control" placeholder="Username" required>
+                                <div class="invalid-feedback">
+                                    Username must be 3-20 characters long and contain only letters, numbers, and underscores.
+                                </div>
                             </div>
 
                             <div class="col-md-5 mb-3 mb-md-0">
                                 <label class="text-black" for="usertype">Account Type</label>
-                                <select id="usertype" class="form-control selectpicker border rounded">
+                                <select id="usertype" class="form-control selectpicker border rounded" required>
                                     <option value="JobSeeker">Job Seeker</option>
                                     <option value="Employer">Employer</option>
                                 </select>
@@ -135,19 +141,25 @@
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="text-black" for="passwd">Password</label>
-                                <input type="password" id="passwd" class="form-control" placeholder="Password" minlength="5" maxlength="50" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,50}$" required aria-required="true">
+                                <input type="password" id="passwd" class="form-control" placeholder="Password" required>
+                                <div class="invalid-feedback">
+                                    Password must be 5-50 characters long and include at least one letter, one number, and one special character.
+                                </div>
                             </div>
                         </div>
                         <div class="row form-group mb-4">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="text-black" for="re_passwd">Re-Type Password</label>
-                                <input type="password" id="re_passwd" class="form-control" placeholder="Password" minlength="5" maxlength="50" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,50}$" required aria-required="true">
+                                <input type="password" id="re_passwd" class="form-control" placeholder="Re-type Password" required>
+                                <div class="invalid-feedback">
+                                    Passwords do not match.
+                                </div>
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <input type="submit" value="Sign Up" class="btn px-4 btn-primary text-white" onclick="handleSignUp(event)">
+                                <input type="submit" value="Sign Up" class="btn px-4 btn-primary text-white" id="submitBtn">
                             </div>
                         </div>
 
@@ -239,7 +251,7 @@
 
 <script src="js/custom.js"></script>
 
-<script src="js/register_user.js"></script>
+<script src="js/validation.js"></script>
 
 
 </body>
