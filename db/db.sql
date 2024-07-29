@@ -71,3 +71,8 @@ CREATE TABLE `applications` (
     FOREIGN KEY (job_id) REFERENCES job_req(job_id),
     FOREIGN KEY (user_id) REFERENCES job_seekers(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- Insert Statement
+INSERT INTO `users` (email, passwd, username, usertype) 
+VALUES ('delalinsiah.asare@gmail.com', 'securepassword123', 'purplegeminii', 'JobSeeker');

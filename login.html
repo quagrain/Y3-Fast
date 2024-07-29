@@ -122,13 +122,13 @@
               <div class="row form-group mb-4">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="text-black" for="passwd">Password</label>
-                  <input type="password" id="passwd" class="form-control" placeholder="Password" minlength="5" maxlength="50" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,50}$" required aria-required="true">
+                  <input type="password" id="passwd" class="form-control" placeholder="Password" minlength="5" maxlength="50" required aria-required="true">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <input type="submit" value="Log In" class="btn px-4 btn-primary text-white">
+                  <input type="submit" value="Log In" class="btn px-4 btn-primary text-white" onclick="handleLogin(event)">
                 </div>
               </div>
 
@@ -218,6 +218,8 @@
     <script src="js/bootstrap-select.min.js"></script>
     
     <script src="js/custom.js"></script>
+
+    <script src="js/login_user.js"></script>
    
    
      
