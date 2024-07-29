@@ -24,12 +24,12 @@ function handleSignUp(event) {
       body: JSON.stringify(Data)
     })
     .then(response => response.json())
-    .then(data => {
-      if (data.status === 1) {
-        window.location.href = data.redirect;
+    .then(response => {
+      if (response.status === 1) {
+        window.location.href = response.redirect;
         console.log(response.message)
       } else {
-        alert('Sign Up failed: ' + data.message);
+        alert('Sign Up failed: ' + response.message);
       }
     })
     .catch(err => console.log('Error:', err));
