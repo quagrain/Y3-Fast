@@ -11,7 +11,7 @@ global $conn;
 $user = json_decode( file_get_contents('php://input'), true );
 
 $email = $user['email'];
-$usename = $user['username'];
+$username = $user['username'];
 $usertype = $user['usertype'];
 $password1 = $user['passwd1'];
 $password2 = $user['passwd2'];
@@ -27,8 +27,7 @@ $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
 
 $query = "INSERT INTO users (email, passwd, username, usertype) VALUE (?, ?, ?, ?)";
 $create_record = $conn->prepare($query);
-$rid = 3;
-$create_record->bind_param('ssss', $email, $hashedPassword, $usename, $usertype);
+$create_record->bind_param('ssss', $email, $hashedPassword, $username, $usertype);
 if ($create_record->execute()) {
     $response = ["status" => 1, "message" => "Registered successfully", "redirect" => "../login/login.php"];
 } else {
