@@ -53,7 +53,7 @@ CREATE TABLE `job_req` (
     experience VARCHAR(100),
     benefits TEXT,
     vacancy INT,
-    status ENUM('Open', 'Closed') NOT NULL,
+    status ENUM('Full-Time', 'Part-Time', 'Contract') NOT NULL,
     job_location VARCHAR(255),
     salary DECIMAL(10, 2),
     gender ENUM('Male', 'Female', 'Other', 'Any'),
