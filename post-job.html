@@ -155,7 +155,7 @@
                   <input type="text" class="form-control" id="job-location" placeholder="e.g. Tema">
                 </div>
 
-                <div class="col mb-3 mb-md-0">
+                <div class="col-md mb-3 mb-md-0">
                   <label for="job-region">Job Region</label>
                   <select class="form-control selectpicker border rounded" id="job-region" data-style="btn-black" data-live-search="true" title="Select Region">
                     <option>Anywhere</option>
@@ -169,6 +169,16 @@
                     <option>Upper East</option>
                   </select>
                 </div>
+
+                <div class="col-md mb-3 mb-md-0">
+                  <label for="gender">Gender</label>
+                  <select class="form-control selectpicker border rounded" id="gender" data-style="btn-black" title="Preferred Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    <option value="Any">Any</option>
+                  </select>
+                </div>
               </div>
 
               <div class="form-group">
@@ -179,7 +189,12 @@
               </div>
 
               <div class="form-group row">
-                <div class="col-2">
+                <div class="col-md-2 mb-3 mb-md-0">
+                  <label for="vacancy">Vacancy</label>
+                  <input type="number" class="form-control" id="vacancy" placeholder="100" min="1", aria-valuemin="1">
+                </div>
+
+                <div class="col-md mb-3 mb-md-0">
                   <label for="experience">Experience (min.)</label>
                   <div class="input-group">
                     <input id="experience" type="number" class="form-control" placeholder="2"/>
@@ -189,12 +204,7 @@
                   </div>
                 </div>
 
-                <div class="col-2 mb-3 mb-md-0">
-                  <label for="vacancy">Vacancy</label>
-                  <input type="number" class="form-control" id="vacancy" placeholder="100" min="1", aria-valuemin="1">
-                </div>
-
-                <div class="col mb-3 mb-md-0">
+                <div class="col-md mb-3 mb-md-0">
                   <label for="salary">Salary</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -204,17 +214,9 @@
                   </div>
                 </div>
 
-                <div class="col mb-3 mb-md-0">
-                  <label for="gender">Gender</label>
-                  <select class="form-control selectpicker border rounded" id="gender" data-style="btn-black" title="Preferred Gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                    <option value="Any">Any</option>
-                  </select>
-                </div>
 
-                <div class="col mb-3 mb-md-0">
+
+                <div class="col-md mb-3 mb-md-0">
                   <label for="job-type">Employment Status</label>
                   <select class="form-control selectpicker border rounded" id="job-type" data-style="btn-black" title="Select Status">
                     <option value="Part-Time">Part Time</option>
