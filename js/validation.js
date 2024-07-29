@@ -12,18 +12,34 @@ function validateUsername(username) {
 
 // Function to validate password
 function validatePassword(password) {
-    const re = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,50}$/;
-    return re.test(password);
+    const lengthValid = password.length >= 5 && password.length <= 50;
+    const letterValid = /[A-Za-z]/.test(password);
+    const numberValid = /\d/.test(password);
+    const specialValid = /[@$!%*#?&]/.test(password);
+
+    return {
+        lengthValid,
+        letterValid,
+        numberValid,
+        specialValid,
+        allValid: lengthValid && letterValid && numberValid && specialValid
+    };
 }
 
 // Function to set validation status
-function setValidationStatus(inputElement, isValid) {
+function setValidationStatus(inputElement, isValid, errorElement) {
     if (isValid) {
         inputElement.classList.remove('is-invalid');
         inputElement.classList.add('is-valid');
+        if (errorElement) {
+            errorElement.style.display = 'none';
+        }
     } else {
         inputElement.classList.remove('is-valid');
         inputElement.classList.add('is-invalid');
+        if (errorElement) {
+            errorElement.style.display = 'block';
+        }
     }
 }
 
@@ -33,20 +49,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('passwd');
     const rePasswordInput = document.getElementById('re_passwd');
+    const userTypeSelect = document.getElementById('usertype');
 
     emailInput.addEventListener('input', function() {
         setValidationStatus(this, validateEmail(this.value));
     });
+
     usernameInput.addEventListener('input', function() {
         setValidationStatus(this, validateUsername(this.value));
     });
+
     passwordInput.addEventListener('input', function() {
-        setValidationStatus(this, validatePassword(this.value));
+        const validationResult = validatePassword(this.value);
+        setValidationStatus(this, validationResult.allValid);
+
+        document.getElementById('lengthError').style.display = validationResult.lengthValid ? 'none' : 'list-item';
+        document.getElementById('letterError').style.display = validationResult.letterValid ? 'none' : 'list-item';
+        document.getElementById('numberError').style.display = validationResult.numberValid ? 'none' : 'list-item';
+        document.getElementById('specialError').style.display = validationResult.specialValid ? 'none' : 'list-item';
+
         if (rePasswordInput.value) {
             setValidationStatus(rePasswordInput, this.value === rePasswordInput.value);
         }
     });
+
     rePasswordInput.addEventListener('input', function() {
         setValidationStatus(this, this.value === passwordInput.value);
+    });
+
+    userTypeSelect.addEventListener('change', function() {
+        setValidationStatus(this, this.value !== "");
+    });
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Perform final validation here before submitting the form
+        // You can add AJAX call to submit the form data if all validations pass
     });
 });

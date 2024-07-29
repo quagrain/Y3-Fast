@@ -117,7 +117,7 @@
                                 <label class="text-black" for="email">Email</label>
                                 <input type="email" id="email" class="form-control" placeholder="Email address" required>
                                 <div class="invalid-feedback">
-                                    Please enter a valid email address.
+                                    Please enter a valid email address (e.g., user@example.com).
                                 </div>
                             </div>
                         </div>
@@ -133,17 +133,26 @@
                             <div class="col-md-5 mb-3 mb-md-0">
                                 <label class="text-black" for="usertype">Account Type</label>
                                 <select id="usertype" class="form-control selectpicker border rounded" required>
+                                    <option value="">Select account type</option>
                                     <option value="JobSeeker">Job Seeker</option>
                                     <option value="Employer">Employer</option>
                                 </select>
+                                <div class="invalid-feedback">
+                                    Please select an account type.
+                                </div>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="text-black" for="passwd">Password</label>
                                 <input type="password" id="passwd" class="form-control" placeholder="Password" required>
-                                <div class="invalid-feedback">
-                                    Password must be 5-50 characters long and include at least one letter, one number, and one special character.
+                                <div class="invalid-feedback" id="passwordFeedback">
+                                    <ul>
+                                        <li id="lengthError">Password must be 5-50 characters long.</li>
+                                        <li id="letterError">Password must include at least one letter.</li>
+                                        <li id="numberError">Password must include at least one number.</li>
+                                        <li id="specialError">Password must include at least one special character (@$!%*#?&).</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
