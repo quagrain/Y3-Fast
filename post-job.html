@@ -233,21 +233,19 @@
 
               <div class="form-group">
                 <label for="responsibility">Responsibility</label>
+                <div class="input-group mb-3">
                   <input id="responsibility" class="form-control" type="text" placeholder="Managing a team of artists to create family-friendly animations">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary btn-outline-dark" type="button" id="add-responsibility">+</button>
+                  </div>
               </div>
+                <div id="additional-responsibilities"></div>
 
               <div class="form-group">
                 <label for="application_deadline">
                   Application Deadline <span class="icon-calendar pl-2"></span>
                 </label>
                 <input id="application_deadline" class="form-control" type="date" min="<script>document.write(new Date().getFullYear());</script>" />
-                <script>
-                  document.addEventListener("DOMContentLoaded", function() {
-                    const dateInput = document.getElementById("application_deadline");
-                    const today = new Date().toISOString().split('T')[0];
-                    dateInput.setAttribute('min', today);
-                  });
-                </script>
               </div>
 
               <div class="row justify-content-center">
@@ -342,6 +340,32 @@
     <script src="js/bootstrap-select.min.js"></script>
     
     <script src="js/custom.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const dateInput = document.getElementById("application_deadline");
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+
+      const addResponsibilityButton = document.getElementById("add-responsibility");
+      const additionalResponsibilitiesContainer = document.getElementById("additional-responsibilities");
+
+      addResponsibilityButton.addEventListener("click", function() {
+        const newResponsibilityField = document.createElement("div");
+        newResponsibilityField.className = "input-group mb-3";
+        newResponsibilityField.innerHTML = `
+                        <input class="form-control" type="text" placeholder="Another responsibility">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary remove-responsibility" type="button">-</button>
+                        </div>
+                      `;
+        additionalResponsibilitiesContainer.appendChild(newResponsibilityField);
+
+        newResponsibilityField.querySelector(".remove-responsibility").addEventListener("click", function() {
+          additionalResponsibilitiesContainer.removeChild(newResponsibilityField);
+        });
+      });
+    });
+  </script>
    
    
      
