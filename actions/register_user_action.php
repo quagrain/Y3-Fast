@@ -1,56 +1,38 @@
 <?php
-// TO BE EDITED
-session_start();
+
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//header("Access-Control-Allow-Origin: *");
+//header("Access-Control-Allow-Headers: *");
+
 include "../settings/connection.php";
 global $conn;
 
-if (isset($_POST['sign-up-button'])) {
+$user = json_decode( file_get_contents('php://input'), true );
 
-    $fname = mysqli_real_escape_string($conn, $_POST['first-name-input']);
+$email = $user['email'];
+$usename = $user['username'];
+$usertype = $user['usertype'];
+$password1 = $user['passwd1'];
+$password2 = $user['passwd2'];
 
-    $lname = mysqli_real_escape_string($conn, $_POST['last-name-input']);
-
-    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
-
-    $dob = mysqli_real_escape_string($conn, $_POST['date-of-birth']);
-
-    $address = mysqli_real_escape_string($conn, $_POST['address']);
-
-    $phone_num = mysqli_real_escape_string($conn, $_POST['phone-number']);
-
-    $email = mysqli_real_escape_string($conn, $_POST['email-input']);
-
-    $password1 = mysqli_real_escape_string($conn, $_POST['password1']);
-    $password2 = mysqli_real_escape_string($conn, $_POST['password2']);
-
-    if ($password1 != $password2) {
-        echo '<script>alert("passwords do not match");</script>';
-        echo '<script>window.location.href="../login/register.php";</script>';
-        exit();
-    }
-
-    $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
-
-    $query = "INSERT INTO Users (fname, lname, gender, dob,  email, passwd, tel, address, rid) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-    $create_record = $conn->prepare($query);
-    $rid = 3;
-    $create_record->bind_param('ssssssssi', $fname, $lname, $gender, $dob, $email, $hashedPassword, $phone_num, $address, $rid);
-
-    $create_record->execute();
-
-
-    if ($create_record->affected_rows > 0) {
-        echo '<script>window.location.href="../login/login.php";</script>';
-        exit();
-    } else {
-        echo '<script>alert("Couldn\'t register. An error occurred.")</script>';
-        echo '<script>window.location.href="../login/register.php";</script>';
-    }
-
-    $create_record->close();
-    $conn->close();
+if ($password1 != $password2) {
+    $response = ["status" => 0, "message" => "passwords don't match", "redirect" => "../login/register.php"];
+    echo json_encode($response);
+    exit();
 }
 
+$hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
 
-?>
+
+$query = "INSERT INTO users (email, passwd, username, usertype) VALUE (?, ?, ?, ?)";
+$create_record = $conn->prepare($query);
+$rid = 3;
+$create_record->bind_param('ssss', $email, $hashedPassword, $usename, $usertype);
+if ($create_record->execute()) {
+    $response = ["status" => 1, "message" => "Registered successfully", "redirect" => "../login/login.php"];
+} else {
+    $response = ["status" => 0, "message" => "Registration failed", "redirect" => "../login/register.php"];
+}
+echo json_encode($response);
+exit();
