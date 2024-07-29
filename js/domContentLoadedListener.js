@@ -1,4 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Show or hide password when the Eye of Horus is clicked
+    const passwordInput = document.getElementById('passwd');
+    const toggleButton = document.getElementById('togglePassword');
+    const toggleIcon = toggleButton.querySelector('i');
+
+    toggleButton.addEventListener('click', function() {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.classList.remove('fa-eye');
+            toggleIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            toggleIcon.classList.remove('fa-eye-slash');
+            toggleIcon.classList.add('fa-eye');
+        }
+    });
+
     // Set the minimum date limit to the current day
     const dateInput = document.getElementById("application_deadline");
     const today = new Date().toISOString().split('T')[0];
