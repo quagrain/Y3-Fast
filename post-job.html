@@ -228,31 +228,38 @@
 
               <div class="form-group">
                 <label for="benefits">Benefits</label>
-                <input id="benefits" class="form-control" type="text" placeholder="Dental care for employee and family members"/>
+                <div class="input-group mb-3">
+                  <input id="benefits" class="form-control" type="text" placeholder="Dental care for employee and family members">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary btn-outline-secondary" type="button" id="add_benefits">+</button>
+                  </div>
+                </div>
               </div>
+              <div id="additional_benefits"></div>
 
               <div class="form-group">
                 <label for="responsibility">Responsibility</label>
                 <div class="input-group mb-3">
-                  <input id="responsibility" class="form-control" type="text" placeholder="Managing a team of artists to create family-friendly animations">
+                  <input id="responsibility" class="form-control" type="text" placeholder="Managing a team of artists to create animations">
                   <div class="input-group-append">
-                    <button class="btn btn-primary btn-outline-dark" type="button" id="add-responsibility">+</button>
+                    <button class="btn btn-primary btn-outline-dark" type="button" id="add_responsibility">+</button>
                   </div>
-              </div>
-                <div id="additional-responsibilities"></div>
-
-              <div class="form-group">
-                <label for="application_deadline">
-                  Application Deadline <span class="icon-calendar pl-2"></span>
-                </label>
-                <input id="application_deadline" class="form-control" type="date" min="<script>document.write(new Date().getFullYear());</script>" />
-              </div>
-
-              <div class="row justify-content-center">
-                <div class="col-6 mt-5">
-                  <a href="#" class="btn btn-block btn-primary btn-md">Post Job</a>
                 </div>
+                <div id="additional_responsibilities"></div>
               </div>
+
+                <div class="form-group">
+                  <label for="application_deadline">
+                    Application Deadline <span class="icon-calendar pl-2"></span>
+                  </label>
+                  <input id="application_deadline" class="form-control" type="date" min="<script>document.write(new Date().getFullYear());</script>" />
+                </div>
+
+                <div class="row justify-content-center">
+                  <div class="col-6 mt-5">
+                    <a href="#" class="btn btn-block btn-primary btn-md">Post Job</a>
+                  </div>
+                </div>
             </form>
           </div>
 
@@ -342,20 +349,22 @@
     <script src="js/custom.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      // Set the minimum date limit to the current day
       const dateInput = document.getElementById("application_deadline");
       const today = new Date().toISOString().split('T')[0];
       dateInput.setAttribute('min', today);
 
-      const addResponsibilityButton = document.getElementById("add-responsibility");
-      const additionalResponsibilitiesContainer = document.getElementById("additional-responsibilities");
+      // Add an extra input field for responsibility when the user clicks the plus button
+      const addResponsibilityButton = document.getElementById("add_responsibility");
+      const additionalResponsibilitiesContainer = document.getElementById("additional_responsibilities");
 
       addResponsibilityButton.addEventListener("click", function() {
         const newResponsibilityField = document.createElement("div");
         newResponsibilityField.className = "input-group mb-3";
         newResponsibilityField.innerHTML = `
-                        <input class="form-control" type="text" placeholder="Another responsibility">
+                        <input class="form-control" type="text" placeholder="Additional responsibility">
                         <div class="input-group-append">
-                          <button class="btn btn-outline-secondary remove-responsibility" type="button">-</button>
+                          <button class="btn btn-secondary btn-outline-black remove-responsibility" type="button">-</button>
                         </div>
                       `;
         additionalResponsibilitiesContainer.appendChild(newResponsibilityField);
@@ -364,6 +373,25 @@
           additionalResponsibilitiesContainer.removeChild(newResponsibilityField);
         });
       });
+
+      // Add extra benefits field when the button is clicked
+      const addBenefitsButton = document.getElementById("add_benefits");
+      const additionalBenefitsContainer = document.getElementById("additional_benefits");
+      addBenefitsButton.addEventListener("click", function() {
+        const newBenefitsField = document.createElement("div");
+        newBenefitsField.className = "input-group mb-3";
+        newBenefitsField.innerHTML = `
+        <input class="form-control" type="text" placeholder="Additional benefit">
+        <div class="input-group-append">
+          <button class="btn btn-secondary btn-outline-black remove-benefit" type="button">-</button>
+        </div>
+      `;
+        additionalBenefitsContainer.appendChild(newBenefitsField);
+        newBenefitsField.querySelector(".remove-benefit").addEventListener("click", function() {
+          additionalBenefitsContainer.removeChild(newBenefitsField);
+        });
+      });
+
     });
   </script>
    
