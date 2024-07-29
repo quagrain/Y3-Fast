@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $hashedPasswordFromDatabase = $row['passwd'];
 
-        $hashed= password_hash('securepassword123', PASSWORD_DEFAULT);
+        // $hashed= password_hash($hashedPasswordFromDatabase, PASSWORD_DEFAULT);
 
         // Verify the entered password against the stored hash
         if (password_verify($password, $hashedPasswordFromDatabase)) {
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             // Passwords do not match, login failed
-            $response = ["status" => 0, "message" => $hashed, "redirect" => "../view/dashboard.php"];
+            $response = ["status" => 0, "message" => "login failed1", "redirect" => "../view/dashboard.php"];
         }
         echo json_encode($response);
         exit();
