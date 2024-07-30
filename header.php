@@ -1,4 +1,4 @@
-<header class="site-navbar mt-3" style="position: fixed; background-color: violet;">
+<header class="site-navbar mt-3">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div>
@@ -89,7 +89,7 @@
                         >
                     </li>
                     <li class="d-lg-none">
-                        <a href="login.html">Log In</a>
+                        <a href="login.php">Log In</a>
                     </li>
                 </ul>
             </nav>
@@ -105,7 +105,7 @@
                         Job</a
                     >
                     <a
-                        href="login.html"
+                        href="login.php"
                         class="btn btn-primary border-width-2 d-none d-lg-inline-block"
                         ><span class="mr-2 icon-lock_outline"></span
                         >Log In</a
