@@ -83,7 +83,7 @@
         </div>
         <div class="row mb-5">
           <div class="col-lg-12">
-            <form class="p-4 p-md-5 border rounded" method="post">
+            <form class="p-4 p-md-5 border rounded" method="post" action="actions/post_job.php">
               <h3 class="text-black mb-5 border-bottom pb-2">Job Details</h3>
               
               <div class="form-group">
@@ -145,13 +145,13 @@
               <div class="form-group row">
                 <div class="col-md-2 mb-3 mb-md-0">
                   <label for="vacancy">Vacancy</label>
-                  <input type="number" class="form-control" id="vacancy" placeholder="100" min="1", aria-valuemin="1">
+                  <input type="number" class="form-control" id="vacancy" placeholder="100" min="1", aria-valuemin="1"/>
                 </div>
 
                 <div class="col-md mb-3 mb-md-0">
                   <label for="experience">Experience (min.)</label>
                   <div class="input-group">
-                    <input id="experience" type="number" class="form-control" placeholder="2"/>
+                    <input id="experience" type="number" class="form-control" placeholder="0" min="0" aria-valuemin="1"/>
                     <div class="input-group-append">
                       <span class="input-group-text">years</span>
                     </div>

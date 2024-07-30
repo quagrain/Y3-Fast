@@ -48,7 +48,7 @@
                         >
                     </li>
                     <li class="d-lg-none">
-                        <a href="login.php">Log In</a>
+                        <a href="login/login.php">Log In</a>
                     </li>
                 </ul>
             </nav>
