@@ -28,7 +28,6 @@ function handleSignUp(event) {
       if (response.status === 1) {
         window.location.href = response.redirect;
         console.log(response.message);
-        console.log("test branch aura 1000");
       } else {
         alert('Sign Up failed: ' + response.message);
       }
