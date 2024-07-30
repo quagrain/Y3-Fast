@@ -6,6 +6,7 @@
 //header("Access-Control-Allow-Headers: *");
 
 include "../settings/connection.php";
+include '../functions/registerUser.php';
 global $conn;
 
 $user = json_decode( file_get_contents('php://input'), true );
