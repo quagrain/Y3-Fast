@@ -28,8 +28,8 @@ function handleLogin(event) {
     .then((response) => {
       if (response.status == 1) {
         // Handle successful login
-        // window.location.href = '/dashboard';
-        console.log(response.message)
+        window.location.href = response.redirect;
+        console.log(response.message);
       } else {
         // Handle login error
         alert('Login failed: ' + response.message);
