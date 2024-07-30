@@ -26,13 +26,20 @@ if ($password1 != $password2) {
 $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
 
 
-$query = "INSERT INTO users (email, passwd, username, usertype) VALUE (?, ?, ?, ?)";
-$create_record = $conn->prepare($query);
-$create_record->bind_param('ssss', $email, $hashedPassword, $username, $usertype);
-if ($create_record->execute()) {
+// $query = "INSERT INTO users (email, passwd, username, usertype) VALUE (?, ?, ?, ?)";
+// $create_record = $conn->prepare($query);
+// $create_record->bind_param('ssss', $email, $hashedPassword, $username, $usertype);
+// if ($create_record->execute()) {
+//     $response = ["status" => 1, "message" => "Registered successfully", "redirect" => "../login/login.php"];
+// } else {
+//     $response = ["status" => 0, "message" => "Registration failed", "redirect" => "../login/register.php"];
+// }
+
+if (registerUser($email, $hashedPassword, $username, $usertype)) {
     $response = ["status" => 1, "message" => "Registered successfully", "redirect" => "../login/login.php"];
 } else {
     $response = ["status" => 0, "message" => "Registration failed", "redirect" => "../login/register.php"];
 }
+
 echo json_encode($response);
 exit();
