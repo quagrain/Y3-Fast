@@ -33,54 +33,13 @@
                                 >
                             </li>
                             <li>
-                                <a href="post-job.html"
+                                <a href="post-job.php"
                                     >Post a Job</a
                                 >
                             </li>
                         </ul>
                     </li>
-                    <li class="has-children">
-                        <a href="services.html">Pages</a>
-                        <ul class="dropdown">
-                            <li>
-                                <a href="services.html">Services</a>
-                            </li>
-                            <li>
-                                <a href="service-single.html"
-                                    >Service Single</a
-                                >
-                            </li>
-                            <li>
-                                <a href="blog-single.html"
-                                    >Blog Single</a
-                                >
-                            </li>
-                            <li>
-                                <a href="portfolio.html"
-                                    >Portfolio</a
-                                >
-                            </li>
-                            <li>
-                                <a href="portfolio-single.html"
-                                    >Portfolio Single</a
-                                >
-                            </li>
-                            <li>
-                                <a href="testimonials.html"
-                                    >Testimonials</a
-                                >
-                            </li>
-                            <li>
-                                <a href="faq.html"
-                                    >Frequently Asked Questions</a
-                                >
-                            </li>
-                            <li>
-                                <a href="gallery.html">Gallery</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="blog.html">Blog</a></li>
+                    
                     <li><a href="contact.html">Contact</a></li>
                     <li class="d-lg-none">
                         <a href="post-job.html"
@@ -99,7 +58,7 @@
             >
                 <div class="ml-auto">
                     <a
-                        href="post-job.html"
+                        href="post-job.php"
                         class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"
                         ><span class="mr-2 icon-add"></span>Post a
                         Job</a
