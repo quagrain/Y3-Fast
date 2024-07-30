@@ -40,8 +40,6 @@ $response = [
 
             $hashedPasswordFromDatabase = $row['passwd'];
 
-            // $hashed= password_hash($hashedPasswordFromDatabase, PASSWORD_DEFAULT);
-
             // Verify the entered password against the stored hash
             if (password_verify($password, $hashedPasswordFromDatabase)) {
                 // Passwords match, login successful, set user_id & role
