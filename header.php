@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div>
                 <div class="site-logo col-6">
-                    <a href="index.html" style="font-weight: bold; font-size: 30px;">Y3 - FAST</a> 
+                    <a href="index.php" style="font-weight: bold; font-size: 30px;">Y3 - FAST</a> 
                     <div style="color: indigo; 
                                 padding-left:125px;
                                 margin-top: -17px;

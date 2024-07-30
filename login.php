@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    
     <link rel="stylesheet" href="css/custom-bs.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/bootstrap-select.min.css">
@@ -16,8 +15,6 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/quill.snow.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">    
@@ -54,7 +51,7 @@
           <div class="col-md-7">
             <h1 class="text-white font-weight-bold">Login</h1>
             <div class="custom-breadcrumbs">
-              <a href="index.html">Home</a> <span class="mx-2 slash">/</span>
+              <a href="index.php">Home</a> <span class="mx-2 slash">/</span>
               <span class="text-white"><strong>Log In</strong></span>
             </div>
           </div>
@@ -68,7 +65,7 @@
           <div class="col-lg-6">
             <h2 class="mb-4">Log In To JobBoard</h2>
 
-            <form action="login_user_action.php" class="p-4 border rounded shadow">
+            <form action="actions/login_user_action.php" class="p-4 border rounded shadow">
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
@@ -98,7 +95,7 @@
               </div>
 
               <div class="row justify-content-end pr-3">
-                <a href="signup.html" class="font-weight-light text-primary small">Don't have an account? Create one!</a>
+                <a href="register.php" class="font-weight-light text-primary small">Don't have an account? Create one!</a>
               </div>
             </form>
           </div>
@@ -128,7 +125,5 @@
   <script src="js/login_user.js"></script>
 
   <script src="js/domContentLoadedListener.js"></script>
-
-     
   </body>
 </html>
