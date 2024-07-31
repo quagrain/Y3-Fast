@@ -168,7 +168,13 @@
 
                             <div class="form-group">
                                 <label for="tag_id">Search Tags</label>
-                                <input id="tag_id" type="text" class="form-control" placeholder="Fintech">
+                                <div class="input-group mb-3">
+                                    <input id="tag_id" type="text" class="form-control" placeholder="Fintech">
+                                    <div class="input-group-append">
+                                    <button class="btn btn-primary btn-outline-dark" type="button" id="add_tag">+</button>
+                                    </div>
+                                </div>
+                                <div id="additional_tags"></div>
                             </div>
                         </div>
 
