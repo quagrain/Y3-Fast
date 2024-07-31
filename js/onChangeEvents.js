@@ -14,4 +14,8 @@ function showAdditionalFields() {
     employerFields.style.display = "none";
     jobSeekerFields.style.display = "none";
   }
+
+  const dateEstablished = document.getElementById("creation_date");
+  const today = new Date().toISOString().split("T")[0];
+  if (dateEstablished) dateEstablished.setAttribute("max", today);
 }
