@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/quill.snow.css">
+    <link rel="stylesheet" href="../js/bootstrap.min.css">
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="../css/style.css">
@@ -167,7 +168,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="tag_id">Search Tags</label>
+                                <label for="tag_id">
+                                    Search Tags
+                                    <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
+                                </label>
+                                <script>
+                                $(function () {
+                                    $('[data-toggle="tooltip"]').tooltip()
+                                })
+                                </script>
                                 <div class="input-group mb-3">
                                     <input id="tag_id" type="text" class="form-control" placeholder="Fintech">
                                     <div class="input-group-append">
@@ -201,6 +210,7 @@
 </div>
 
 <!-- SCRIPTS -->
+
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script src="../js/isotope.pkgd.min.js"></script>

@@ -49,3 +49,5 @@ function showAdditionalFields() {
     });
   }
 }
+
+function showToolTip() {}
