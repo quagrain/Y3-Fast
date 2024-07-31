@@ -5,8 +5,8 @@
     <title>JobBoard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    
+
+
     <link rel="stylesheet" href="css/custom-bs.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/bootstrap-select.min.css">
@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/quill.snow.css">
-    
+
 
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="css/style.css">    
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body id="top">
 
@@ -28,7 +28,7 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-    
+
 
 <div class="site-wrap">
 
@@ -40,10 +40,10 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div> <!-- .site-mobile-menu -->
-    
+
 
     <!-- NAVBAR -->
-    <?php include 'header.php'?>
+    <?php include "header.php"; ?>
 
     <!-- HOME -->
     <section class="section-hero overlay inner-page bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
@@ -61,7 +61,7 @@
       </div>
     </section>
 
-    
+
     <section class="site-section">
       <div class="container">
 
@@ -85,7 +85,7 @@
           <div class="col-lg-12">
             <form class="p-4 p-md-5 border rounded" method="post" action="actions/post_job.php">
               <h3 class="text-black mb-5 border-bottom pb-2">Job Details</h3>
-              
+
               <div class="form-group">
                 <label for="company-website-tw d-block">Upload Featured Image</label> <br>
                 <label class="btn btn-primary btn-md btn-file">
@@ -206,7 +206,7 @@
                   <label for="application_deadline">
                     Application Deadline <span class="icon-calendar pl-2"></span>
                   </label>
-                  <input id="application_deadline" class="form-control" type="date" min="<script>document.write(new Date().getFullYear());</script>" />
+                  <input id="application_deadline" class="form-control" type="date"/>
                 </div>
 
                 <div class="row justify-content-center">
@@ -217,12 +217,12 @@
             </form>
           </div>
 
-         
+
         </div>
       </div>
     </section>
 
-    <?php include 'footer.php'?>
+    <?php include "footer.php"; ?>
 
   </div>
 
@@ -233,19 +233,19 @@
   <script src="js/stickyfill.min.js"></script>
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/jquery.easing.1.3.js"></script>
-    
+
   <script src="js/jquery.waypoints.min.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/quill.min.js"></script>
-    
-    
+
+
   <script src="js/bootstrap-select.min.js"></script>
-    
+
   <script src="js/custom.js"></script>
   <script src="js/domContentLoadedListener.js"></script>
-   
-   
-     
+
+
+
   </body>
 </html>
