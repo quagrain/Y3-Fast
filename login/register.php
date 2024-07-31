@@ -40,7 +40,7 @@
 
 
     <!-- NAVBAR -->
-   <?php include '../header.php'?>
+   <?php include "../header.php"; ?>
 
     <!-- HOME -->
     <section class="section-hero overlay inner-page bg-image" style="background-image: url('../images/hero_1.jpg');" id="home-section">
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row form-group mb-4">
+                        <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
                                 <label class="text-black" for="re_passwd">Re-Type Password</label>
                                 <input type="password" id="re_passwd" class="form-control" placeholder="Re-type Password" required>
@@ -118,6 +118,60 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!--Show these fields if dropdown is job seeker -->
+                        <div id="job_seeker_fields">
+                            <div class="row form-group">
+                                <div class="col-md mb-3 mb-md-0">
+                                    <label for="fname">First Name</label>
+                                    <input id="fname" type="text" class="form-control" placeholder="John" maxlength="50" required/>
+                                </div>
+                                <div class="col-md">
+                                    <label for="lname">Last Name</label>
+                                    <input id="lname" type="text" class="form-control" placeholder="Doe" maxlength="50" required/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date_of_birth">Date of Birth</label>
+                                <input id="date_of_birth" class="form-control" type="date" max="2005-12-31" required aria-required="true"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="occupation">Occupation</label>
+                                <input id="occupation" type="text" class="form-control" placeholder="Web Developer" maxlength="255"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea id="description" class="form-control no-resize" rows="4" style="resize:none" placeholder="Enter some information about yourself"></textarea>
+                            </div>
+                        </div>
+
+
+                        <!--Additional fields for employers-->
+                        <div id="employer_fields">
+                            <div class="form-group">
+                                <label for="org_name">Company Name</label>
+                                <input id="org_name" type="text" class="form-control" placeholder="Y3 Fast" maxlength="100"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <input id ="industry" type="text" class="form-control" placeholder="Technology"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="creation_date">Date Established</label>
+                                <input id="creation_date" type="date" class="form-control"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tag_id">Search Tags</label>
+                                <input id="tag_id" type="text" class="form-control" placeholder="Fintech">
+                            </div>
+                        </div>
+
 
                         <div class="row form-group">
                             <div class="col-md-12">
@@ -129,13 +183,13 @@
                             <a href="../login/login.php" class="font-weight-light text-primary small">Have an account? Log in!</a>
                         </div>
                     </form>
-                    
+
                 </div>
             </div>
         </div>
     </section>
 
-    <?php include '../footer.php'?>
+    <?php include "../footer.php"; ?>
 
 </div>
 
@@ -158,4 +212,3 @@
 
 </body>
 </html>
-
