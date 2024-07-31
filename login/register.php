@@ -85,7 +85,7 @@
 
                             <div class="col-md-5 mb-3 mb-md-0">
                                 <label class="text-black" for="usertype">Account Type</label>
-                                <select id="usertype" class="form-control selectpicker border rounded" required>
+                                <select id="usertype" class="form-control selectpicker border rounded" required onchange="showAdditionalFields()">
                                     <option value="">Select account type</option>
                                     <option value="JobSeeker">Job Seeker</option>
                                     <option value="Employer">Employer</option>
@@ -120,7 +120,7 @@
                         </div>
 
                         <!--Show these fields if dropdown is job seeker -->
-                        <div id="job_seeker_fields">
+                        <div id="job_seeker_fields" style="display:none">
                             <div class="row form-group">
                                 <div class="col-md mb-3 mb-md-0">
                                     <label for="fname">First Name</label>
@@ -150,7 +150,7 @@
 
 
                         <!--Additional fields for employers-->
-                        <div id="employer_fields">
+                        <div id="employer_fields" style="display:none">
                             <div class="form-group">
                                 <label for="org_name">Company Name</label>
                                 <input id="org_name" type="text" class="form-control" placeholder="Y3 Fast" maxlength="100"/>
@@ -171,6 +171,7 @@
                                 <input id="tag_id" type="text" class="form-control" placeholder="Fintech">
                             </div>
                         </div>
+
 
 
                         <div class="row form-group">
@@ -207,6 +208,7 @@
 <script src="../js/bootstrap-select.min.js"></script>
 <script src="../js/custom.js"></script>
 <script src="../js/validation.js"></script>
+<script src="../js/onChangeEvents.js"></script>
 
 <script src="../js/register_user.js"></script>
 
