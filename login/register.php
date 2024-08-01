@@ -172,7 +172,7 @@
                                     Search Tags
                                     <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
                                 </label>
-                                <script type="text/javascript">
+                                <script type="text/javascript" async defer>
                                     $(function () {
                                         $('[data-toggle="tooltip"]').tooltip()
                                     })
