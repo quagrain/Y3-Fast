@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/quill.snow.css">
-    <link rel="stylesheet" href="../js/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="../css/style.css">
