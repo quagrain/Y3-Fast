@@ -33,7 +33,7 @@ CREATE TABLE `employers` (
     org_name VARCHAR(100) NOT NULL,
     creation_date DATE NOT NULL,
     industry VARCHAR(50),
-    tag_ids VARCHAR(255),
+    tag_ids JSON,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
