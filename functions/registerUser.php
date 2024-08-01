@@ -36,22 +36,22 @@ function registerUser(
     $row = $result->fetch_assoc();
     $user_id = $row['user_id'];
 
-    $result = false; 
+    $result2 = false; 
 
     switch ($usertype) {
         case 'JobSeeker':
-            $result = registerJobSeeker($user_id, $fname, $lname, $dob, $occup, $descrip);
+            $result2 = registerJobSeeker($user_id, $fname, $lname, $dob, $occup, $descrip);
             break;
         
         case 'Employer':
-            $result = registerEmployer($user_id, $orgName, $creationDate, $industry, $tagIds);
+            $result2 = registerEmployer($user_id, $orgName, $creationDate, $industry, $tagIds);
             break;
         
         default:
             break;
     }
 
-    return $result;
+    return $result2;
 }
 
 function registerJobSeeker($user_id, $fname, $lname, $dob, $occup, $descrip){
