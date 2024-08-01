@@ -11,11 +11,44 @@ global $conn;
 
 $user = json_decode( file_get_contents('php://input'), true );
 
-$email = $user['email'];
-$username = $user['username'];
-$usertype = $user['usertype'];
+// const Data = {
+//     email: email,
+//     username: username,
+//     usertype: usertype,
+//     passwd1: password,
+//     passwd2: rePassword,
+//     fname: fname,
+//     lname: lname,
+//     dob: dob,
+//     occup: occup,
+//     descrip: occup,
+//     org_name: org_name,
+//     creation_date: creation_date,
+//     industry: industry,
+//     tagIds: {}
+// };
+
+$data = new stdClass();
+
+$data->email = $user['email'];
+$data->username = $user['username'];
+$data->usertype = $user['usertype'];
+
 $password1 = $user['passwd1'];
 $password2 = $user['passwd2'];
+
+if ($usertype=='JobSeeker'){
+    $data->fname = $user['fname'];
+    $data->lname = $user['lname'];
+    $data->dob = $user['dob'];
+    $data->occup = $user['occup'];
+    $data->descrip = $user['descrip'];
+} else if ($usertype=='Employer'){
+    $data->org_name = $user['org_name'];
+    $data->creation_date = $user['creation_date'];
+    $data->industry = $user['industry'];
+    $data->tagIds = $user['tagIds'];
+}
 
 if ($password1 != $password2) {
     $response = ["status" => 0, "message" => "passwords don't match", "redirect" => "../login/register.php"];
@@ -23,7 +56,7 @@ if ($password1 != $password2) {
     exit();
 }
 
-$hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
+$data->$hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
 
 
 // $query = "INSERT INTO users (email, passwd, username, usertype) VALUE (?, ?, ?, ?)";
@@ -35,7 +68,7 @@ $hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
 //     $response = ["status" => 0, "message" => "Registration failed", "redirect" => "../login/register.php"];
 // }
 
-if (registerUser($email, $hashedPassword, $username, $usertype)) {
+if (Register($data)) {
     $response = ["status" => 1, "message" => "Registered successfully", "redirect" => "../login/login.php"];
 } else {
     $response = ["status" => 0, "message" => "Registration failed", "redirect" => "../login/register.php"];
