@@ -1,3 +1,5 @@
+<?php include './functions/jobBoardStats.php'; ?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -180,7 +182,7 @@
                             <div
                                 class="d-flex align-items-center justify-content-center mb-2"
                             >
-                                <strong class="number" data-number="1930"
+                                <strong class="number" data-number=<?= getNumCandidates() ?>
                                     >0</strong
                                 >
                             </div>
@@ -191,7 +193,7 @@
                             <div
                                 class="d-flex align-items-center justify-content-center mb-2"
                             >
-                                <strong class="number" data-number="54"
+                                <strong class="number" data-number=<?= getNumJobsPosted() ?>
                                     >0</strong
                                 >
                             </div>
@@ -202,7 +204,7 @@
                             <div
                                 class="d-flex align-items-center justify-content-center mb-2"
                             >
-                                <strong class="number" data-number="120"
+                                <strong class="number" data-number=<?= getNumJobsFilled() ?>
                                     >0</strong
                                 >
                             </div>
@@ -213,7 +215,7 @@
                             <div
                                 class="d-flex align-items-center justify-content-center mb-2"
                             >
-                                <strong class="number" data-number="550"
+                                <strong class="number" data-number=<?= getNumCompanies() ?>
                                     >0</strong
                                 >
                             </div>
