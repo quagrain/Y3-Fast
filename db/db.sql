@@ -30,7 +30,7 @@ CREATE TABLE `job_seekers` (
 -- Create the Employers table
 CREATE TABLE `employers` (
     user_id INT PRIMARY KEY,
-    org_name VARCHAR(100) NOT NULL,
+    org_name VARCHAR(100) UNIQUE NOT NULL,
     creation_date DATE NOT NULL,
     industry VARCHAR(50),
     tag_ids JSON,
