@@ -3,38 +3,38 @@ include "../settings/connection.php";
 global $conn;
 
 function Register($data) {
-    $email = $data['email'];
-    $hashedPassword = $data['hashedPassword'];
-    $username = $data['username'];
-    $usertype = $data['usertype'];
-    $profilePic=null;
-    $cv=null;
-    $fname=null;
-    $lname=null;
-    $dob=null;
-    $occup=null;
-    $descrip=null;
-    $orgName=null;
-    $creationDate=null;
-    $industry=null;
-    $tagIds=null;
+    $email = $data->email;
+    $hashedPassword = $data->hashedPassword;
+    $username = $data->username;
+    $usertype = $data->usertype;
+    $profilePic = null;
+    $cv = null;
+    $fname = $data->fname ?? null;
+    $lname = $data->lname ?? null;
+    $dob = $data->dob ?? null;
+    $occup = $data->occup ?? null;
+    $descrip = $data->descrip ?? null;
+    $orgName = $data->org_name ?? null;
+    $creationDate = $data->creation_date ?? null;
+    $industry = $data->industry ?? null;
+    $tagIds = $data->tagIds ?? null;
 
-    registerUser(
+    return registerUser(
         $email,
         $hashedPassword,
         $username,
         $usertype,
-        $profilePic=null,
-        $cv=null,
-        $fname=null,
-        $lname=null,
-        $dob=null,
-        $occup=null,
-        $descrip=null,
-        $orgName=null,
-        $creationDate=null,
-        $industry=null,
-        $tagIds=null
+        $profilePic,
+        $cv,
+        $fname,
+        $lname,
+        $dob,
+        $occup,
+        $descrip,
+        $orgName,
+        $creationDate,
+        $industry,
+        $tagIds
     );
 }
 
@@ -70,24 +70,19 @@ function registerUser(
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    $user_id = $row['user_id'];
-
-    $result2 = false; 
+    $user_id = $row['user_id']; 
 
     switch ($usertype) {
         case 'JobSeeker':
-            $result2 = registerJobSeeker($user_id, $fname, $lname, $dob, $occup, $descrip);
-            break;
+            return registerJobSeeker($user_id, $fname, $lname, $dob, $occup, $descrip);
         
         case 'Employer':
-            $result2 = registerEmployer($user_id, $orgName, $creationDate, $industry, $tagIds);
-            break;
+            return registerEmployer($user_id, $orgName, $creationDate, $industry, $tagIds);
         
         default:
             break;
     }
 
-    return $result2;
 }
 
 function registerJobSeeker($user_id, $fname, $lname, $dob, $occup, $descrip){
@@ -100,8 +95,9 @@ function registerJobSeeker($user_id, $fname, $lname, $dob, $occup, $descrip){
 
 function registerEmployer($user_id, $orgName, $creationDate, $industry, $tagIds){
     global $conn;
+    $tag_ids_json = json_encode($tagIds);
     $query = "INSERT INTO employers (user_id, org_name, creation_date, industry, tag_ids) VALUE (?, ?, ?, ?, ?)";
     $create_record = $conn->prepare($query);
-    $create_record->bind_param('issss', $user_id, $orgName, $creationDate, $industry, $tagIds);
+    $create_record->bind_param('issss', $user_id, $orgName, $creationDate, $industry, $tag_ids_json);
     return $create_record->execute();
 }
