@@ -34,3 +34,17 @@ function getTagID($tag_name) {
     return $result;
 
 }
+
+function addNewTag($tagName) {
+    global $conn;
+
+    $query = "INSERT INTO tags (tag_name) VALUES (?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $tagName);
+
+    if ($stmt->execute()) {
+        return $stmt->insert_id; // Return the ID of the newly inserted tag
+    } else {
+        return false; // Return false on failure
+    }
+}
