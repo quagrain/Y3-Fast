@@ -2,6 +2,42 @@
 include "../settings/connection.php";
 global $conn;
 
+function Register($data) {
+    $email = $data['email'];
+    $hashedPassword = $data['hashedPassword'];
+    $username = $data['username'];
+    $usertype = $data['usertype'];
+    $profilePic=null;
+    $cv=null;
+    $fname=null;
+    $lname=null;
+    $dob=null;
+    $occup=null;
+    $descrip=null;
+    $orgName=null;
+    $creationDate=null;
+    $industry=null;
+    $tagIds=null;
+
+    registerUser(
+        $email,
+        $hashedPassword,
+        $username,
+        $usertype,
+        $profilePic=null,
+        $cv=null,
+        $fname=null,
+        $lname=null,
+        $dob=null,
+        $occup=null,
+        $descrip=null,
+        $orgName=null,
+        $creationDate=null,
+        $industry=null,
+        $tagIds=null
+    );
+}
+
 function registerUser(
     $email,
     $hashedPassword,
