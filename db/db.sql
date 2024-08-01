@@ -74,5 +74,4 @@ CREATE TABLE `applications` (
 
 
 -- Insert Statement
-INSERT INTO `users` (email, passwd, username, usertype) 
-VALUES ('delalinsiah.asare@gmail.com', '$2y$10$bbHHhUFligdLvvK0uSvi7O84pyAkJmJEpgtGOA4X.Trf7XB3ZZLRK', 'purplegeminii', 'JobSeeker');
+
