@@ -21,7 +21,7 @@ function handleSignUp(event) {
         org_name = document.getElementById('org_name').value;
         creation_date = document.getElementById('creation_date').value;
         industry = document.getElementById('industry').value;
-        // tagIds = document.getElementById('occupation').value;
+        tagIds = []
     }
 
     const Data = {
@@ -34,28 +34,36 @@ function handleSignUp(event) {
       lname: lname,
       dob: dob,
       occup: occup,
-      descrip: occup,
+      descrip: descrip,
       org_name: org_name,
       creation_date: creation_date,
       industry: industry,
-      tagIds: {}
+      tagIds: tagIds
     };
 
     fetch('../actions/register_user_action.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(Data)
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(Data)
     })
-    .then(response => response.json())
     .then(response => {
-      if (response.status === 1) {
-        window.location.href = response.redirect;
-        console.log(response.message);
-      } else {
-        alert('Sign Up failed: ' + response.message);
-      }
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
     })
-    .catch(err => console.log('Error:', err));
+    .then(response => {
+        if (response.status === 1) {
+            window.location.href = response.redirect;
+            console.log(response.message);
+          } else {
+            alert('Sign Up failed: ' + response.message);
+          }
+    })
+    .catch(err => {
+        console.log('Error:', err);
+        // alert('An error occurred during sign up: ' + err.message);
+    });
 }
