@@ -167,24 +167,18 @@
                                 <input id="creation_date" type="date" class="form-control"/>
                             </div>
 
-                            <div class="form-group">
-                                <label for="tag_id">
-                                    Search Tags
-                                    <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
+                        <div class="form-group">
+                            <label for="tag_id">
+                                Search Tags
+                                <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
                                 </label>
-                                <script type="text/javascript" async defer>
-                                    $(function () {
-                                        $('[data-toggle="tooltip"]').tooltip()
-                                    })
-                                </script>
-                                <div class="input-group mb-3">
-                                    <input id="tag_id" type="text" class="form-control" placeholder="Fintech">
-                                    <div class="input-group-append">
-                                    <button class="btn btn-primary btn-outline-dark" type="button" id="add_tag">+</button>
-                                    </div>
-                                </div>
-                                <div id="additional_tags"></div>
                             </div>
+                            <select id="tags" class="form-control selectpicker border rounded">
+                                <option value="Technology">Technology</option>
+                                <option value="Education">Education</option>
+                                <option value="Research">Research</option>
+                                <option value="Sports">Sports</option>
+                            </select>
                         </div>
 
 
@@ -228,5 +222,10 @@
 
 <script src="../js/register_user.js"></script>
 
+<script type="text/javascript" async defer>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 </body>
 </html>
