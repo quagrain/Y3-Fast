@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div>
                 <div class="site-logo col-6">
-                    <a href="index.php" style="font-weight: bold; font-size: 30px;">Y3 - FAST</a> 
+                    <a href="../index.php" style="font-weight: bold; font-size: 30px;">Y3 - FAST</a> 
                     <div style="color: indigo; 
                                 padding-left:125px;
                                 margin-top: -17px;
@@ -19,7 +19,7 @@
                     class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0"
                 >
                     <li>
-                        <a href="index.php" class="nav-link active"
+                        <a href="../index.php" class="nav-link active"
                             >Home</a
                         >
                     </li>
