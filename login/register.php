@@ -173,9 +173,9 @@
                                     <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
                                 </label>
                                 <script>
-                                $(function () {
-                                    $('[data-toggle="tooltip"]').tooltip()
-                                })
+                                    $(function () {
+                                        $('[data-toggle="tooltip"]').tooltip()
+                                    })
                                 </script>
                                 <div class="input-group mb-3">
                                     <input id="tag_id" type="text" class="form-control" placeholder="Fintech">
