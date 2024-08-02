@@ -1,3 +1,11 @@
+<?php
+  include './settings/core.php'; // check if logged in
+
+  // check if user is a registered Employer
+  if (!$_SESSION['role']=='Employer') {
+    header("location: index.php");
+  }
+?>
 
 <!doctype html>
 <html lang="en">
@@ -81,15 +89,16 @@
             </div>
           </div>
         </div>
+
         <div class="row mb-5">
           <div class="col-lg-12">
-            <form class="p-4 p-md-5 border rounded" method="post" action="actions/post_job.php">
+            <form class="p-4 p-md-5 border rounded" method="post" action="" id="post-job-form">
               <h3 class="text-black mb-5 border-bottom pb-2">Job Details</h3>
 
               <div class="form-group">
                 <label for="company-website-tw d-block">Upload Featured Image</label> <br>
                 <label class="btn btn-primary btn-md btn-file">
-                  Browse File<input type="file" hidden>
+                  Browse File <input type="file" id="featured-image" hidden>
                 </label>
               </div>
 
@@ -211,14 +220,13 @@
 
                 <div class="row justify-content-center">
                   <div class="col-6 mt-5">
-                    <a href="#" class="btn btn-block btn-primary btn-md">Post Job</a>
+                    <a class="btn btn-block btn-primary btn-md" onclick="handlePostJob(event)">Post Job</a>
                   </div>
                 </div>
             </form>
           </div>
-
-
         </div>
+
       </div>
     </section>
 
@@ -241,6 +249,8 @@
 
 
   <script src="js/bootstrap-select.min.js"></script>
+
+  <script src="js/post_job.js"></script>
 
   <script src="js/custom.js"></script>
   <script src="js/domContentLoadedListener.js"></script>
