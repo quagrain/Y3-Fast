@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="../css/custom-bs.css">
-    <link rel="stylesheet" href="../css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="../fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../fonts/line-icons/style.css">
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/animate.min.css">
-    <link rel="stylesheet" href="../css/quill.snow.css">
+    <link rel="stylesheet" href="css/custom-bs.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/line-icons/style.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/quill.snow.css">
     <!-- <link rel="stylesheet" href="../css/bootstrap.min.css"> -->
 
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body id="top">
 
@@ -41,16 +41,16 @@
 
 
     <!-- NAVBAR -->
-   <?php include "../header.php"; ?>
+   <?php include "header.php"; ?>
 
     <!-- HOME -->
-    <section class="section-hero overlay inner-page bg-image" style="background-image: url('../images/hero_1.jpg');" id="home-section">
+    <section class="section-hero overlay inner-page bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
                     <h1 class="text-white font-weight-bold">SignUp</h1>
                     <div class="custom-breadcrumbs">
-                        <a href="../index.php">Home</a> <span class="mx-2 slash">/</span>
+                        <a href="index.php">Home</a> <span class="mx-2 slash">/</span>
                         <span class="text-white"><strong>Sign Up</strong></span>
                     </div>
                 </div>
@@ -199,28 +199,28 @@
         </div>
     </section>
 
-    <?php include "../footer.php"; ?>
+    <?php include "footer.php"; ?>
 
 </div>
 
 <!-- SCRIPTS -->
 
-<script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.bundle.min.js"></script>
-<script src="../js/isotope.pkgd.min.js"></script>
-<script src="../js/stickyfill.min.js"></script>
-<script src="../js/jquery.fancybox.min.js"></script>
-<script src="../js/jquery.easing.1.3.js"></script>
-<script src="../js/jquery.waypoints.min.js"></script>
-<script src="../js/jquery.animateNumber.min.js"></script>
-<script src="../js/owl.carousel.min.js"></script>
-<script src="../js/quill.min.js"></script>
-<script src="../js/bootstrap-select.min.js"></script>
-<script src="../js/custom.js"></script>
-<script src="../js/validation.js"></script>
-<script src="../js/onChangeEvents.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/stickyfill.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/quill.min.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/onChangeEvents.js"></script>
 
-<script src="../js/register_user.js"></script>
+<script src="js/register_user.js"></script>
 
 <script type="text/javascript" async defer>
     $(function () {
