@@ -173,10 +173,15 @@
                                         Search Tags
                                         <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
                                     </label>
+                                    <?php include './actions/get_tags_4_dropdown.php'; ?>
                                     <select id="tags" class="selectpicker form-control border rounded" multiple>
-                                        <option value="0">Technology</option>
-                                        <option value="1">Education</option>
-                                        <option value="2">Research</option>
+                                        <?php if ($tags->num_rows > 0): ?>
+                                            <?php foreach ($tags as $tag): ?>
+                                                <option value="<?= $tag['tag_id'] ?>"><?= htmlspecialchars($tag['tag_name']) ?></option>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <? echo "no tags found" ?>
+                                        <?php endif; ?>
                                     </select>
                                 </div>
                             </div>
