@@ -74,4 +74,12 @@ CREATE TABLE `applications` (
 
 
 -- Insert Statement
-
+INSERT INTO `tags` (tag_name) VALUES
+('Technology'),
+('Education'),
+('Research'),
+('Healthcare'),
+('Finance'),
+('Marketing'),
+('Engineering'),
+('Human Resources');
