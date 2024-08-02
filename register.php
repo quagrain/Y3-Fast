@@ -190,7 +190,7 @@
                         </div>
 
                         <div class="row justify-content-end pr-3">
-                            <a href="../login/login.php" class="font-weight-light text-primary small">Have an account? Log in!</a>
+                            <a href="login.php" class="font-weight-light text-primary small">Have an account? Log in!</a>
                         </div>
                     </form>
 

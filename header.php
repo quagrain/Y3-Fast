@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div>
                 <div class="site-logo col-6">
-                    <a href="./index.php" style="font-weight: bold; font-size: 30px;">Y3 - FAST</a> 
+                    <a href="index.php" style="font-weight: bold; font-size: 30px;">Y3 - FAST</a>
                     <div style="color: indigo; 
                                 padding-left:125px;
                                 margin-top: -17px;
@@ -48,7 +48,7 @@
                         >
                     </li>
                     <li class="d-lg-none">
-                        <a href="login/login.php">Log In</a>
+                        <a href="login.php">Log In</a>
                     </li>
                 </ul>
             </nav>
@@ -64,7 +64,7 @@
                         Job</a
                     >
                     <a
-                        href="../login/login.php"
+                        href="login.php"
                         class="btn btn-primary border-width-2 d-none d-lg-inline-block"
                         ><span class="mr-2 icon-lock_outline"></span
                         >Log In</a
