@@ -308,7 +308,7 @@
                             </p>
                         </div>
                         <div class="col-md-3 ml-auto">
-                            <a href="./login/signup.php" class="btn btn-warning btn-block btn-lg">Sign Up</a>
+                            <a href="signup.php" class="btn btn-warning btn-block btn-lg">Sign Up</a>
                         </div>
                     </div>
                 </div>
