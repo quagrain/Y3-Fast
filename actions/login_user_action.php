@@ -46,19 +46,19 @@ $response = [
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['role'] = $row['usertype'];
                 if ($row['usertype']=='Admin') {
-                    $response = ["status" => 1, "message" => "login successful1", "redirect" => "../view/dashboard.php"];
+                    $response = ["status" => 1, "message" => "login successful1", "redirect" => "./admin/dashboard/index.html"];
                 } else if ($row['usertype']=='Jobseeker' || $row['usertype']=='Employer') {
-                    $response = ["status" => 1, "message" => "login successful2", "redirect" => "../view/dashboard.php"];
+                    $response = ["status" => 1, "message" => "login successful2", "redirect" => "index.php"];
                 }
             } else {
                 // Passwords do not match, login failed
-                $response = ["status" => 0, "message" => "login failed1", "redirect" => "../view/dashboard.php"];
+                $response = ["status" => 0, "message" => "Passwords do not match, login failed", "redirect" => ""];
             }
             echo json_encode($response);
             exit();
         } else {
             // Email does not exist, login failed
-            $response = ["status" => 0, "message" => "login failed2", "redirect" => "../view/dashboard.php"];
+            $response = ["status" => 0, "message" => "Email does not exist, login failed", "redirect" => ""];
         }
 
         mysqli_stmt_free_result($stmt);
