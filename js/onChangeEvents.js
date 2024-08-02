@@ -19,35 +19,6 @@ function showAdditionalFields() {
   const dateEstablished = document.getElementById("creation_date");
   const today = new Date().toISOString().split("T")[0];
   if (dateEstablished) dateEstablished.setAttribute("max", today);
-
-  const additionalTag = document.getElementById("add_tag");
-  const additionalTagContainer = document.getElementById("additional_tags");
-
-  if (additionalTag && additionalTagContainer) {
-    additionalTag.addEventListener("click", function () {
-      const existingFields =
-        additionalTagContainer.querySelectorAll(".input-group").length;
-      if (existingFields < 3) {
-        const newTagField = document.createElement("div");
-        newTagField.className = "input-group mb-3";
-        newTagField.innerHTML = `
-                    <input class="form-control" type="text" placeholder="Additional tag">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary btn-outline-black remove-tag" type="button">-</button>
-                    </div>
-                `;
-        additionalTagContainer.appendChild(newTagField);
-
-        newTagField
-          .querySelector(".remove-tag")
-          .addEventListener("click", function () {
-            additionalTagContainer.removeChild(newTagField);
-          });
-      } else {
-        alert("You can only add up to 3 additional tags.");
-      }
-    });
-  }
 }
 
 function showToolTip() {}

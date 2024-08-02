@@ -5,13 +5,13 @@
 //header("Access-Control-Allow-Origin: *");
 //header("Access-Control-Allow-Headers: *");
 
-header('Content-Type: application/json');
+header("Content-Type: application/json");
 
 include "../settings/connection.php";
-include '../functions/registerUser.php';
+include "../functions/registerUser.php";
 global $conn;
 
-$user = json_decode( file_get_contents('php://input'), true );
+$user = json_decode(file_get_contents("php://input"), true);
 
 $err;
 $response = [];
@@ -35,35 +35,38 @@ $response = [];
 
 $data = new stdClass();
 
-$data->email = $user['email'];
-$data->username = $user['username'];
-$data->usertype = $user['usertype'];
+$data->email = $user["email"];
+$data->username = $user["username"];
+$data->usertype = $user["usertype"];
 
-$password1 = $user['passwd1'];
-$password2 = $user['passwd2'];
+$password1 = $user["passwd1"];
+$password2 = $user["passwd2"];
 
-if ($data->usertype=='JobSeeker'){
-    $data->fname = $user['fname'];
-    $data->lname = $user['lname'];
-    $data->dob = $user['dob'];
-    $data->occup = $user['occup'];
-    $data->descrip = $user['descrip'];
-} else if ($data->usertype=='Employer'){
-    $data->org_name = $user['org_name'];
-    $data->creation_date = $user['creation_date'];
-    $data->industry = $user['industry'];
-    $data->tagIds = $user['tagIds'];
+if ($data->usertype == "JobSeeker") {
+    $data->fname = $user["fname"];
+    $data->lname = $user["lname"];
+    $data->dob = $user["dob"];
+    $data->occup = $user["occup"];
+    $data->descrip = $user["descrip"];
+} elseif ($data->usertype == "Employer") {
+    $data->org_name = $user["org_name"];
+    $data->creation_date = $user["creation_date"];
+    $data->industry = $user["industry"];
+    $data->tagIds = $user["tagIds"];
 }
 
 if ($password1 != $password2) {
     $err = new Exception("passwords don't match");
-    $response = ["status" => 0, "message" => $err->getMessage(), "redirect" => "../login/register.php"];
+    $response = [
+        "status" => 0,
+        "message" => $err->getMessage(),
+        "redirect" => "../register.php",
+    ];
     echo json_encode($response);
     exit();
 }
 
 $data->hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
-
 
 // $query = "INSERT INTO users (email, passwd, username, usertype) VALUE (?, ?, ?, ?)";
 // $create_record = $conn->prepare($query);
@@ -75,10 +78,18 @@ $data->hashedPassword = password_hash($password1, PASSWORD_DEFAULT);
 // }
 
 if (Register($data)) {
-    $response = ["status" => 1, "message" => "Registered successfully", "redirect" => "../login/login.php"];
+    $response = [
+        "status" => 1,
+        "message" => "Registered successfully",
+        "redirect" => "./login.php",
+    ];
 } else {
     $err = new Exception("Registration failed");
-    $response = ["status" => 0, "message" => $err->getMessage(), "redirect" => "../login/register.php"];
+    $response = [
+        "status" => 0,
+        "message" => $err->getMessage(),
+        "redirect" => "./register.php",
+    ];
 }
 
 echo json_encode($response);

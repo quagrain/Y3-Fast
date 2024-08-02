@@ -167,21 +167,20 @@
                                 <input id="creation_date" type="date" class="form-control"/>
                             </div>
 
-                        <div class="form-group">
-                            <label for="tag_id">
-                                Search Tags
-                                <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
-                                </label>
+                            <div class="row form-group">
+                                <div class="col-md mb-4 mb-md-0">
+                                    <label for="tag_id">
+                                        Search Tags
+                                        <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
+                                    </label>
+                                    <select id="tags" class="selectpicker form-control border rounded" multiple>
+                                        <option value="0">Technology</option>
+                                        <option value="1">Education</option>
+                                        <option value="2">Research</option>
+                                    </select>
+                                </div>
                             </div>
-                            <select id="tags" class="form-control selectpicker border rounded">
-                                <option value="Technology">Technology</option>
-                                <option value="Education">Education</option>
-                                <option value="Research">Research</option>
-                                <option value="Sports">Sports</option>
-                            </select>
                         </div>
-
-
 
                         <div class="row form-group">
                             <div class="col-md-12">
