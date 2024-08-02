@@ -11,9 +11,9 @@ if (isset($formData)) {
     $jobTitle = $formData['jobTitle'];
     $jobDescription = $formData['jobDescription'];
     $userId = $_SESSION['user_id'];
-    $responsibility = $formData['responsibility'];
+    $responsibility = json_encode($formData['responsibility']);
     $experience = $formData['experience'];
-    $benefits = $formData['benefits'];
+    $benefits = json_encode($formData['benefits']);
     $vacancy = $formData['vacancy'];
     $status = $formData['status'];
     $jobLocation = $formData['jobLocation'];
@@ -70,8 +70,22 @@ if (isset($formData)) {
     $sql = "INSERT INTO job_req (job_title, job_description, user_id, responsibility, experience, benefits, vacancy, status, job_location, salary, gender, application_deadline) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssisssissdss",
-        $jobTitle, $jobDescription, $userId, $responsibility, $experience, $benefits, $vacancy, $status, $jobLocation, $salary, $gender, $applicationDeadline);
+    
+    $stmt->bind_param(
+        'ssisssssssss',
+        $jobTitle,
+        $jobDescription,
+        $userId,
+        $responsibility,
+        $experience,
+        $benefits,
+        $vacancy,
+        $status,
+        $jobLocation,
+        $salary,
+        $gender,
+        $applicationDeadline
+    );
 
     if ($stmt->execute()) {
         $response = ["status" => 1, "message" => "Job posted successfully!", "redirect" => "./index.php"];
