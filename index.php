@@ -230,7 +230,7 @@
                     <div class="row mb-5 justify-content-center">
                         <div class="col-md-7 text-center">
                             <h2 class="section-title mb-2">
-                                43,167 Job Listed
+                                <?= getNumJobsPosted() ?> Listed
                             </h2>
                         </div>
                     </div>
@@ -277,7 +277,7 @@
                         <div
                             class="col-md-6 text-center text-md-left mb-4 mb-md-0"
                         >
-                            <span>Showing 1-7 Of 43,167 Jobs</span>
+                            <span>Showing 1-7 Of <?= getNumJobsPosted() ?></span>
                         </div>
                         <div class="col-md-6 text-center text-md-right">
                             <div class="custom-pagination ml-auto">
