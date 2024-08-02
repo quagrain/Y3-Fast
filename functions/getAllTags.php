@@ -1,6 +1,6 @@
 <?php
 
-include '../settings/connection.php';
+include './settings/connection.php';
 
 function getAllTags() {
 
