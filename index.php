@@ -273,22 +273,31 @@
                         
                     </ul>
 
+                    <?php
+                        $totalJobs = getNumJobsPosted();
+                        $jobsPerPage = 7;
+                        $totalPages = ceil($totalJobs / $jobsPerPage);
+                        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                        $start = ($currentPage - 1) * $jobsPerPage + 1;
+                        $end = min($start + $jobsPerPage - 1, $totalJobs);
+                    ?>
                     <div class="row pagination-wrap">
-                        <div
-                            class="col-md-6 text-center text-md-left mb-4 mb-md-0"
-                        >
-                            <span>Showing 1-7 Of <?= getNumJobsPosted() ?></span>
+                        <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+                            <span>Showing <?= $start ?>-<?= $end ?> Of <?= $totalJobs ?></span>
                         </div>
                         <div class="col-md-6 text-center text-md-right">
                             <div class="custom-pagination ml-auto">
-                                <a href="#" class="prev">Prev</a>
+                                <?php if ($currentPage > 1): ?>
+                                    <a href="?page=<?= $currentPage - 1 ?>" class="prev">Prev</a>
+                                <?php endif; ?>
                                 <div class="d-inline-block">
-                                    <a href="#" class="active">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
+                                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                        <a href="?page=<?= $i ?>" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
+                                    <?php endfor; ?>
                                 </div>
-                                <a href="#" class="next">Next</a>
+                                <?php if ($currentPage < $totalPages): ?>
+                                    <a href="?page=<?= $currentPage + 1 ?>" class="next">Next</a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
