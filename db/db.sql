@@ -23,7 +23,7 @@ CREATE TABLE `job_seekers` (
     date_of_birth DATE NOT NULL,
     occupation VARCHAR(50),
     description TEXT,
-    cv VARCHAR(255)
+    cv VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
