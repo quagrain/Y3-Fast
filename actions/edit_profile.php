@@ -2,6 +2,7 @@
 
 session_start();
 include '../settings/connection.php';
+global $conn;
 
 $response = [
     "status" => 0,
