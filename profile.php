@@ -1,3 +1,7 @@
+<?php
+  include './settings/core.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -81,7 +85,7 @@
               <div class="form-group row justify-content-center">
                 <div class="row justify-content-center">
                     <label class="btn btn-primary btn-file border rounded-circle p-4">
-                      <input type="file" id="profile_picture" accept=".png, .jpg, .jpeg" class="editable" disabled hidden/>
+                      <input type="file" id="profile_picture" name="profile_picture" accept=".png, .jpg, .jpeg" class="editable" disabled hidden/>
                       <span class="icon-line-profile-male" style="font-size:10vh;"></span>
                       <!-- could be based on gender: icon-line-profile-female for female outline-->
                     </label>
@@ -127,7 +131,7 @@
               <div class="form-group">
                 <label for="cv">Upload Resume</label> <br>
                 <label class="btn btn-primary btn-md btn-file">
-                  Browse File <input type="file" id="cv" accept=".pdf" class="editable" hidden disabled>
+                  Browse File <input type="file" id="cv" name="cv" accept=".pdf" class="editable" hidden disabled>
                 </label>
               </div>
 
