@@ -14,12 +14,12 @@ function toggleEdit() {
   }
 }
 
-function handleUpdateProfile(event) {
-  event.preventDefault();
-  // Add your update profile logic here
-  console.log('Profile updated');
-  toggleEdit(); // Reset the form to non-editable state
-}
+// function handleUpdateProfile(event) {
+//   event.preventDefault();
+//   // Add your update profile logic here
+//   console.log('Profile updated');
+//   toggleEdit(); // Reset the form to non-editable state
+// }
 
 document.addEventListener("DOMContentLoaded", function () {
 
