@@ -59,15 +59,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Update users table
-        $sqlUsers = "UPDATE users SET profile_pic=?, cv=? WHERE user_id=?";
+        $sqlUsers = "UPDATE users SET profile_pic=? WHERE user_id=?";
         $stmtUsers = $conn->prepare($sqlUsers);
-        $stmtUsers->bind_param("ssi", $profilePicPath, $cvPath, $userId);
+        $stmtUsers->bind_param("si", $profilePicPath, $userId);
         $stmtUsers->execute();
 
         // Update job_seekers table
-        $sqlJobSeekers = "UPDATE job_seekers SET fname=?, lname=?, date_of_birth=?, description=? WHERE user_id=?";
+        $sqlJobSeekers = "UPDATE job_seekers SET fname=?, lname=?, date_of_birth=?, description=?, cv=? WHERE user_id=?";
         $stmtJobSeekers = $conn->prepare($sqlJobSeekers);
-        $stmtJobSeekers->bind_param("ssssi", $fname, $lname, $dob, $description, $userId);
+        $stmtJobSeekers->bind_param("sssssi", $fname, $lname, $dob, $description, $cvPath, $userId);
         $stmtJobSeekers->execute();
 
         // Commit the transaction
