@@ -60,16 +60,15 @@ function registerUser(
 
     // users table
     $query =
-        "INSERT INTO users (profile_pic, email, passwd, username, usertype, cv) VALUE (?, ?, ?, ?, ?, ?)";
+        "INSERT INTO users (profile_pic, email, passwd, username, usertype) VALUE (?, ?, ?, ?, ?)";
     $create_record = $conn->prepare($query);
     $create_record->bind_param(
-        "ssssss",
+        "sssss",
         $profilePic,
         $email,
         $hashedPassword,
         $username,
-        $usertype,
-        $cv
+        $usertype
     );
     $create_record->execute();
 
@@ -90,7 +89,8 @@ function registerUser(
                 $lname,
                 $dob,
                 $occup,
-                $descrip
+                $descrip,
+                $cv
             );
 
         case "Employer":
@@ -107,20 +107,21 @@ function registerUser(
     }
 }
 
-function registerJobSeeker($user_id, $fname, $lname, $dob, $occup, $descrip)
+function registerJobSeeker($user_id, $fname, $lname, $dob, $occup, $descrip, $cv)
 {
     global $conn;
     $query =
-        "INSERT INTO job_seekers (user_id, fname, lname, date_of_birth, occupation, description) VALUE (?, ?, ?, ?, ?, ?)";
+        "INSERT INTO job_seekers (user_id, fname, lname, date_of_birth, occupation, description, cv) VALUE (?, ?, ?, ?, ?, ?, ?)";
     $create_record = $conn->prepare($query);
     $create_record->bind_param(
-        "isssss",
+        "issssss",
         $user_id,
         $fname,
         $lname,
         $dob,
         $occup,
-        $descrip
+        $descrip,
+        $cv
     );
     return $create_record->execute();
 }
