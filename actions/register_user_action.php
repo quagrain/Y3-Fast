@@ -56,11 +56,11 @@ if ($data->usertype == "JobSeeker") {
 }
 
 if ($password1 != $password2) {
-    $err = new Exception("passwords don't match");
+    $err = new Error("passwords don't match");
     $response = [
         "status" => 0,
         "message" => $err->getMessage(),
-        "redirect" => "../register.php",
+        "redirect" => "./register.php"
     ];
     echo json_encode($response);
     exit();
@@ -81,14 +81,14 @@ if (Register($data)) {
     $response = [
         "status" => 1,
         "message" => "Registered successfully",
-        "redirect" => "./login.php",
+        "redirect" => "./login.php"
     ];
 } else {
-    $err = new Exception("Registration failed");
+    $err = new Error("Registration failed");
     $response = [
         "status" => 0,
         "message" => $err->getMessage(),
-        "redirect" => "./register.php",
+        "redirect" => "./register.php"
     ];
 }
 
