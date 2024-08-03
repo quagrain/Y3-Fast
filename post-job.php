@@ -98,7 +98,7 @@
               <div class="form-group">
                 <label for="company-website-tw d-block">Upload Featured Image</label> <br>
                 <label class="btn btn-primary btn-md btn-file">
-                  Browse File <input type="file" id="featured-image" hidden>
+                  Browse File <input type="file" id="featured-image" accept=".png, .jpg, .jpeg" hidden>
                 </label>
               </div>
 

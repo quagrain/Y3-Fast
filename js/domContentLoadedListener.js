@@ -1,4 +1,33 @@
+function toggleEdit() {
+  const editButton = document.getElementById('edit-profile-btn');
+  const editableFields = document.querySelectorAll('.editable');
+  const updateButton = document.getElementById('update-profile-btn');
+
+  if (editButton.textContent.trim() === 'Edit') {
+    editButton.innerHTML = 'Cancel <span class="icon-close pl-4"></span>';
+    editableFields.forEach(field => field.disabled = false);
+    updateButton.disabled = false;
+  } else {
+    editButton.innerHTML = 'Edit <span class="icon-pencil pl-4"></span>';
+    editableFields.forEach(field => field.disabled = true);
+    updateButton.disabled = true;
+  }
+}
+
+function handleUpdateProfile(event) {
+  event.preventDefault();
+  // Add your update profile logic here
+  console.log('Profile updated');
+  toggleEdit(); // Reset the form to non-editable state
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+
+  // Hide the editable fields in the profile
+  const editableFields = document.querySelectorAll('.editable');
+  editableFields.forEach(field => field.disabled = true);
+
+
   // Show or hide password when the Eye of Horus is clicked
   const passwordInput = document.getElementById("passwd");
   const toggleButton = document.getElementById("togglePassword");
@@ -91,3 +120,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+
+
+
+
