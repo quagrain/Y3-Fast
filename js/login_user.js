@@ -24,16 +24,24 @@ function handleLogin(event) {
       },
       body: JSON.stringify(Data)
     })
-    .then(response => response.json())
     .then((response) => {
-      if (response.status == 1) {
+      if (!response.ok) {
+        throw new Error("Network response was not ok: " + response.statusText);
+      }
+      return response.json();
+    })
+    .then((response) => {
+      if (response.status === 1) {
         // Handle successful login
         window.location.href = response.redirect;
         console.log(response.message);
       } else {
         // Handle login error
         alert('Login failed: ' + response.message);
+        throw new Error(response.message);
       }
     })
-    .catch(err => console.log('Error:', err));
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
