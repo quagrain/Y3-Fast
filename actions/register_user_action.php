@@ -48,7 +48,7 @@ if ($data->usertype == "JobSeeker") {
     $data->dob = $user["dob"];
     $data->occup = $user["occup"];
     $data->descrip = $user["descrip"];
-} elseif ($data->usertype == "Employer") {
+} else if ($data->usertype == "Employer") {
     $data->org_name = $user["org_name"];
     $data->creation_date = $user["creation_date"];
     $data->industry = $user["industry"];
