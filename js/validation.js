@@ -80,10 +80,4 @@ document.addEventListener('DOMContentLoaded', function() {
     userTypeSelect.addEventListener('change', function() {
         setValidationStatus(this, this.value !== "");
     });
-
-    document.querySelector('form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Perform final validation here before submitting the form
-        // You can add AJAX call to submit the form data if all validations pass
-    });
 });
