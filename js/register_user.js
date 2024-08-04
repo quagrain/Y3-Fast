@@ -1,4 +1,5 @@
 function handleSignUp(event) {
+  console.log("reg button clicked!");
   event.preventDefault();
 
   const email = document.getElementById("email").value;
@@ -56,23 +57,23 @@ function handleSignUp(event) {
       },
       body: JSON.stringify(Data),
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok: " + response.statusText);
-        }
-        return response.json();
-      })
-      .then((response) => {
-        if (response.status === 1) {
-          window.location.href = response.redirect;
-          console.log(response.message);
-        } else {
-          alert("Sign Up failed: " + response.message);
-        }
-      })
-      .catch((err) => {
-        console.log("Error:", err);
-        // alert('An error occurred during sign up: ' + err.message);
-      });
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok: " + response.statusText);
+      }
+      return response.json();
+    })
+    .then((response) => {
+      if (response.status === 1) {
+        window.location.href = response.redirect;
+        console.log(response.message);
+      } else {
+        alert("Sign Up failed: " + response.message);
+        throw new Error(response.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   }
 }
