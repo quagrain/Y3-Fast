@@ -1,5 +1,5 @@
 <?php
-// TO BE EDITED
+header("Content-Type: application/json");
 session_start();
 include "../settings/connection.php";
 global $conn;
@@ -7,7 +7,7 @@ global $conn;
 $response = [
     "status" => 0,
     "message" => "default msg",
-    "redirect" => "../"
+    "redirect" => "./"
 ];
 
 
@@ -47,15 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['role'] = $row['usertype'];
             if ($row['usertype']=='Admin') {
                 $response = ["status" => 1, "message" => "login successful1", "redirect" => "./admin/dashboard/index.html"];
-            } else if ($row['usertype']=='Jobseeker' || $row['usertype']=='Employer') {
-                $response = ["status" => 1, "message" => "login successful2", "redirect" => "index.php"];
+            } else if ($row['usertype']=='JobSeeker' || $row['usertype']=='Employer') {
+                $response = ["status" => 1, "message" => "login successful2", "redirect" => "./index.php"];
             }
         } else {
             // Passwords do not match, login failed
-            $response = ["status" => 0, "message" => "Passwords do not match, login failed", "redirect" => ""];
+            $response = ["status" => 0, "message" => "Passwords do not match, login failed", "redirect" => "./login.php"];
         }
-        echo json_encode($response);
-        exit();
+        // echo json_encode($response);
+        // exit();
     } else {
         // Email does not exist, login failed
         $response = ["status" => 0, "message" => "Email does not exist, login failed", "redirect" => ""];
