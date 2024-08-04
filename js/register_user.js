@@ -32,48 +32,49 @@ function handleSignUp(event) {
 
       // tagIds = JSON.stringify(tagIds);
     }
-
-    const Data = {
-      email: email,
-      username: username,
-      usertype: usertype,
-      passwd1: password,
-      passwd2: rePassword,
-      fname: fname,
-      lname: lname,
-      dob: dob,
-      occup: occup,
-      descrip: descrip,
-      org_name: org_name,
-      creation_date: creation_date,
-      industry: industry,
-      tagIds: tagIds,
-    };
-
-    fetch("./actions/register_user_action.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(Data),
-    })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok: " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((response) => {
-      if (response.status === 1) {
-        window.location.href = response.redirect;
-        console.log(response.message);
-      } else {
-        alert("Sign Up failed: " + response.message);
-        throw new Error(response.message);
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
   }
+
+  const Data = {
+    email: email,
+    username: username,
+    usertype: usertype,
+    passwd1: password,
+    passwd2: rePassword,
+    fname: fname,
+    lname: lname,
+    dob: dob,
+    occup: occup,
+    descrip: descrip,
+    org_name: org_name,
+    creation_date: creation_date,
+    industry: industry,
+    tagIds: tagIds,
+  };
+
+  fetch("./actions/register_user_action.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(Data),
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok: " + response.statusText);
+    }
+    return response.json();
+  })
+  .then((response) => {
+    if (response.status === 1) {
+      window.location.href = response.redirect;
+      console.log(response.message);
+    } else {
+      alert("Sign Up failed: " + response.message);
+      throw new Error(response.message);
+    }
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+  
 }
