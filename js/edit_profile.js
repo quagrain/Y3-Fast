@@ -15,13 +15,13 @@ function handleUpdateProfile(event) {
         method: "POST",
         body: formData,
     })
-    .then(response => {
+    .then((response) => {
         if (!response.ok) {
             throw new Error("Network response was not ok: " + response.statusText);
         }
         return response.json();
     })
-    .then(response => {
+    .then((response) => {
         if (response.status === 1) {
             alert("Profile updated successfully!");
             window.location.href = response.redirect;
@@ -30,7 +30,7 @@ function handleUpdateProfile(event) {
             throw new Error(response.message);
         }
     })
-    .catch(error => {
+    .catch((error) => {
         console.error("Error:", error);
         alert("An error occurred while updating the profile.");
     });
