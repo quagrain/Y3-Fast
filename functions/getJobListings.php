@@ -6,11 +6,13 @@ include 'settings/connection.php';
 function getJobListings($start, $jobsPerPage) {
     global $conn;
 
+    $offset = $start - 1;
+
     // Fetch job listings from the database with the organization name
     $sql = "SELECT job_req.job_id, job_req.job_title, job_req.job_description, job_req.job_location, job_req.status, job_req.published_on, employers.org_name 
             FROM job_req 
             JOIN employers ON job_req.user_id = employers.user_id
-            LIMIT $start, $jobsPerPage";
+            LIMIT $offset, $jobsPerPage";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
