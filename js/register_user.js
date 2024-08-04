@@ -1,5 +1,4 @@
 function handleSignUp(event) {
-  console.log("reg button clicked!");
   event.preventDefault();
 
   const email = document.getElementById("email").value;
@@ -76,5 +75,5 @@ function handleSignUp(event) {
   .catch((error) => {
     console.error("Error:", error);
   });
-  
+
 }
