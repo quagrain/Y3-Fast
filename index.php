@@ -162,8 +162,7 @@
             <section
                 class="py-5 bg-image overlay-primary fixed overlay"
                 id="next"
-                style="background-image: url(&quot;images/hero_1.jpg&quot;)"
-            >
+                style="background-image: url(&quot;images/hero_1.jpg&quot;)">
                 <div class="container">
                     <div class="row mb-5 justify-content-center">
                         <div class="col-md-7 text-center">
