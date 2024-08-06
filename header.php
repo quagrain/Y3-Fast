@@ -47,9 +47,7 @@
                             Job</a
                         >
                     </li>
-                    <li class="d-lg-none">
-                        <a href="login.php">Log In</a>
-                    </li>
+
                 </ul>
             </nav>
 
@@ -57,18 +55,20 @@
                 class="right-cta-menu text-right d-flex aligin-items-center col-6"
             >
                 <div class="ml-auto">
-                    <a
-                        href="post-job.php"
-                        class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"
-                        ><span class="mr-2 icon-add"></span>Post a
-                        Job</a
-                    >
-                    <a
-                        href="login.php"
-                        class="btn btn-primary border-width-2 d-none d-lg-inline-block"
-                        ><span class="mr-2 icon-lock_outline"></span
-                        >Log In</a
-                    >
+                        <?php
+                        session_start();
+                            if (isset($_SESSION['user_id'])) {
+                                echo '
+                                <a href="post-job.php" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
+                                    <span class="mr-2 icon-add"></span>Post a Job</a>
+                                <a href="profile.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
+                                    <span class="mr-2 icon-user-o"></span>Profile</a>';
+                            } else {
+                                echo '<a href="login.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
+                                    <span class="mr-2 icon-lock_outline"></span>Login</a>';
+                            }
+                            ?>
+                        ?>
                 </div>
                 <a
                     href="#"
