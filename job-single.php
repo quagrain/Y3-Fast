@@ -1,3 +1,8 @@
+<?php
+  include './settings/core.php';
+  include './functions/getJobReqByID.php';
+  $jobReqData = getJobReqByID($_GET['job_id']);
+?>
 
 <!doctype html>
 <html lang="en">
@@ -94,11 +99,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <h1 class="text-white font-weight-bold">{job_req.job_title}</h1>
+            <h1 class="text-white font-weight-bold"><?= $jobReqData['job_title'] ?></h1>
             <div class="custom-breadcrumbs">
               <a href="index.php">Home</a> <span class="mx-2 slash">/</span>
               <a href="#">Job</a> <span class="mx-2 slash">/</span>
-              <span class="text-white"><strong>{job_req.job_title}</strong></span>
+              <span class="text-white"><strong><?= $jobReqData['job_title'] ?></strong></span>
             </div>
           </div>
         </div>
@@ -115,11 +120,11 @@
                 <img src="images/job_logo_5.jpg" alt="Image">
               </div>
               <div>
-                <h2>{job_req.job_title}</h2>
+                <h2><?= $jobReqData['job_title'] ?></h2>
                 <div>
-                  <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span>{employers.org_name}</span>
-                  <span class="m-2"><span class="icon-room mr-2"></span>{job_req.job_location}</span>
-                  <span class="m-2"><span class="icon-clock-o mr-2"></span><span class="text-primary">{job_req.status}</span></span>
+                  <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span><?= $jobReqData['org_name'] ?></span>
+                  <span class="m-2"><span class="icon-room mr-2"></span><?= $jobReqData['job_location'] ?></span>
+                  <span class="m-2"><span class="icon-clock-o mr-2"></span><span class="text-primary"><?= $jobReqData['status'] ?></span></span>
                 </div>
               </div>
             </div>
@@ -140,21 +145,31 @@
             <div class="mb-5">
               <figure class="mb-5"><img src="images/job_single_img_1.jpg" alt="Image" class="img-fluid rounded"></figure>
               <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span>Job Description</h3>
-              <p>{job_req.job_description}</p>
+              <p><?= $jobReqData['job_description'] ?></p>
             </div>
             <div class="mb-5">
               <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-rocket mr-3"></span>Responsibilities</h3>
+              <?php $responsibilities = json_decode($jobReqData['responsibility'], true);?>
               <ul class="list-unstyled m-0 p-0">
-                  {use php for each to do the listing. Just copy paste the line below and replace the responsibility}
-                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>{job_req.responsibility}</span></li>
+                  <?php foreach ($responsibilities as $responsibility): ?>
+                      <li class="d-flex align-items-start mb-2">
+                          <span class="icon-check_circle mr-2 text-muted"></span>
+                          <span><?= htmlspecialchars($responsibility) ?></span>
+                      </li>
+                  <?php endforeach; ?>
               </ul>
             </div>
 
             <div class="mb-5">
               <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-turned_in mr-3"></span>Related Benefits</h3>
+              <?php $benefits = json_decode($jobReqData['benefits'], true);?>
               <ul class="list-unstyled m-0 p-0">
-                  {Same here}
-                <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span>{job_req.benefits}</span></li>
+                  <?php foreach ($benefits as $benefit): ?>
+                      <li class="d-flex align-items-start mb-2">
+                          <span class="icon-check_circle mr-2 text-muted"></span>
+                          <span><?= htmlspecialchars($benefit) ?></span>
+                      </li>
+                  <?php endforeach; ?>
               </ul>
             </div>
 
@@ -172,14 +187,14 @@
             <div class="bg-light p-3 border rounded mb-4">
               <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
               <ul class="list-unstyled pl-3 mb-0">
-                <li class="mb-2"><strong class="text-black">Published on:</strong> {job_req.published_on}</li>
-                <li class="mb-2"><strong class="text-black">Vacancy:</strong> {job_req.vacancy}</li>
-                <li class="mb-2"><strong class="text-black">Employment Status:</strong> {job_req.status}</li>
-                <li class="mb-2"><strong class="text-black">Experience:</strong> {job_req.experience}</li>
-                <li class="mb-2"><strong class="text-black">Job Location:</strong> {job_req.job_location}</li>
-                <li class="mb-2"><strong class="text-black">Base Salary:</strong> {job_req.salary}</li>
-                <li class="mb-2"><strong class="text-black">Gender:</strong> {job_req.gender}</li>
-                <li class="mb-2"><strong class="text-black">Application Deadline:</strong>{job_req.application_deadline}</li>
+                <li class="mb-2"><strong class="text-black">Published on: </strong><?= $jobReqData['published_on'] ?></li>
+                <li class="mb-2"><strong class="text-black">Vacancy: </strong><?= $jobReqData['vacancy'] ?></li>
+                <li class="mb-2"><strong class="text-black">Employment Status: </strong><?= $jobReqData['status'] ?></li>
+                <li class="mb-2"><strong class="text-black">Experience: </strong><?= $jobReqData['experience'] ?></li>
+                <li class="mb-2"><strong class="text-black">Job Location: </strong><?= $jobReqData['job_location'] ?></li>
+                <li class="mb-2"><strong class="text-black">Base Salary: </strong><?= $jobReqData['salary'] ?></li>
+                <li class="mb-2"><strong class="text-black">Gender: </strong><?= $jobReqData['gender'] ?></li>
+                <li class="mb-2"><strong class="text-black">Application Deadline: </strong><?= $jobReqData['application_deadline'] ?></li>
               </ul>
             </div>
 
