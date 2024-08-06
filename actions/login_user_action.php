@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['role'] = $row['usertype'];
             if ($row['usertype']=='Admin') {
-                $response = ["status" => 1, "message" => "login successful1", "redirect" => "./admin/dashboard/index.html"];
+                $response = ["status" => 1, "message" => "login successful1", "redirect" => "./admin/dashboard/index.php"];
             } else if ($row['usertype']=='JobSeeker' || $row['usertype']=='Employer') {
                 $response = ["status" => 1, "message" => "login successful2", "redirect" => "./index.php"];
             }
