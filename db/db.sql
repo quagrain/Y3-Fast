@@ -51,14 +51,6 @@ CREATE TABLE `employers` (
   `tag_ids` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`tag_ids`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `employers`
---
-
-INSERT INTO `employers` (`user_id`, `org_name`, `creation_date`, `industry`, `tag_ids`) VALUES
-(1, 'Y3-FAST', '2024-07-28', 'Web Technology', '[\"8\",\"1\"]'),
-(4, 'dry pie', '2024-07-28', 'Web Technology', '[\"5\",\"6\",\"3\",\"1\"]');
-
 -- --------------------------------------------------------
 
 --
@@ -82,20 +74,6 @@ CREATE TABLE `job_req` (
   `published_on` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `job_req`
---
-
-INSERT INTO `job_req` (`job_id`, `job_title`, `job_description`, `user_id`, `responsibility`, `experience`, `benefits`, `vacancy`, `status`, `job_location`, `salary`, `gender`, `application_deadline`, `published_on`) VALUES
-(2, 'Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-(3, 'Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-(4, 'Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-(5, 'Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-(6, 'Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-(7, 'Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-(8, 'Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-(9, 'Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15');
-
 -- --------------------------------------------------------
 
 --
@@ -112,14 +90,6 @@ CREATE TABLE `job_seekers` (
   `cv` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `job_seekers`
---
-
-INSERT INTO `job_seekers` (`user_id`, `fname`, `lname`, `date_of_birth`, `occupation`, `description`, `cv`) VALUES
-(2, 'Tatiana', 'Gordon', '1977-05-18', 'Voluptas illo ea quos mollit enim aliqua', 'Voluptate aliquid li', NULL),
-(3, 'Kwesi', 'Kumi', '2003-11-09', 'Student', 'Ashesi Uni', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -130,20 +100,6 @@ CREATE TABLE `tags` (
   `tag_id` int(11) NOT NULL,
   `tag_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tags`
---
-
-INSERT INTO `tags` (`tag_id`, `tag_name`) VALUES
-(2, 'Education'),
-(7, 'Engineering'),
-(5, 'Finance'),
-(4, 'Healthcare'),
-(8, 'Human Resources'),
-(6, 'Marketing'),
-(3, 'Research'),
-(1, 'Technology');
 
 -- --------------------------------------------------------
 
@@ -159,16 +115,6 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `usertype` enum('JobSeeker','Employer','Admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `profile_pic`, `email`, `passwd`, `username`, `usertype`) VALUES
-(1, NULL, 'facolyjaq@mailinator.com', '$2y$10$sYwC/i1wDSu64NgCib4epuaSn5Kv9vAvYWEk/eeM4dc4A5x3m7zlW', 'zyzozaqo', 'Employer'),
-(2, NULL, 'zonihugyle@mailinator.com', '$2y$10$In.XsNGsJ5RWzoe/VHycguGQobeqxCNL2DAfLTyFwmgsd6qCMXwPW', 'xagyj', 'JobSeeker'),
-(3, NULL, 'delali.nsiah@ashesi.edu.gh', '$2y$10$jrByyOfR4lBRMEzS9en6q.9tCBcTWKmjRYoMqIrzCvRzRkKoU/uDC', 'purpgem', 'JobSeeker'),
-(4, NULL, 'delalinsiah.asare@gmail.com', '$2y$10$zVMdV0IjrJpLloeKvxPNa.tdgVZEMOTJGGVPJ23oSWgcTbLfIrszm', 'purpgem2', 'Employer');
 
 --
 -- Indexes for dumped tables
@@ -231,19 +177,19 @@ ALTER TABLE `applications`
 -- AUTO_INCREMENT for table `job_req`
 --
 ALTER TABLE `job_req`
-  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -273,6 +219,61 @@ ALTER TABLE `job_req`
 --
 ALTER TABLE `job_seekers`
   ADD CONSTRAINT `job_seekers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `profile_pic`, `email`, `passwd`, `username`, `usertype`) VALUES
+(1, NULL, 'facolyjaq@mailinator.com', '$2y$10$sYwC/i1wDSu64NgCib4epuaSn5Kv9vAvYWEk/eeM4dc4A5x3m7zlW', 'zyzozaqo', 'Employer'),
+(2, NULL, 'zonihugyle@mailinator.com', '$2y$10$In.XsNGsJ5RWzoe/VHycguGQobeqxCNL2DAfLTyFwmgsd6qCMXwPW', 'xagyj', 'JobSeeker'),
+(3, NULL, 'delali.nsiah@ashesi.edu.gh', '$2y$10$jrByyOfR4lBRMEzS9en6q.9tCBcTWKmjRYoMqIrzCvRzRkKoU/uDC', 'purpgem', 'JobSeeker'),
+(4, NULL, 'delalinsiah.asare@gmail.com', '$2y$10$zVMdV0IjrJpLloeKvxPNa.tdgVZEMOTJGGVPJ23oSWgcTbLfIrszm', 'purpgem2', 'Employer');
+
+--
+-- Dumping data for table `job_seekers`
+--
+
+INSERT INTO `job_seekers` (`user_id`, `fname`, `lname`, `date_of_birth`, `occupation`, `description`, `cv`) VALUES
+(2, 'Tatiana', 'Gordon', '1977-05-18', 'Voluptas illo ea quos mollit enim aliqua', 'Voluptate aliquid li', NULL),
+(3, 'Kwesi', 'Kumi', '2003-11-09', 'Student', 'Ashesi Uni', NULL);
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`tag_name`) VALUES
+('Education'),
+('Engineering'),
+('Finance'),
+('Healthcare'),
+('Human Resources'),
+('Marketing'),
+('Research'),
+('Technology');
+
+--
+-- Dumping data for table `employers`
+--
+
+INSERT INTO `employers` (`user_id`, `org_name`, `creation_date`, `industry`, `tag_ids`) VALUES
+(1, 'Y3-FAST', '2024-07-28', 'Web Technology', '[\"5\",\"8\"]'),
+(4, 'dry pie', '2024-07-28', 'Web Technology', '[\"3\",\"6\",\"7\",\"8\"]');
+
+--
+-- Dumping data for table `job_req`
+--
+
+INSERT INTO `job_req` (`job_title`, `job_description`, `user_id`, `responsibility`, `experience`, `benefits`, `vacancy`, `status`, `job_location`, `salary`, `gender`, `application_deadline`, `published_on`) VALUES
+('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
+('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
+('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
+('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
+('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
+('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
+('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
+('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15');
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
