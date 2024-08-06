@@ -230,7 +230,7 @@
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-7 text-center">
-                    <h2 class="section-title mb-2"><?= count($relatedJobListings) ?> Related Jobs</h2>
+                    <h2 class="section-title mb-2"><?= $totalJobs ?> Related Jobs</h2>
                 </div>
             </div>
             
