@@ -215,7 +215,15 @@
 
     <?php
       include './functions/getRelatedJobs.php';
-      $relatedJobListings = getJobWithRelatedListings($jobId=$_GET['job_id']);
+
+      $totalJobs = getNumRelatedJobs($jobId=$_GET['job_id']);
+      $jobsPerPage = 3;
+      $totalPages = ceil($totalJobs / $jobsPerPage);
+      $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+      $start = ($currentPage - 1) * $jobsPerPage + 1;
+      $end = min($start + $jobsPerPage - 1, $totalJobs);
+
+      $relatedJobListings = getJobWithRelatedListings($jobId=$_GET['job_id'], $start, $jobsPerPage);
     ?>
 
     <section class="site-section" id="next">
@@ -251,21 +259,24 @@
             </ul>
 
             <div class="row pagination-wrap">
-                <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-                    <span>Showing 1-7 Of <?= count($relatedJobListings) ?> Jobs</span>
+              <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+                <span>Showing <?= $start ?>-<?= $end ?> Of <?= $totalJobs ?></span>
+              </div>
+              <div class="col-md-6 text-center text-md-right">
+                <div class="custom-pagination ml-auto">
+                  <?php if ($currentPage > 1): ?>
+                    <a href="?job_id=<?= $jobId ?>&page=<?= $currentPage - 1 ?>" class="prev">Prev</a>
+                  <?php endif; ?>
+                  <div class="d-inline-block">
+                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                      <a href="?job_id=<?= $jobId ?>&page=<?= $i ?>" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
+                    <?php endfor; ?>
+                  </div>
+                  <?php if ($currentPage < $totalPages): ?>
+                    <a href="?job_id=<?= $jobId ?>&page=<?= $currentPage + 1 ?>" class="next">Next</a>
+                  <?php endif; ?>
                 </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <div class="custom-pagination ml-auto">
-                        <a href="#" class="prev">Prev</a>
-                        <div class="d-inline-block">
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        </div>
-                        <a href="#" class="next">Next</a>
-                    </div>
-                </div>
+              </div>
             </div>
         </div>
     </section>
