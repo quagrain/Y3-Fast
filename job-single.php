@@ -213,58 +213,61 @@
       </div>
     </section>
 
+    <?php
+      include './functions/getRelatedJobs.php';
+      $relatedJobListings = getJobWithRelatedListings($jobId=$_GET['job_id']);
+    ?>
+
     <section class="site-section" id="next">
-      <div class="container">
+        <div class="container">
+            <div class="row mb-5 justify-content-center">
+                <div class="col-md-7 text-center">
+                    <h2 class="section-title mb-2"><?= count($relatedJobListings) ?> Related Jobs</h2>
+                </div>
+            </div>
+            
+            <ul class="job-listings mb-5">
+                <?php foreach ($relatedJobListings as $job): ?>
+                    <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+                        <a href="job-single.php?job_id=<?= htmlspecialchars($job['job_id']) ?>"></a>
+                        <div class="job-listing-logo">
+                            <img src="<?= htmlspecialchars($job['profile_pic']) ?>" alt="Image" class="img-fluid">
+                        </div>
 
-        <div class="row mb-5 justify-content-center">
-          <div class="col-md-7 text-center">
-            <h2 class="section-title mb-2">22,392 Related Jobs</h2>
-          </div>
+                        <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                                <h2><?= htmlspecialchars($job['job_title']) ?></h2>
+                                <strong><?= htmlspecialchars($job['org_name']) ?></strong>
+                            </div>
+                            <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+                                <span class="icon-room"></span> <?= htmlspecialchars($job['job_location']) ?>
+                            </div>
+                            <div class="job-listing-meta">
+                                <span class="badge badge-danger"><?= htmlspecialchars($job['status']) ?></span>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+
+            <div class="row pagination-wrap">
+                <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+                    <span>Showing 1-7 Of <?= count($relatedJobListings) ?> Jobs</span>
+                </div>
+                <div class="col-md-6 text-center text-md-right">
+                    <div class="custom-pagination ml-auto">
+                        <a href="#" class="prev">Prev</a>
+                        <div class="d-inline-block">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        </div>
+                        <a href="#" class="next">Next</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <ul class="job-listings mb-5">
-            {Copy and paste the entire li tag into the php foreach and replace curly braces}
-          <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-            <a href={ job-single.php?id= }></a> <!--TODO: HERE too-->
-            <div class="job-listing-logo">
-              <img src={ users.profile_pic} alt="Image" class="img-fluid">
-            </div>
-
-            <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-              <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                <h2>{job_req.job_title}</h2>
-                <strong>{employers.org_name}</strong>
-              </div>
-              <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                <span class="icon-room"></span> {job_req.job_location}
-              </div>
-              <div class="job-listing-meta">
-                <span class="badge badge-danger">{job-req.status}</span> <!--TODO: Javascript to change color based on status-->
-              </div>
-            </div>
-          </li>
-
-        </ul>
-
-        <div class="row pagination-wrap">
-          <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-            <span>Showing 1-7 Of 22,392 Jobs</span>
-          </div>
-          <div class="col-md-6 text-center text-md-right">
-            <div class="custom-pagination ml-auto">
-              <a href="#" class="prev">Prev</a>
-              <div class="d-inline-block">
-              <a href="#" class="active">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              </div>
-              <a href="#" class="next">Next</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </section>
     
     <footer class="site-footer">
