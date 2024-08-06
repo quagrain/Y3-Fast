@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `jbp`
 --
+DROP DATABASE IF EXISTS jbp;
+CREATE DATABASE jbp;
+USE jbp;
 
 -- --------------------------------------------------------
 
