@@ -42,18 +42,16 @@
                     
                     <li><a href="contact.html">Contact</a></li>
                     <li class="d-lg-none">
-                        <a href="post-job.php"
-                            ><span class="mr-2">+</span> Post a
-                            Job</a
-                        >
+                        <a href="post-job.php">
+                            <span class="mr-2">+</span>
+                            Post a Job
+                        </a>
                     </li>
 
                 </ul>
             </nav>
 
-            <div
-                class="right-cta-menu text-right d-flex aligin-items-center col-6"
-            >
+            <div class="right-cta-menu text-right d-flex align-items-center col-6">
                 <div class="ml-auto">
                         <?php
                         session_start();
@@ -68,13 +66,11 @@
                                     <span class="mr-2 icon-lock_outline"></span>Login</a>';
                             }
                             ?>
-                        ?>
                 </div>
-                <a
-                    href="#"
+                <a href="#"
                     class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"
-                    ><span class="icon-menu h3 m-0 p-0 mt-2"></span
-                ></a>
+                    ><span class="icon-menu h3 m-0 p-0 mt-2"></span>
+                </a>
             </div>
         </div>
     </div>
