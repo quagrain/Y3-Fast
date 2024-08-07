@@ -1,3 +1,9 @@
+<?php 
+  session_start();
+  include('../settings/connection.php');
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +17,7 @@
       rel="icon"
       href="assets/img/kaiadmin/favicon.ico"
       type="image/x-icon"
-    />
+    /> 
 
     <!-- Fonts and icons -->
     <script src="assets/js/plugin/webfont/webfont.min.js"></script>
@@ -353,7 +359,13 @@
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Employers</p>
-                          <h4 class="card-title">1,294</h4>
+                          <h4 class="card-title">
+                            <?php 
+                            $query = mysqli_query($conn, "SELECT * FROM employers");
+                            $countemployers = mysqli_num_rows(($query));
+                            echo htmlentities(($countemployers));
+                            ?>
+                          </h4>
                         </div>
                       </div>
                     </div>
