@@ -53,7 +53,7 @@
               <li><a href="index.php" class="nav-link">Home</a></li>
               <li><a href="about.php" class="active">About</a></li>
               <li class="has-children">
-                <a href="job-listings.html">Job Listings</a>
+                <a href="job-listings.php">Job Listings</a>
                 <ul class="dropdown">
                   <li><a href="job-single.php">Job Single</a></li>
                   <li><a href="post-job.html">Post a Job</a></li>
