@@ -1,3 +1,46 @@
+// Change the image when one is uploaded
+const img_div = document.getElementById("img_div");
+const img = document.getElementById("photo");
+const img_file = document.getElementById("profile_picture");
+const placeholder_icon = document.getElementById("placeholder_icon");
+
+// If src attribute of image is empty,
+document.addEventListener("DOMContentLoaded", function () {
+    if (img.getAttribute('src') !== "") {
+        img.setAttribute('src', img.getAttribute('src'));
+        placeholder_icon.style.display = 'none';
+        img.style.display = 'block';
+        img_div.setAttribute('class', 'btn btn-file');
+    }
+})
+
+img_file.addEventListener('change', function () {
+    const chosenFile = this.files[0];
+    if (chosenFile) {
+        const reader = new FileReader();
+        reader.addEventListener('load', function () {
+            img.setAttribute('src', reader.result);
+        })
+        reader.readAsDataURL(chosenFile);
+        placeholder_icon.style.display = 'none';
+        img.style.display = 'block';
+        img_div.setAttribute('class', 'btn btn-file');
+    }
+})
+
+
+// Change the file name beside the resume submission
+let file = document.getElementById("cv");
+let name = document.getElementById("cv_name");
+file.addEventListener("input", () => {
+    // if user selects a file, get file name
+    if (file.files.length) {
+        name.innerHTML = file.files[0].name;
+    }
+})
+
+
+// process profile editing
 function handleUpdateProfile(event) {
     event.preventDefault();
 
@@ -15,26 +58,26 @@ function handleUpdateProfile(event) {
         method: "POST",
         body: formData,
     })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error("Network response was not ok: " + response.statusText);
-        }
-        return response.json();
-    })
-    .then((response) => {
-        if (response.status === 1) {
-            alert("Profile updated successfully!");
-            window.location.href = response.redirect;
-        } else {
-            alert("Error updating profile: " + response.message);
-            throw new Error(response.message);
-        }
-    })
-    .catch((error) => {
-        console.error("Error:", error);
-        alert("An error occurred while updating the profile.");
-    });
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok: " + response.statusText);
+            }
+            return response.json();
+        })
+        .then((response) => {
+            if (response.status === 1) {
+                alert("Profile updated successfully!");
+                window.location.href = response.redirect;
+            } else {
+                alert("Error updating profile: " + response.message);
+                throw new Error(response.message);
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred while updating the profile.");
+        });
 
     console.log('Profile updated');
     toggleEdit();
-  }
+}
