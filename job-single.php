@@ -225,7 +225,7 @@
                 <li class="mb-2"><strong class="text-black">Employment Status: </strong><?= $jobReqData['status'] ?></li>
                 <li class="mb-2"><strong class="text-black">Experience: </strong><?= $jobReqData['experience'] ?></li>
                 <li class="mb-2"><strong class="text-black">Job Location: </strong><?= $jobReqData['job_location'] ?></li>
-                <li class="mb-2"><strong class="text-black">Base Salary: </strong><?= $jobReqData['salary'] ?></li>
+                <li class="mb-2"><strong class="text-black">Base Salary:</strong> $<?= $jobReqData['salary'] ?></li>
                 <li class="mb-2"><strong class="text-black">Gender: </strong><?= $jobReqData['gender'] ?></li>
                 <li class="mb-2"><strong class="text-black">Application Deadline: </strong><?= $jobReqData['application_deadline'] ?></li>
               </ul>
