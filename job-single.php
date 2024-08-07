@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/custom-bs.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/bootstrap-select.min.css">
@@ -19,6 +20,8 @@
     <link rel="stylesheet" href="fonts/line-icons/style.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
+
+
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">    
@@ -135,7 +138,7 @@
                 <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
               </div>
               <div class="col-6">
-                <a href="#" class="btn btn-block btn-primary btn-md">Apply Now</a>
+                <a href="#" class="btn btn-block btn-primary btn-md applyButton">Apply Now</a>
               </div>
             </div>
           </div>
@@ -178,9 +181,30 @@
                 <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
               </div>
               <div class="col-6">
-                <a href="#" class="btn btn-block btn-primary btn-md">Apply Now</a>
+                <a href="#" class="applyButton btn btn-block btn-primary btn-md">Apply Now</a>
               </div>
             </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            // Select all elements with the class 'applyButton'
+            const applyButtons = document.querySelectorAll(".applyButton");
+
+            applyButtons.forEach(function(button) {
+              button.addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+
+                // Apply changes to all apply buttons
+                applyButtons.forEach(function(btn) {
+                  btn.classList.remove("btn-primary");
+                  btn.classList.add("btn-success");
+                  btn.textContent = "Applied";
+                  btn.disabled = true; // Disable the button
+                });
+              });
+            });
+          });
+        </script>
 
           </div>
           <div class="col-lg-4">
@@ -233,7 +257,7 @@
                     <h2 class="section-title mb-2"><?= $totalJobs ?> Related Jobs</h2>
                 </div>
             </div>
-            
+
             <ul class="job-listings mb-5">
                 <?php foreach ($relatedJobListings as $job): ?>
                     <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
@@ -280,7 +304,7 @@
             </div>
         </div>
     </section>
-    
+
     <footer class="site-footer">
 
       <a href="#top" class="smoothscroll scroll-top">
@@ -338,7 +362,7 @@
         </div>
       </div>
     </footer>
-  
+
   </div>
 
     <!-- SCRIPTS -->
@@ -348,15 +372,17 @@
     <script src="js/stickyfill.min.js"></script>
     <script src="js/jquery.fancybox.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
-    
+
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/jquery.animateNumber.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
-    
-    <script src="js/bootstrap-select.min.js"></script>
-    
-    <script src="js/custom.js"></script>
 
-     
+    <script src="js/bootstrap-select.min.js"></script>
+
+    <script src="js/custom.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   </body>
 </html>
