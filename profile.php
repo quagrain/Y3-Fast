@@ -92,10 +92,77 @@ include './settings/core.php';
                             </div>
                         </div>
 
+                        <span id="usertype" style="display: block">{Fill with user type. Change style's display to none when done}</span>
+                        <?php
+                        // Content to display when the user is an employer
+                        if (isset($_SESSION['role']) && $_SESSION['role'] == 'Employer') {
+                            // Start of HTML block
+                            echo '<div class="form-group row">
+                                    <div class="col-md mb-3 mb-md-0">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email" placeholder="{Replace with current user\'s email}" readonly>
+                                    </div>
+                        
+                                    <div class="col">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" id="username" placeholder="{Replace with current username}" readonly>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3 mb-md-0">
+                                        <label for="org_name">Company Name</label>
+                                        <input type="text" class="form-control editable" id="org_name" placeholder="{Change to company name}" disabled>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3 mb-md-0">
+                                        <label for="org_name">Industry</label>
+                                        <input type="text" class="form-control editable" id="industry" placeholder="{Change to company industry}" disabled>
+                                    </div>
+                                </div>
+                                                                                           
+                                <div class="form-group">
+                                    <label for="creation_date">
+                                        Date Established<span class="icon-calendar pl-2"></span>
+                                    </label>
+                                    {Get date created from db}
+                                    <input id="creation_date" class="form-control editable" type="date" disabled>
+                                </div>
+                                
+                      
+                                <div class="row form-group">
+                                    <div class="col-md mb-4 mb-md-0">
+                                {show the tags that have already been selected}
+                                        <label for="tag_id">
+                                            Search Tags
+                                            <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
+                                        </label>';
+
+                            // Include PHP script
+                            include './actions/get_tags_4_dropdown.php';
+
+                            // Continue HTML block
+                            echo '<select id="tags" class="selectpicker form-control border rounded" multiple>';
+
+                            // Check for tags and output options
+                            if ($tags->num_rows > 0) {
+                                foreach ($tags as $tag) {
+                                    echo '<option value="' . htmlspecialchars($tag['tag_id']) . '">' . htmlspecialchars($tag['tag_name']) . '</option>';
+                                }
+                            } else {
+                                echo '<option disabled>No tags found</option>';
+                            }
+
+                            // Close HTML
+                            echo '</select>
+                                </div>
+                            </div>';
+                        } else { // Content when user is a JobSeeker
+                            echo '
                         <div class="form-group row">
                             <div class="col-md mb-3 mb-md-0">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email" placeholder="{Replace with current user's email}" readonly>
+                                <input type="text" class="form-control" id="email" placeholder="{Replace with current user\'s email}" readonly>
                             </div>
 
                             <div class="col">
@@ -135,6 +202,9 @@ include './settings/core.php';
                             </label>
                             <span id="cv_name">No file chosen</span>
                         </div>
+                        ';
+                        }
+                        ?>
 
                         <div class="row justify-content-center">
                             <div class="col-6 mt-5">

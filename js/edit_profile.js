@@ -28,16 +28,18 @@ img_file.addEventListener('change', function () {
     }
 })
 
-
-// Change the file name beside the resume submission
-let file = document.getElementById("cv");
-let name = document.getElementById("cv_name");
-file.addEventListener("input", () => {
-    // if user selects a file, get file name
-    if (file.files.length) {
-        name.innerHTML = file.files[0].name;
-    }
-})
+const userType = document.getElementById('usertype');
+if (userType.innerHTML === "JobSeeker") {
+    // Change the file name beside the resume submission
+    let file = document.getElementById("cv");
+    let name = document.getElementById("cv_name");
+    file.addEventListener("input", () => {
+        // if user selects a file, get file name
+        if (file.files.length) {
+            name.innerHTML = file.files[0].name;
+        }
+    })
+}
 
 
 // process profile editing
