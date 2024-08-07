@@ -61,7 +61,7 @@
             <h1 class="text-white font-weight-bold">Post A Job</h1>
             <div class="custom-breadcrumbs">
               <a href="#">Home</a> <span class="mx-2 slash">/</span>
-              <a href="#">Job</a> <span class="mx-2 slash">/</span>
+              <a href="job-listings.php">Job</a> <span class="mx-2 slash">/</span>
               <span class="text-white"><strong>Post a Job</strong></span>
             </div>
           </div>
