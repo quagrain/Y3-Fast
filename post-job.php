@@ -1,5 +1,5 @@
 <?php
-include './settings/core.php'; // check if logged in
+include_once './settings/core.php'; // check if logged in
 
 // check if user is a registered Employer
 if (!$_SESSION['role'] == 'Employer') {
@@ -98,7 +98,7 @@ if (!$_SESSION['role'] == 'Employer') {
                         <div class="form-group">
                             <label for="company-website-tw d-block">Upload Featured Image</label> <br>
                             <label class="btn btn-primary btn-md btn-file">
-                                Browse File <input type="file" id="featured-image" accept=".png, .jpg, .jpeg" hidden>
+                                Browse File <input type="file" id="featured_image" name="featured_image" accept=".png, .jpg, .jpeg" hidden>
                             </label>
                         </div>
 
