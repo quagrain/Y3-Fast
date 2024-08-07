@@ -3,7 +3,7 @@
   include('../settings/core.php');
 
   // check if user is a registered Employer
-  if (!$_SESSION['role'] == 'admin') {
+  if (!$_SESSION['role'] == 'Admin') {
       header("location: index.php");
   }
   ?>
