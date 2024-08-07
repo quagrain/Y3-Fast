@@ -1,7 +1,13 @@
 <?php 
   session_start();
   include('../settings/connection.php');
-  
+  include('../settings/core.php');
+
+  // check if user is a registered Employer
+  if (!$_SESSION['role'] == 'admin') {
+      header("location: index.php");
+  }
+  ?>
 ?>
 
 <!DOCTYPE html>
