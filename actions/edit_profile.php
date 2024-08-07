@@ -19,11 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check and create directories if not exist
     if (!is_dir($profilePicDir)) {
         mkdir($profilePicDir, 0755, true);
-        $profilePicDir = "./uploads/profile_pic/";
     }
     if (!is_dir($cvDir)) {
         mkdir($cvDir, 0755, true);
-        $cvDir = "./uploads/cv/";
     }
 
     // Initialize variables
@@ -38,6 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode($response);
             exit;
         }
+
+        // Remove the first period '.' in $profilePicPath
+        $firstPeriodPos = strpos($profilePicPath, '.');
+        if ($firstPeriodPos !== false) {
+            $profilePicPath = substr_replace($profilePicPath, '', $firstPeriodPos, 1);
+        }
     }
 
     // Handle CV upload
@@ -47,6 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $response['message'] = "Error uploading CV.";
             echo json_encode($response);
             exit;
+        }
+
+        $firstPeriodPos = strpos($cvPath, '.');
+        if ($firstPeriodPos !== false) {
+            $cvPath = substr_replace($cvPath, '', $firstPeriodPos, 1);
         }
     }
 
