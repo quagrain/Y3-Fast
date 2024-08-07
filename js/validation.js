@@ -44,22 +44,22 @@ function setValidationStatus(inputElement, isValid, errorElement) {
 }
 
 // Add event listeners to input fields
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const emailInput = document.getElementById('email');
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('passwd');
     const rePasswordInput = document.getElementById('re_passwd');
     const userTypeSelect = document.getElementById('usertype');
 
-    emailInput.addEventListener('input', function() {
+    emailInput.addEventListener('input', function () {
         setValidationStatus(this, validateEmail(this.value));
     });
 
-    usernameInput.addEventListener('input', function() {
+    usernameInput.addEventListener('input', function () {
         setValidationStatus(this, validateUsername(this.value));
     });
 
-    passwordInput.addEventListener('input', function() {
+    passwordInput.addEventListener('input', function () {
         const validationResult = validatePassword(this.value);
         setValidationStatus(this, validationResult.allValid);
 
@@ -73,11 +73,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    rePasswordInput.addEventListener('input', function() {
-        setValidationStatus(this, this.value === passwordInput.value);
-    });
+    if (document.getElementById('re_passwd')) {
+        rePasswordInput.addEventListener('input', function () {
+            setValidationStatus(this, this.value === passwordInput.value);
+        });
+    }
 
-    userTypeSelect.addEventListener('change', function() {
-        setValidationStatus(this, this.value !== "");
-    });
+    if (document.getElementById('usertype')) {
+        userTypeSelect.addEventListener('change', function () {
+            setValidationStatus(this, this.value !== "");
+        });
+    }
 });
