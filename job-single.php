@@ -144,7 +144,7 @@
         <div class="row">
           <div class="col-lg-8">
             <div class="mb-5">
-              <figure class="mb-5"><img src="images/job_single_img_1.jpg" alt="Image" class="img-fluid rounded"></figure>
+              <figure class="mb-5"><img src="images/bm_office_video_chat.svg" alt="Image" class="img-fluid rounded"></figure>
               <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span>Job Description</h3>
               <p><?= $jobReqData['job_description'] ?></p>
             </div>
