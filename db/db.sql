@@ -71,7 +71,8 @@ CREATE TABLE `job_req` (
   `salary` decimal(10,2) DEFAULT NULL,
   `gender` enum('Male','Female','Other','Any') DEFAULT NULL,
   `application_deadline` date DEFAULT NULL,
-  `published_on` datetime NOT NULL DEFAULT current_timestamp()
+  `published_on` datetime NOT NULL DEFAULT current_timestamp(),
+  `featured_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
