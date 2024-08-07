@@ -362,7 +362,7 @@
                           <h4 class="card-title">
                             <?php 
                             $query = mysqli_query($conn, "SELECT * FROM employers");
-                            $countemployers = mysqli_num_rows(($query));
+                            $countemployers = mysqli_num_rows($query);
                             echo htmlentities(($countemployers));
                             ?>
                           </h4>
@@ -386,7 +386,13 @@
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Job Seekers</p>
-                          <h4 class="card-title">1303</h4>
+                          <h4 class="card-title">
+                            <?php 
+                              $query = mysqli_query($conn, "SELECT * FROM job_seekers");
+                              $countjobseekers = mysqli_num_rows($query);
+                              echo $countjobseekers;
+                            ?>
+                          </h4>
                         </div>
                       </div>
                     </div>
@@ -407,7 +413,13 @@
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Jobs</p>
-                          <h4 class="card-title">$ 1,345</h4>
+                          <h4 class="card-title">
+                            <?php
+                            $query = mysqli_query($conn, "SELECT * FROM applications");
+                            $countapplications = mysqli_num_rows($query);
+                            echo $countapplications;
+                            ?>
+                          </h4>
                         </div>
                       </div>
                     </div>
