@@ -16,27 +16,43 @@ function handlePostJob(event) {
     const gender = document.getElementById('gender').value;
     const applicationDeadline = document.getElementById('application_deadline').value;
 
-    const featuredImage = document.getElementById('featured-image').files[0];
+    const featuredImage = document.getElementById('featured_image').files[0];
 
-    const formData = {
-        'jobTitle': jobTitle,
-        'jobDescription': jobDescription,
-        'userId': userId,
-        'responsibility': responsibilities,
-        'experience': experience,
-        'benefits': benefits,
-        'vacancy': vacancy,
-        'status': status,
-        'jobLocation': jobLocation,
-        'salary': salary,
-        'gender': gender,
-        'applicationDeadline': applicationDeadline,
-        'featuredImage': featuredImage
-    };
+    // Collect form data
+    const formData = new FormData();
+    formData.append("jobTitle", jobTitle);
+    formData.append("jobDescription", jobDescription);
+    formData.append("userId", userId);
+    formData.append("responsibility", JSON.stringify(responsibilities));
+    formData.append("experience", experience);
+    formData.append("benefits", JSON.stringify(benefits));
+    formData.append("vacancy", vacancy);
+    formData.append("status", status);
+    formData.append("jobLocation", jobLocation);
+    formData.append("salary", salary);
+    formData.append("gender", gender);
+    formData.append("applicationDeadline", applicationDeadline);
+    formData.append("featured_image", featuredImage);
+
+    // const formData = {
+    //     'jobTitle': jobTitle,
+    //     'jobDescription': jobDescription,
+    //     'userId': userId,
+    //     'responsibility': responsibilities,
+    //     'experience': experience,
+    //     'benefits': benefits,
+    //     'vacancy': vacancy,
+    //     'status': status,
+    //     'jobLocation': jobLocation,
+    //     'salary': salary,
+    //     'gender': gender,
+    //     'applicationDeadline': applicationDeadline,
+    //     'featuredImage': featuredImage
+    // };
 
     fetch('./actions/post_job.php', {
         method: 'POST',
-        body: JSON.stringify(formData)
+        body: formData
     })
     .then(response => {
         if (!response.ok) {
