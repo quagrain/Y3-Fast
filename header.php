@@ -54,7 +54,6 @@
             <div class="right-cta-menu text-right d-flex align-items-center col-6">
                 <div class="ml-auto">
                     <?php
-                    session_start();
                     if (isset($_SESSION['user_id'])) {
                         if (isset($_SESSION['role']) && $_SESSION['role'] == "Employer") {
                             echo '
