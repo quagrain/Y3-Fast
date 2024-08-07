@@ -1,78 +1,107 @@
 <?php
 
 session_start();
-header("Content-Type: application/json");
+// header("Content-Type: application/json");
 include "../settings/connection.php";
 global $conn;
 
-$formData = json_decode(file_get_contents("php://input"), true);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-if (isset($formData)) {
-    $jobTitle = $formData['jobTitle'];
-    $jobDescription = $formData['jobDescription'];
+    // $formData = json_decode(file_get_contents("php://input"), true);
+
+    $jobTitle = $_POST['jobTitle'];
+    $jobDescription = $_POST['jobDescription'];
     $userId = $_SESSION['user_id'];
-    $responsibility = json_encode($formData['responsibility']);
-    $experience = $formData['experience'];
-    $benefits = json_encode($formData['benefits']);
-    $vacancy = $formData['vacancy'];
-    $status = $formData['status'];
-    $jobLocation = $formData['jobLocation'];
-    $salary = $formData['salary'];
-    $gender = $formData['gender'];
-    $applicationDeadline = $formData['applicationDeadline'];
+    $responsibility = $_POST['responsibility'];
+    $experience = $_POST['experience'];
+    $benefits = $_POST['benefits'];
+    $vacancy = $_POST['vacancy'];
+    $status = $_POST['status'];
+    $jobLocation = $_POST['jobLocation'];
+    $salary = $_POST['salary'];
+    $gender = $_POST['gender'];
+    $applicationDeadline = $_POST['applicationDeadline'];
 
-    // Handle file upload
-    $targetDir = "uploads/";
-    $featuredImage = null;
-    if (!empty($_FILES['featuredImage']['name'])) {
-        $featuredImage = $targetDir . basename($_FILES["featuredImage"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($featuredImage, PATHINFO_EXTENSION));
+    // Define upload directories
+    $featuredImgDir = "../uploads/featured_img/";
 
-        // Check if image file is an actual image or fake image
-        $check = getimagesize($_FILES["featuredImage"]["tmp_name"]);
-        if ($check !== false) {
-            $uploadOk = 1;
-        } else {
-            $uploadOk = 0;
-        }
-
-        // Check if file already exists
-        if (file_exists($featuredImage)) {
-            $uploadOk = 0;
-        }
-
-        // Check file size
-        if ($_FILES["featuredImage"]["size"] > 500000) {
-            $uploadOk = 0;
-        }
-
-        // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            $uploadOk = 0;
-        }
-
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            $response = ["status" => 0, "message" => "Sorry, your file was not uploaded."];
-            echo json_encode($response);
-            exit();
-        } else {
-            if (!move_uploaded_file($_FILES["featuredImage"]["tmp_name"], $featuredImage)) {
-                $response = ["status" => 0, "message" => "Sorry, there was an error uploading your file."];
-                echo json_encode($response);
-                exit();
-            }
-        }
+    // Check and create directories if not exist
+    if (!is_dir($featuredImgDir)) {
+        mkdir($featuredImgDir, 0755, true);
     }
 
+    // Initialize variables
+    $featuredImgPath = "";
+
+    if (isset($_FILES["featured_image"])) {
+        if ($_FILES["featured_image"]["error"] === UPLOAD_ERR_OK) {
+            // Validate file type and size
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+            $fileType = mime_content_type($_FILES["featured_image"]["tmp_name"]);
+            $fileSize = $_FILES["featured_image"]["size"];
+        
+            if (!in_array($fileType, $allowedTypes)) {
+                $response['message'] = "Invalid file type. Only JPG, JPEG, and PNG types are allowed.";
+                echo json_encode($response);
+                exit;
+            }
+        
+            if ($fileSize > 5000000) { // 5MB limit
+                $response['message'] = "File size exceeds the limit of 5MB.";
+                echo json_encode($response);
+                exit;
+            }
+        
+            $featuredImgPath = $featuredImgDir . basename($_FILES["featured_image"]["name"]);
+        
+            if (!move_uploaded_file($_FILES["featured_image"]["tmp_name"], $featuredImgPath)) {
+                $response['message'] = "Error uploading featured image.";
+                echo json_encode($response);
+                exit;
+            }
+        
+            // Remove the first period from the filename if exists
+            $firstPeriodPos = strpos($featuredImgPath, '.');
+            if ($firstPeriodPos !== false) {
+                $featuredImgPath = substr_replace($featuredImgPath, '', $firstPeriodPos, 1);
+            }
+            $response['message'] = "succesfully uploaded";
+        } else {
+            $response['message'] = "UPLOAD_ERR_OK is not ok lmao";
+            echo json_encode($response);
+            exit;
+        }
+        
+        $response['message'] = '$_FILES["featured_image"] is set';
+
+    } else {
+        $response['message'] = '$_FILES["featured_image"] is not set';
+        echo json_encode($response);
+        exit;
+    }
+
+    // // Handle profile picture upload
+    // if (isset($_FILES["featured_image"]) && $_FILES["featured_image"]["error"] === UPLOAD_ERR_OK) {
+    //     $featuredImgPath = $featuredImgDir . basename($_FILES["featured_image"]["name"]);
+    //     if (!move_uploaded_file($_FILES["featured_image"]["tmp_name"], $featuredImgPath)) {
+    //         $response['message'] = "Error uploading featured image.";
+    //         echo json_encode($response);
+    //         exit;
+    //     }
+
+    //     $firstPeriodPos = strpos($featuredImgPath, '.');
+    //     if ($firstPeriodPos !== false) {
+    //         $featuredImgPath = substr_replace($featuredImgPath, '', $firstPeriodPos, 1);
+    //     }
+    // }
+
     // Prepare SQL query
-    $sql = "INSERT INTO job_req (job_title, job_description, user_id, responsibility, experience, benefits, vacancy, status, job_location, salary, gender, application_deadline) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO job_req (job_title, job_description, user_id, responsibility, experience, benefits, vacancy, status, job_location, salary, gender, application_deadline, featured_image) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     
     $stmt->bind_param(
-        'ssisssssssss',
+        'ssissssssssss',
         $jobTitle,
         $jobDescription,
         $userId,
@@ -84,7 +113,8 @@ if (isset($formData)) {
         $jobLocation,
         $salary,
         $gender,
-        $applicationDeadline
+        $applicationDeadline,
+        $featuredImgPath
     );
 
     if ($stmt->execute()) {
