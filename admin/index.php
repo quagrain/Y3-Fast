@@ -462,8 +462,7 @@
                       
                         <?php 
                           // Fetching employer data
-                          $query = mysqli_query($conn, "SELECT * FROM employers");
-                          $row = mysqli_fetch_array(($query));
+                          $query = mysqli_query($conn, "SELECT * FROM employers LIMIT 5");
                           $rowcount = mysqli_num_rows($query);
                           if ($rowcount == 0){
                             ?>
@@ -474,7 +473,7 @@
                             </div>
                             <?php
                           } else { ?>
-                            <?php while($rowcount >= 1){
+                            <?php while($row = mysqli_fetch_array($query)){
                             ?>
                               <div class="item-list">
                                 <div class="avatar">
@@ -484,12 +483,11 @@
                                 </div>
 
                                 <div class="info-user ms-3">
-                                  <div class="username"><?php echo ($row['org_name'])?></div>
-                                  <div class="status"><?php echo ($row['industry'])?></div>
+                                  <div class="username"><?php echo htmlentities($row['org_name'])?></div>
+                                  <div class="status"><?php echo htmlentities($row['industry'])?></div>
                                 </div>
                               </div>
                               <?php
-                              $rowcount --;
                           }                          
                         }?>
                       </div>
@@ -497,40 +495,60 @@
                 </div>
               </div>
 
+            
+               <!-- New Jobseekers-->
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card card-round">
+                  <div class="card-body">
+                    <div class="card-head-row card-tools-still-right">
+                      <div class="card-title">New Job Seekers</div>
+                    </div>
 
+                      <div class="card-list py-4">
+                      
+                        <?php 
+                          // Fetching employer data
+                          $query = mysqli_query($conn, "SELECT * FROM job_seekers LIMIT 5");
+                          $rowcount = mysqli_num_rows($query);
+                          if ($rowcount == 0){
+                            ?>
+                            <div class="item-list">
+                              <div class="info-user ms-3">
+                                <div class="username"><?php echo ("No Employer Found")?></div>
+                              </div>
+                            </div>
+                            <?php
+                          } else { ?>
+                            <?php while($row = mysqli_fetch_array($query)){
+                            ?>
+                              <div class="item-list">
+                                <div class="avatar">
+                                  <span
+                                    class="avatar-title rounded-circle border border-white"
+                                  > <i class="far fa-user-circle"> </i></span> 
+                                </div>
 
+                                <div class="info-user ms-3">
+                                  <div class="username"><?php echo htmlentities($row['fname'])?></div>
+                                  <div class="status"><?php echo htmlentities($row['lname'])?></div>
+                                  <div class="status"><?php echo htmlentities($row['occupation'])?></div>
+                                </div>
+                              </div>
+                              <?php
+                          }                          
+                        }?>
+                      </div>
+                  </div>
+                </div>
+              </div>
 
-
-
+              <!-- Recent Jobs-->
               <div class="col-md-8">
                 <div class="card card-round">
                   <div class="card-header">
                     <div class="card-head-row card-tools-still-right">
-                      <div class="card-title">Transaction History</div>
-                      <div class="card-tools">
-                        <div class="dropdown">
-                          <button
-                            class="btn btn-icon btn-clean me-0"
-                            type="button"
-                            id="dropdownMenuButton"
-                            data-bs-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            <i class="fas fa-ellipsis-h"></i>
-                          </button>
-                          <div
-                            class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton"
-                          >
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#"
-                              >Something else here</a
-                            >
-                          </div>
-                        </div>
-                      </div>
+                      <div class="card-title">Recent Jobs</div>
                     </div>
                   </div>
                   <div class="card-body p-0">
@@ -539,13 +557,26 @@
                       <table class="table align-items-center mb-0">
                         <thead class="thead-light">
                           <tr>
-                            <th scope="col">Payment Number</th>
-                            <th scope="col" class="text-end">Date & Time</th>
-                            <th scope="col" class="text-end">Amount</th>
+                            <th scope="col">JOBS</th>
                             <th scope="col" class="text-end">Status</th>
+                            <th scope="col" class="text-end">Deadline</th>
                           </tr>
                         </thead>
                         <tbody>
+
+                        <?php 
+                          // Fetching job data
+                          $query = mysqli_query($conn, "SELECT * FROM job_req LIMIT 5");
+                          $rowcount = mysqli_num_rows($query);
+                          if ($rowcount == 0){
+                        ?>
+                          <tr>
+                          <?php echo ("No Employer Found")?>
+                          </tr>
+                          <?php
+                           } else { 
+                             while($row = mysqli_fetch_array($query)){
+                          ?>
                           <tr>
                             <th scope="row">
                               <button
@@ -553,104 +584,13 @@
                               >
                                 <i class="fa fa-check"></i>
                               </button>
-                              Payment from #10231
+                              <?php echo($row['job_title'])?>
                             </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
+                            <td class="text-end"><?php echo($row['status'])?></td>
+                            <td class="text-end"><?php echo($row['application_deadline'])?></td>
                           </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">
-                              <button
-                                class="btn btn-icon btn-round btn-success btn-sm me-2"
-                              >
-                                <i class="fa fa-check"></i>
-                              </button>
-                              Payment from #10231
-                            </th>
-                            <td class="text-end">Mar 19, 2020, 2.45pm</td>
-                            <td class="text-end">$250.00</td>
-                            <td class="text-end">
-                              <span class="badge badge-success">Completed</span>
-                            </td>
-                          </tr>
+                          <?php 
+                             }}?>
                         </tbody>
                       </table>
                     </div>
