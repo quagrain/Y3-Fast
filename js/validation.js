@@ -73,15 +73,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    if (document.getElementById('re_passwd')) {
+    userTypeSelect.addEventListener('change', function () {
+        setValidationStatus(this, this.value !== "");
+    });
+
+    
+    if (rePasswordInput !== null) {
         rePasswordInput.addEventListener('input', function () {
             setValidationStatus(this, this.value === passwordInput.value);
         });
     }
 
-    if (document.getElementById('usertype')) {
-        userTypeSelect.addEventListener('change', function () {
-            setValidationStatus(this, this.value !== "");
-        });
-    }
+
 });
