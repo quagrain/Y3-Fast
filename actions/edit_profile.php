@@ -19,9 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check and create directories if not exist
     if (!is_dir($profilePicDir)) {
         mkdir($profilePicDir, 0755, true);
+        $profilePicDir = "./uploads/profile_pic/";
     }
     if (!is_dir($cvDir)) {
         mkdir($cvDir, 0755, true);
+        $cvDir = "./uploads/cv/";
     }
 
     // Initialize variables
