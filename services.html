@@ -55,7 +55,7 @@
               <li class="has-children">
                 <a href="job-listings.html">Job Listings</a>
                 <ul class="dropdown">
-                  <li><a href="job-single.html">Job Single</a></li>
+                  <li><a href="job-single.php">Job Single</a></li>
                   <li><a href="post-job.html">Post a Job</a></li>
                 </ul>
               </li>

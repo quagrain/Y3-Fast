@@ -28,7 +28,7 @@
                         <a href="job-listings.html">Job Listings</a>
                         <ul class="dropdown">
                             <li>
-                                <a href="job-single.html"
+                                <a href="job-single.php"
                                     >Job Single</a
                                 >
                             </li>
