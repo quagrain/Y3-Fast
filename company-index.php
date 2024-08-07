@@ -9,6 +9,7 @@
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
     <meta name="author" content=""/>
+    <link rel="icon" href="images/logo.svg"/>
 
     <!-- CSS styles -->
     <link rel="stylesheet" href="css/custom-bs.css"/>
@@ -18,7 +19,6 @@
     <link rel="stylesheet" href="fonts/line-icons/style.css"/>
     <link rel="stylesheet" href="css/owl.carousel.min.css"/>
     <link rel="stylesheet" href="css/animate.min.css"/>
-
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css"/>
 
