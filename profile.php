@@ -88,7 +88,6 @@ include './settings/core.php';
                                     <img src="" id="photo" width="250px" height="250px" class="icon-line-profile-male border rounded-circle" style="object-fit: cover; display: none"/>
                                     <input type="file" id="profile_picture" name="profile_picture" accept=".png, .jpg, .jpeg" class="editable" disabled hidden/>
                                     <span id="placeholder_icon" class="icon-line-profile-male" style="font-size:200px;"></span>
-                                    <!-- could be based on gender: icon-line-profile-female for female outline-->
                                 </label>
                             </div>
                         </div>

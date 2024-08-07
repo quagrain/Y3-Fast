@@ -4,6 +4,16 @@ const img = document.getElementById("photo");
 const img_file = document.getElementById("profile_picture");
 const placeholder_icon = document.getElementById("placeholder_icon");
 
+// If src attribute of image is empty,
+document.addEventListener("DOMContentLoaded", function () {
+    if (img.getAttribute('src') !== "") {
+        img.setAttribute('src', img.getAttribute('src'));
+        placeholder_icon.style.display = 'none';
+        img.style.display = 'block';
+        img_div.setAttribute('class', 'btn btn-file');
+    }
+})
+
 img_file.addEventListener('change', function () {
     const chosenFile = this.files[0];
     if (chosenFile) {
