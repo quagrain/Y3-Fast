@@ -42,7 +42,7 @@
                     
                     <li><a href="contact.html">Contact</a></li>
                     <li class="d-lg-none">
-                        <a href="post-job.html"
+                        <a href="post-job.php"
                             ><span class="mr-2">+</span> Post a
                             Job</a
                         >
