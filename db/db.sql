@@ -110,7 +110,7 @@ CREATE TABLE `tags` (
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
-  `profile_pic` varchar(255) DEFAULT NULL,
+  `profile_pic` varchar(255) DEFAULT "./uploads/profile_pic/check-mark.png",
   `email` varchar(255) NOT NULL,
   `passwd` varchar(255) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -225,11 +225,11 @@ ALTER TABLE `job_seekers`
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `profile_pic`, `email`, `passwd`, `username`, `usertype`) VALUES
-(1, NULL, 'facolyjaq@mailinator.com', '$2y$10$sYwC/i1wDSu64NgCib4epuaSn5Kv9vAvYWEk/eeM4dc4A5x3m7zlW', 'zyzozaqo', 'Employer'),
-(2, NULL, 'zonihugyle@mailinator.com', '$2y$10$In.XsNGsJ5RWzoe/VHycguGQobeqxCNL2DAfLTyFwmgsd6qCMXwPW', 'xagyj', 'JobSeeker'),
-(3, NULL, 'delali.nsiah@ashesi.edu.gh', '$2y$10$jrByyOfR4lBRMEzS9en6q.9tCBcTWKmjRYoMqIrzCvRzRkKoU/uDC', 'purpgem', 'JobSeeker'),
-(4, NULL, 'delalinsiah.asare@gmail.com', '$2y$10$zVMdV0IjrJpLloeKvxPNa.tdgVZEMOTJGGVPJ23oSWgcTbLfIrszm', 'purpgem2', 'Employer');
+INSERT INTO `users` (`user_id`, `email`, `passwd`, `username`, `usertype`) VALUES
+(1, 'facolyjaq@mailinator.com', '$2y$10$sYwC/i1wDSu64NgCib4epuaSn5Kv9vAvYWEk/eeM4dc4A5x3m7zlW', 'zyzozaqo', 'Employer'),
+(2, 'zonihugyle@mailinator.com', '$2y$10$In.XsNGsJ5RWzoe/VHycguGQobeqxCNL2DAfLTyFwmgsd6qCMXwPW', 'xagyj', 'JobSeeker'),
+(3, 'delali.nsiah@ashesi.edu.gh', '$2y$10$jrByyOfR4lBRMEzS9en6q.9tCBcTWKmjRYoMqIrzCvRzRkKoU/uDC', 'purpgem', 'JobSeeker'),
+(4, 'delalinsiah.asare@gmail.com', '$2y$10$zVMdV0IjrJpLloeKvxPNa.tdgVZEMOTJGGVPJ23oSWgcTbLfIrszm', 'purpgem2', 'Employer');
 
 --
 -- Dumping data for table `job_seekers`
