@@ -9,18 +9,18 @@
                                 margin-top: -17px;
                                 font-weight: bold;
                                 font-size: 20px;">
-                                JOB BOARD
+                        JOB BOARD
                     </div>
                 </div>
             </div>
 
             <nav class="mx-auto site-navigation">
                 <ul
-                    class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0"
+                        class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0"
                 >
                     <li>
                         <a href="./index.php" class="nav-link active"
-                            >Home</a
+                        >Home</a
                         >
                     </li>
                     <li><a href="about.php">About</a></li>
@@ -29,17 +29,17 @@
                         <ul class="dropdown">
                             <li>
                                 <a href="job-single.php"
-                                    >Job Single</a
+                                >Job Single</a
                                 >
                             </li>
                             <li>
                                 <a href="post-job.php"
-                                    >Post a Job</a
+                                >Post a Job</a
                                 >
                             </li>
                         </ul>
                     </li>
-                    
+
                     <li><a href="contact.html">Contact</a></li>
                     <li class="d-lg-none">
                         <a href="post-job.php">
@@ -53,23 +53,25 @@
 
             <div class="right-cta-menu text-right d-flex align-items-center col-6">
                 <div class="ml-auto">
-                        <?php
-                        session_start();
-                            if (isset($_SESSION['user_id'])) {
-                                echo '
-                                <a href="post-job.php" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
-                                    <span class="mr-2 icon-add"></span>Post a Job</a>
-                                <a href="profile.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
+                    <?php
+                    session_start();
+                    if (isset($_SESSION['user_id'])) {
+                        if (isset($_SESSION['role']) && $_SESSION['role'] == "Employer") {
+                            echo '
+                                    <a href="post-job.php" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
+                                    <span class="mr-2 icon-add"></span>Post a Job</a>';
+                        }
+                        echo '<a href="profile.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
                                     <span class="mr-2 icon-user-o"></span>Profile</a>';
-                            } else {
-                                echo '<a href="login.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
+                    } else {
+                        echo '<a href="login.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
                                     <span class="mr-2 icon-lock_outline"></span>Login</a>';
-                            }
-                            ?>
+                    }
+                    ?>
                 </div>
                 <a href="#"
-                    class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"
-                    ><span class="icon-menu h3 m-0 p-0 mt-2"></span>
+                   class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"
+                ><span class="icon-menu h3 m-0 p-0 mt-2"></span>
                 </a>
             </div>
         </div>
