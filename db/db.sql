@@ -34,7 +34,8 @@ CREATE TABLE `applications` (
     `app_id` int(11) NOT NULL,
     `job_id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL,
-    `date_of_application` datetime NOT NULL DEFAULT current_timestamp()
+    `date_of_application` datetime NOT NULL DEFAULT current_timestamp(),
+    `status` enum('Accepted', 'Rejected', 'Pending') NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
