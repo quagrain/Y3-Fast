@@ -1,8 +1,22 @@
 <header class="site-navbar mt-3">
+    <style>
+        .right-cta-menu .btn {
+            margin-right: 10px; /* Adds space between the buttons */
+            padding: 8px 12px; /* Adjust padding to make buttons look balanced */
+            border-radius: 5px; /* Optional: Rounds the corners of the buttons */
+        }
+
+        /* Ensures alignment and spacing are consistent */
+        .right-cta-menu .ml-auto {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+    </style>
     <div class="container-fluid">
         <div class="row align-items-center">
             <div>
-                <div class="site-logo col-6">
+                <div class="site-logo col-6 mt-n4">
                     <a href="index.php" style="font-weight: bold; font-size: 30px;">Y3-FAST</a>
                 </div>
             </div>
@@ -35,14 +49,14 @@
                     if (isset($_SESSION['user_id'])) { // If the user is logged in display these buttons
                         if (isset($_SESSION['role']) && $_SESSION['role'] == "Employer") { // if the current user is an employer show the post job button
                             echo '
-                                <a href="post-job.php" class="col btn btn-outline-white border-width-2 d-none d-lg-inline-block">
-                                <span class="icon-add"></span>Add Job</a>';
+                                <a href="post-job.php" class="col btn btn-outline-white border-width-3 d-none d-lg-inline-block" title="Add Job">
+                                <span class="icon-add"></span></a>';
                         }
                         echo '
-                              <a href="profile.php" class="col btn btn-outline-white border-width-2 d-none d-lg-inline-block">
-                                <span class="icon-user-o"></span>Profile</a>';
+                              <a href="profile.php" class="col btn btn-outline-white border-width-2 d-none d-lg-inline-block" title="Profile">
+                                <span class="icon-user"></span></a>';
                         echo '
-                              <a href="./actions/logout.php" class="col btn btn-outline-white border-width-2 d-none d-lg-inline-block">
+                              <a href="./actions/logout.php" class="col btn btn-outline-white border-width-2 d-none d-lg-inline-block" title="Logout">
                                 <span class="icon-exit_to_app"></span></a>';
                     } else {
                         $current_page = basename($_SERVER['PHP_SELF']);
