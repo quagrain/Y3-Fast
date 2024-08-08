@@ -257,24 +257,27 @@
             </div>
         </section>
 
-        <section
-                class="py-5 bg-image overlay-primary fixed overlay"
-                style="background-image: url(&quot;images/hero_1.jpg&quot;)"
-        >
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <h2 class="text-white">Looking For A Job?</h2>
-                        <p class="mb-0 text-white lead">
-                            Find a variety of jobs from different companies. You might find your dream job here.
-                        </p>
-                    </div>
-                    <div class="col-md-3 ml-auto">
-                        <a href="register.php" class="btn btn-warning btn-block btn-lg">Sign Up</a>
+        <?php if (!isset($_SESSION['role'])): ?>
+            <section
+                    class="py-5 bg-image overlay-primary fixed overlay"
+                    style="background-image: url(&quot;images/hero_1.jpg&quot;)"
+            >
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h2 class="text-white">Looking For A Job?</h2>
+                            <p class="mb-0 text-white lead">
+                                Find a variety of jobs from different companies. You might find your dream job here.
+                            </p>
+                        </div>
+                        <div class="col-md-3 ml-auto">
+                            <a href="register.php" class="btn btn-warning btn-block btn-lg">Sign Up</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        <?php endif; ?>
+
     <?php else: ?>
 
         <!--
