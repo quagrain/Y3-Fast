@@ -34,7 +34,7 @@ CREATE TABLE `applications` (
   `app_id` int(11) NOT NULL,
   `job_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `date_of_application` date NOT NULL
+  `date_of_application` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
