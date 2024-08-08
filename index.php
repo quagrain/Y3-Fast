@@ -367,15 +367,15 @@
                     <div class="col-md-6 text-center text-md-right">
                         <div class="custom-pagination ml-auto">
                             <?php if ($currentPage > 1): ?>
-                                <a href="?page=<?= $currentPage - 1 ?>" class="prev">Prev</a>
+                                <a href="?page=<?= $currentPage - 1 ?>#jobListingsB" class="prev">Prev</a>
                             <?php endif; ?>
                             <div class="d-inline-block">
                                 <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                    <a href="?page=<?= $i ?>" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
+                                    <a href="?page=<?= $i ?>#jobListingsB" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
                                 <?php endfor; ?>
                             </div>
                             <?php if ($currentPage < $totalPages): ?>
-                                <a href="?page=<?= $currentPage + 1 ?>" class="next">Next</a>
+                                <a href="?page=<?= $currentPage + 1 ?>#jobListingsB" class="next">Next</a>
                             <?php endif; ?>
                         </div>
                     </div>
