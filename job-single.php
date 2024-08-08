@@ -85,19 +85,20 @@
           
           <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
             <div class="ml-auto">
-                <?php
-                session_start();
-                if (isset($_SESSION['user_id'])) {
-                    echo '
-                                <a href="post-job.php" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
-                                    <span class="mr-2 icon-add"></span>Post a Job</a>
-                                <a href="profile.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
-                                    <span class="mr-2 icon-user-o"></span>Profile</a>';
-                } else {
-                    echo '<a href="login.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
-                                    <span class="mr-2 icon-lock_outline"></span>Login</a>';
-                }
-                ?>
+            <?php
+              if (isset($_SESSION['user_id'])) {
+                  if (isset($_SESSION['role']) && $_SESSION['role'] == "Employer") {
+                      echo '
+                              <a href="post-job.php" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
+                              <span class="mr-2 icon-add"></span>Post a Job</a>';
+                  }
+                  echo '<a href="profile.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
+                              <span class="mr-2 icon-user-o"></span>Profile</a>';
+              } else {
+                  echo '<a href="login.php" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
+                              <span class="mr-2 icon-lock_outline"></span>Login</a>';
+              }
+            ?>
             </div>
             <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
           </div>
@@ -129,7 +130,7 @@
           <div class="col-lg-8 mb-4 mb-lg-0">
             <div class="d-flex align-items-center">
               <div class="border p-2 d-inline-block mr-3 rounded">
-                <img src="images/job_logo_5.jpg" alt="Image">
+                <img src=<?= $jobReqData['profile_pic'] ?> alt="Image">
               </div>
               <div>
                 <h2><?= $jobReqData['job_title'] ?></h2>
@@ -155,7 +156,7 @@
         <div class="row">
           <div class="col-lg-8">
             <div class="mb-5">
-              <figure class="mb-5"><img src="images/bm_office_video_chat.svg" alt="Image" class="img-fluid rounded"></figure>
+              <figure class="mb-5"><img src=<?= $jobReqData['featured_image'] ?> alt="Image" class="img-fluid rounded"></figure>
               <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span>Job Description</h3>
               <p><?= $jobReqData['job_description'] ?></p>
             </div>
