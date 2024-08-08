@@ -1,11 +1,13 @@
+Here is the content formatted for a README file:
+
 # Y3-Fast
 
 #### A Ghanaian focused job board platform.
 
 ## Languages and Technologies Used
 
-<h3 align="left"> Languages: </h3>
-<br>
+### Languages:
+
 <div style="display: flex; flex-direction: row">
 <div style="display: flex; flex-direction: column; padding-left: 10px">
 <img src="https://skillicons.dev/icons?i=html" width="50px" alt="html"/>
@@ -25,7 +27,8 @@
 </div>
 </div>
 
-<h3> Frameworks: </h3>
+### Frameworks:
+
 <div style="display: flex; flex-direction: row">
 <div style="display: flex; flex-direction: column; padding-left: 10px">
 <img src="https://skillicons.dev/icons?i=scss" width="50px"  alt="scss"/>
@@ -37,25 +40,27 @@
 </div>
 </div>
 
+### Database:
 
-<h3 align="left"> Database: </h3>
 <div style="display: flex; flex-direction: column; padding-left: 10px">
 <img src="https://skillicons.dev/icons?i=mysql" width="50px" alt="mysql"/>
 <h4>MySQL</h4>
 </div>
 
-<h3 align="left"> Designed With: </h3>
+### Designed With:
+
 <div style="display: flex; flex-direction: column; padding-left: 10px">
 <img src="https://skillicons.dev/icons?i=figma" width="50px" alt="figma"/>
 <h4>Figma</h4>
 </div>
 
-<h3 align="left"> Deployment: </h3>
+### Deployment:
+
 <div style="display: flex; flex-direction: column; padding-left: 10px">
 <img src="https://skillicons.dev/icons?i=azure" width="50px" alt="azure"/>
 <h4>Microsoft Azure</h4>
 </div>
 
-<a href="y3fast.uksouth.cloudapp.azure.com/Y3-Fast"><h1>Link to live demo<h1></a>
+<a href="y3fast.uksouth.cloudapp.azure.com/Y3-Fast"><h1>Link to live demo</h1></a>
 
 ###### The server will go down after 10th August, 2024.
