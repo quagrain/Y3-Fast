@@ -1,3 +1,18 @@
+<style>
+    .right-cta-menu .btn {
+        margin-right: 10px; /* Adds space between the buttons */
+        padding: 8px 12px; /* Adjust padding to make buttons look balanced */
+        border-radius: 5px; /* Optional: Rounds the corners of the buttons */
+    }
+
+    /* Ensures alignment and spacing are consistent */
+    .right-cta-menu .ml-auto {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+</style>
+
 <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -8,20 +23,7 @@
 </div> <!-- .site-mobile-menu -->
 
 <header class="site-navbar mt-3">
-    <style>
-        .right-cta-menu .btn {
-            margin-right: 10px; /* Adds space between the buttons */
-            padding: 8px 12px; /* Adjust padding to make buttons look balanced */
-            border-radius: 5px; /* Optional: Rounds the corners of the buttons */
-        }
 
-        /* Ensures alignment and spacing are consistent */
-        .right-cta-menu .ml-auto {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-    </style>
     <div class="container-fluid">
         <div class="row align-items-center">
             <div>
@@ -31,24 +33,13 @@
             </div>
 
             <nav class="mx-auto site-navigation">
-                <ul
-                        class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0"
-                >
-                    <li>
-                        <a href="./index.php" class="nav-link active"
-                        >Home</a
-                        >
-                    </li>
+                <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
+                    <li><a href="./index.php" class="nav-link active">Home</a></li>
                     <li><a href="about.php">About</a></li>
-
                     <li><a href="contact.php">Contact</a></li>
                     <li class="d-lg-none">
-                        <a href="post-job.php">
-                            <span class="mr-2">+</span>
-                            Post a Job
-                        </a>
+                        <a href="post-job.php"><span class="mr-2">+</span>Post a Job</a>
                     </li>
-
                 </ul>
             </nav>
 
