@@ -55,6 +55,25 @@ if ($data->usertype == "JobSeeker") {
     $data->tagIds = $user["tagIds"];
 }
 
+// check duplicate usernames
+$query = "SELECT COUNT(*) AS username_count FROM users WHERE username = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $user["username"]);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$count = $row['username_count'];
+mysqli_stmt_free_result($stmt);
+if ($count > 0) {
+    $response = [
+        "status" => 0,
+        "message" => "username already exists",
+        "redirect" => "./register.php"
+    ];
+    echo json_encode($response);
+    exit();
+}
+
 if ($password1 != $password2) {
     $err = new Error("passwords don't match");
     $response = [
