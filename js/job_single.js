@@ -1,12 +1,23 @@
-function handleJobApplication($userId, $jobId) {
+const applyButtons = document.querySelectorAll(".applyButton");
+
+function handleJobApplication(event, userId, jobId) {
+    event.preventDefault();
+
+    if (event.target.disabled) {
+        return;
+    }
+
     var Data = {
-        'userId': $userId,
-        'jobId': $jobId
+        'userId': userId,
+        'jobId': jobId
     }
 
     fetch("./actions/applyForJob.php", {
         method: "POST",
-        body: JSON.stringify(Data),
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Data)
     })
     .then((response) => {
         if (!response.ok) {
@@ -17,7 +28,15 @@ function handleJobApplication($userId, $jobId) {
     .then((response) => {
         if (response.status === 1) {
             alert("Job Applied successfully!");
-            window.location.href = response.redirect;
+            // window.location.href = response.redirect;
+
+            // Apply changes to all apply buttons
+            applyButtons.forEach(function(btn) {
+                btn.classList.remove("btn-primary");
+                btn.classList.add("btn-success");
+                btn.textContent = "Applied";
+                btn.disabled = true; // Disable the button
+            });
         } else {
             alert("Error applying for the job: " + response.message);
             throw new Error(response.message);
@@ -28,3 +47,37 @@ function handleJobApplication($userId, $jobId) {
         alert("An error occurred while applying for the job");
     });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Select all elements with the class 'applyButton'
+    const applyButtons = document.querySelectorAll(".applyButton");
+    const hasApplied = document.getElementById("hasApplied").textContent === 'true';
+
+    // const style = document.createElement('style');
+    // style.innerHTML = `
+    //     .btn[disabled] {
+    //         cursor: not-allowed;
+    //         opacity: 0.6;
+    //     }
+    // `;
+    // document.head.appendChild(style);
+
+    if (hasApplied) {
+        // Apply changes to all apply buttons
+        applyButtons.forEach(function(btn) {
+            btn.classList.remove("btn-primary");
+            btn.classList.add("btn-success");
+            btn.textContent = "Applied";
+            btn.disabled = true; // Disable the button
+        });
+    }
+});
+
+// applyButtons.forEach(function(button) {
+//     button.addEventListener("click", function(event) {
+//         event.preventDefault(); // Prevent the default link behavior
+
+//         // Apply changes to all apply buttons
+        
+//     });
+// });
