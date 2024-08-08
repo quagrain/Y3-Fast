@@ -18,6 +18,7 @@ include './settings/core.php';
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/quill.snow.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 
     <!-- MAIN CSS -->
@@ -108,6 +109,29 @@ include './settings/core.php';
                                         <input type="text" class="form-control" id="username" placeholder="{Replace with current username}" readonly>
                                     </div>
                                 </div>
+                                
+                                <div class="row form-group mb-4">
+                                    <div class="col-md-12 mb-3 mb-md-0">
+                                      <label class="text-black" for="passwd">Password</label>
+                                      <div class="input-group">
+                                        <input type="password" id="passwd" class="form-control editable" placeholder="Password" minlength="5" maxlength="50" aria-required="false">
+                                        <div class="input-group-append">
+                                          <button class="btn btn-outline-secondary editable" type="button" id="togglePassword" aria-label="Toggle password visibility">
+                                            <i class="fa fa-eye editable"></i>
+                                          </button>
+                                        </div>
+                                        <div class="invalid-feedback" id="passwordFeedback">
+                                        <ul>
+                                            <li id="lengthError">Password must be 5-50 characters long.</li>
+                                            <li id="letterError">Password must include at least one letter.</li>
+                                            <li id="numberError">Password must include at least one number.</li>
+                                            <li id="specialError">Password must include at least one special character (@$!%*#?&).</li>
+                                        </ul>
+                                </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            
                         
                                 <div class="form-group row">
                                     <div class="col-md-6 mb-3 mb-md-0">
@@ -241,6 +265,7 @@ include './settings/core.php';
 
 <script src="js/custom.js"></script>
 <script src="js/domContentLoadedListener.js"></script>
+<script src="js/validation.js"></script>
 
 
 </body>
