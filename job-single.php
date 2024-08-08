@@ -146,10 +146,7 @@ $hasApplied = hasApplied($_SESSION['user_id'], $_GET['job_id']);
                 </div>
                 <div class="col-lg-4">
                     <div class="row">
-                        <div class="col-6">
-                            <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
-                        </div>
-                        <div class="col-6">
+                        <div class="col">
                             <a class="btn btn-block btn-primary btn-md applyButton text-white" onclick="handleJobApplication(event, <?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
                         </div>
                     </div>
@@ -189,11 +186,8 @@ $hasApplied = hasApplied($_SESSION['user_id'], $_GET['job_id']);
                     </div>
 
                     <div class="row mb-5">
-                        <div class="col-6">
-                            <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
-                        </div>
-                        <div class="col-6">
-                            <a class="applyButton btn btn-block btn-primary btn-md" onclick="handleJobApplication(event, <?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
+                        <div class="col">
+                            <a class="applyButton btn btn-block btn-primary btn-md text-white" onclick="handleJobApplication(event, <?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
                         </div>
                     </div>
 
