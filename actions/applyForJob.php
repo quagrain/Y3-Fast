@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $userId = $data['userId'];
     $jobId = $data['jobId'];
-    $sql = "INSERT INTO applications (job_id, user_id) VALUES (?, ?)";
+    $sql = "INSERT INTO applications (job_id, user_id, date_of_application) VALUES (?, ?, NOW())";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
         'ii',
