@@ -150,7 +150,7 @@ $hasApplied = hasApplied($_SESSION['user_id'], $_GET['job_id']);
                             <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
                         </div>
                         <div class="col-6">
-                            <a class="btn btn-block btn-primary btn-md applyButton" onclick="handleJobApplication(event, <?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
+                            <a class="btn btn-block btn-primary btn-md applyButton text-white" onclick="handleJobApplication(event, <?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
                         </div>
                     </div>
                 </div>
