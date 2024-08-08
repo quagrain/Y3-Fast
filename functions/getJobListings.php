@@ -9,9 +9,11 @@ function getJobListings($start, $jobsPerPage) {
     $offset = $start - 1;
 
     // Fetch job listings from the database with the organization name
-    $sql = "SELECT job_req.job_id, job_req.job_title, job_req.job_description, job_req.job_location, job_req.status, job_req.published_on, employers.org_name 
+    $sql = "SELECT job_req.job_id, job_req.job_title, job_req.job_description, job_req.job_location, job_req.status, job_req.published_on, employers.org_name, users.profile_pic 
             FROM job_req 
-            JOIN employers ON job_req.user_id = employers.user_id
+            INNER JOIN employers 
+            INNER JOIN users
+            ON job_req.user_id = employers.user_id AND job_req.user_id = users.user_id
             LIMIT $offset, $jobsPerPage";
     $result = $conn->query($sql);
 
@@ -32,7 +34,7 @@ function getJobListings($start, $jobsPerPage) {
             echo '<li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">';
             echo '<a href="job-single.php?job_id='.$jobId.'"></a>';
             echo '<div class="job-listing-logo">';
-            echo '<img src="images/job_logo_1.jpg" alt="Job Logo" class="img-fluid" />';
+            echo '<img src='. $row['profile_pic'] . ' alt="Job Logo" class="img-fluid" />';
             echo '</div>';
             echo '<div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">';
             echo '<div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">';
