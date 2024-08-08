@@ -11,13 +11,16 @@ function getJobReqByID($job_id) {
             employers.org_name, 
             employers.creation_date, 
             employers.industry, 
-            employers.tag_ids 
+            employers.tag_ids,
+            users.profile_pic 
         FROM 
             job_req 
         INNER JOIN 
             employers 
+        INNER JOIN
+            users
         ON 
-            job_req.user_id = employers.user_id 
+            job_req.user_id = employers.user_id AND job_req.user_id = users.user_id 
         WHERE 
             job_req.job_id = ?";
     
