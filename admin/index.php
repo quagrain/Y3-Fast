@@ -1,10 +1,9 @@
 <?php 
   include('../settings/connection.php');
-  include('../settings/core.php');
 
   // check if user is a registered Employer
   if (!$_SESSION['role'] == 'Admin') {
-      header("location: index.php");
+      header("location: ../index.php");
   }
   ?>
 ?>
