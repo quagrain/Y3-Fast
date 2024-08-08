@@ -284,10 +284,10 @@ INSERT INTO `job_req` (`job_id`, `job_title`, `job_description`, `user_id`, `res
 -- Dumping data for table `applications`
 --
 
-INSERT INTO `applications` (`job_id`, `user_id`, `date_of_application`) VALUES
-(12, 3, '2024-08-08 00:34:10'),
-(11, 3, '2024-08-08 01:34:10'),
-(7, 3, '2024-08-08 02:34:10');
+INSERT INTO `applications` (`job_id`, `user_id`, `date_of_application`, `status`) VALUES
+(12, 3, '2024-08-08 00:34:10', 'Accepted'),
+(12, 2, '2024-08-08 01:34:10', 'Rejected'),
+(9, 3, '2024-08-08 02:34:10', 'Pending');
 
 COMMIT;
 
