@@ -4,6 +4,10 @@ const img = document.getElementById("photo");
 const img_file = document.getElementById("profile_picture");
 const placeholder_icon = document.getElementById("placeholder_icon");
 
+const cv_file = document.getElementById("cv");
+
+var hasChangedPP, hasChangedCV;
+
 // If src attribute of image is empty,
 document.addEventListener("DOMContentLoaded", function () {
     if (img.getAttribute('src') !== "") {
@@ -15,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 img_file.addEventListener('change', function () {
+    hasChangedPP = true;
     const chosenFile = this.files[0];
     if (chosenFile) {
         const reader = new FileReader();
@@ -26,6 +31,10 @@ img_file.addEventListener('change', function () {
         img.style.display = 'block';
         img_div.setAttribute('class', 'btn btn-file');
     }
+})
+
+cv_file.addEventListener('change', function () {
+    hasChangedCV = true;
 })
 
 const userType = document.getElementById('usertype');
@@ -49,11 +58,14 @@ function handleUpdateProfile(event) {
     // Collect form data
     const formData = new FormData();
     formData.append("profile_picture", document.getElementById("profile_picture").files[0]);
+    formData.append("hasChangedPP", hasChangedPP);
+    
     formData.append("fname", document.getElementById("fname").value);
     formData.append("lname", document.getElementById("lname").value);
     formData.append("descrip", document.getElementById("description").value);
     formData.append("dob", document.getElementById("date_of_birth").value);
     formData.append("cv", document.getElementById("cv").files[0]);
+    formData.append("hasChangedCV", hasChangedCV);
 
     // Send the data to the server
     fetch("./actions/edit_profile.php", {
