@@ -2,6 +2,9 @@
   include './settings/core.php';
   include './functions/getJobReqByID.php';
   $jobReqData = getJobReqByID($_GET['job_id']);
+
+  include './functions/hasApplied.php';
+  $hasApplied = hasApplied($_SESSION['user_id'], $_GET['job_id']);
 ?>
 
 <!doctype html>
@@ -123,7 +126,7 @@
       </div>
     </section>
 
-    
+    <h3 id="hasApplied" style="display: none;"><?= $hasApplied ? 'true' : 'false' ?></h3>
     <section class="site-section">
       <div class="container">
         <div class="row align-items-center mb-5">
@@ -148,7 +151,7 @@
                 <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
               </div>
               <div class="col-6">
-                <a class="btn btn-block btn-primary btn-md applyButton" onclick="handleJobApplication(<?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
+                <a class="btn btn-block btn-primary btn-md applyButton" onclick="handleJobApplication(event, <?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
               </div>
             </div>
           </div>
@@ -191,30 +194,11 @@
                 <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
               </div>
               <div class="col-6">
-                <a class="applyButton btn btn-block btn-primary btn-md" onclick="handleJobApplication(<?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
+                <a class="applyButton btn btn-block btn-primary btn-md" onclick="handleJobApplication(event, <?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
               </div>
             </div>
 
-        <script>
-          document.addEventListener("DOMContentLoaded", function() {
-            // Select all elements with the class 'applyButton'
-            const applyButtons = document.querySelectorAll(".applyButton");
-
-            applyButtons.forEach(function(button) {
-              button.addEventListener("click", function(event) {
-                event.preventDefault(); // Prevent the default link behavior
-
-                // Apply changes to all apply buttons
-                applyButtons.forEach(function(btn) {
-                  btn.classList.remove("btn-primary");
-                  btn.classList.add("btn-success");
-                  btn.textContent = "Applied";
-                  btn.disabled = true; // Disable the button
-                });
-              });
-            });
-          });
-        </script>
+        <!-- <script></script> -->
 
           </div>
           <div class="col-lg-4">
@@ -260,7 +244,7 @@
       $relatedJobListings = getJobWithRelatedListings($jobId=$_GET['job_id'], $start, $jobsPerPage);
     ?>
 
-    <section class="site-section" id="next">
+    <section class="site-section" id="relatedJobListings">
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-7 text-center">
@@ -299,15 +283,15 @@
               <div class="col-md-6 text-center text-md-right">
                 <div class="custom-pagination ml-auto">
                   <?php if ($currentPage > 1): ?>
-                    <a href="?job_id=<?= $jobId ?>&page=<?= $currentPage - 1 ?>" class="prev">Prev</a>
+                    <a href="?job_id=<?= $jobId ?>&page=<?= $currentPage - 1 ?>#relatedJobListings" class="prev">Prev</a>
                   <?php endif; ?>
                   <div class="d-inline-block">
                     <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                      <a href="?job_id=<?= $jobId ?>&page=<?= $i ?>" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
+                      <a href="?job_id=<?= $jobId ?>&page=<?= $i ?>#relatedJobListings" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
                     <?php endfor; ?>
                   </div>
                   <?php if ($currentPage < $totalPages): ?>
-                    <a href="?job_id=<?= $jobId ?>&page=<?= $currentPage + 1 ?>" class="next">Next</a>
+                    <a href="?job_id=<?= $jobId ?>&page=<?= $currentPage + 1 ?>#relatedJobListings" class="next">Next</a>
                   <?php endif; ?>
                 </div>
               </div>
@@ -388,6 +372,8 @@
     <script src="js/owl.carousel.min.js"></script>
 
     <script src="js/bootstrap-select.min.js"></script>
+
+    <script src="js/job_single.js"></script>
 
     <script src="js/custom.js"></script>
 
