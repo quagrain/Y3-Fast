@@ -178,10 +178,8 @@
                     <p class="text-muted">FRONT-END DEVELOPER</p>
                     <p>You like how the website looks and feels. He did it! He's not available for hire though, find someone else!</p>
                     <div class="social mt-4">
-                        <a href="#"><span class="icon-facebook"></span></a>
-                        <a href="#"><span class="icon-twitter"></span></a>
-                        <a href="#"><span class="icon-instagram"></span></a>
-                        <a href="#"><span class="icon-linkedin"></span></a>
+                        <a href="mailto:emmanuel.agyei@ashesi.edu.gh"><span class="icon-mail_outline"></span></a>
+                        <a href="https://www.linkedin.com/in/emmanuel-b-agyei"><span class="icon-linkedin"></span></a>
                     </div>
                 </div>
 
@@ -193,10 +191,8 @@
                     <p class="text-muted">BACKEND-DEVELOPER</p>
                     <p>You can't see the work he's done but without it, the site will only be good for reading.</p>
                     <div class="social mt-4">
-                        <a href="#"><span class="icon-facebook"></span></a>
-                        <a href="#"><span class="icon-twitter"></span></a>
-                        <a href="#"><span class="icon-instagram"></span></a>
-                        <a href="#"><span class="icon-linkedin"></span></a>
+                        <a href="mailto:mohamed.habib@ashesi.edu.gh"><span class="icon-mail_outline"></span></a>
+                        <a href="https://www.linkedin.com/in/mohamed-habib-soumahoro"><span class="icon-linkedin"></span></a>
                     </div>
                 </div>
 
@@ -210,10 +206,8 @@
                     <p>Another backend developer. Forgot to pull on his first day and caused our greatest merge conflict yet.
                         We still cherish him though.</p>
                     <div class="social mt-4">
-                        <a href="#"><span class="icon-facebook"></span></a>
-                        <a href="#"><span class="icon-twitter"></span></a>
-                        <a href="#"><span class="icon-instagram"></span></a>
-                        <a href="#"><span class="icon-linkedin"></span></a>
+                        <a href="mailto:delali.nsiah@ashesi.edu.gh"><span class="icon-mail_outline"></span></a>
+                        <a href="https://www.linkedin.com/in/delali-nsiah-asare"><span class="icon-linkedin"></span></a>
                     </div>
                 </div>
 
@@ -225,10 +219,8 @@
                     <p class="text-muted">FRONT-END DEVELOPER</p>
                     <p>A front-end developer who has no idea how to center a div. Cannot, design a simple button without a Figma design.</p>
                     <div class="social mt-4">
-                        <a href="#"><span class="icon-facebook"></span></a>
-                        <a href="#"><span class="icon-twitter"></span></a>
-                        <a href="#"><span class="icon-instagram"></span></a>
-                        <a href="#"><span class="icon-linkedin"></span></a>
+                        <a href="mailto:victor.quagraine@ashesi.edu.gh"><span class="icon-mail_outline"></span></a>
+                        <a href="https://www.linkedin.com/in/victor-quagraine/"><span class="icon-linkedin"></span></a>
                     </div>
                 </div>
             </div>
