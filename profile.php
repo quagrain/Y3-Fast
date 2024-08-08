@@ -38,14 +38,6 @@ $userData = getProfileData($_SESSION['user_id'], $_SESSION['role']);
 
 <div class="site-wrap">
 
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close mt-3">
-                <span class="icon-close2 js-menu-toggle"></span>
-            </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-    </div> <!-- .site-mobile-menu -->
 
     <!-- HOME -->
     <section class="section-hero overlay inner-page bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
@@ -69,7 +61,7 @@ $userData = getProfileData($_SESSION['user_id'], $_SESSION['role']);
                 <div class="col-lg-8 mb-4 mb-lg-0">
                     <div class="d-flex align-items-center">
                         <div>
-                            <?php if ($_SESSION['role']=='JobSeeker' || $_SESSION['role']=='Employer'): ?>
+                            <?php if ($_SESSION['role'] == 'JobSeeker' || $_SESSION['role'] == 'Employer'): ?>
                                 <h2>Welcome <span id="welcome-username"><?= $userData['username'] ?></span></h2>
                             <?php else: ?>
                                 <h2>Welcome <span id="welcome-username"></span>ADMIN</h2>
@@ -105,7 +97,7 @@ $userData = getProfileData($_SESSION['user_id'], $_SESSION['role']);
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control" id="email" placeholder=<?= $userData['email'] ?> readonly>
                             </div>
-                
+
                             <div class="col">
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" id="username" placeholder=<?= $userData['username'] ?> readonly>
@@ -119,7 +111,7 @@ $userData = getProfileData($_SESSION['user_id'], $_SESSION['role']);
                                     <input type="password" id="passwd" class="form-control editable" placeholder="Password" minlength="5" maxlength="50" aria-required="false">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary editable" type="button" id="togglePassword" aria-label="Toggle password visibility">
-                                        <i class="fa fa-eye editable"></i>
+                                            <i class="fa fa-eye editable"></i>
                                         </button>
                                     </div>
                                     <div class="invalid-feedback" id="passwordFeedback">
@@ -168,30 +160,30 @@ $userData = getProfileData($_SESSION['user_id'], $_SESSION['role']);
                                             <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
                                         </label>';
 
-                                    // Include PHP script
-                                    include './actions/get_tags_4_dropdown.php';
+                            // Include PHP script
+                            include './actions/get_tags_4_dropdown.php';
 
-                                    // Continue HTML block
-                                    echo '<select id="tags" class="selectpicker form-control border rounded" multiple>';
+                            // Continue HTML block
+                            echo '<select id="tags" class="selectpicker form-control border rounded" multiple>';
 
-                                    // Check for tags and output options
-                                    if ($tags->num_rows > 0) {
-                                        foreach ($tags as $tag) {
-                                            if (in_array($tag['tag_id'], json_decode($userData['tag_ids'], true))) {
-                                                echo '<option value="' . htmlspecialchars($tag['tag_id']) . '" selected>' . htmlspecialchars($tag['tag_name']) . '</option>';
-                                            } else {
-                                                echo '<option value="' . htmlspecialchars($tag['tag_id']) . '">' . htmlspecialchars($tag['tag_name']) . '</option>';
-                                            }
-                                        }
+                            // Check for tags and output options
+                            if ($tags->num_rows > 0) {
+                                foreach ($tags as $tag) {
+                                    if (in_array($tag['tag_id'], json_decode($userData['tag_ids'], true))) {
+                                        echo '<option value="' . htmlspecialchars($tag['tag_id']) . '" selected>' . htmlspecialchars($tag['tag_name']) . '</option>';
                                     } else {
-                                        echo '<option disabled>No tags found</option>';
+                                        echo '<option value="' . htmlspecialchars($tag['tag_id']) . '">' . htmlspecialchars($tag['tag_name']) . '</option>';
                                     }
+                                }
+                            } else {
+                                echo '<option disabled>No tags found</option>';
+                            }
 
-                                    // Close HTML
-                                    echo '</select>
+                            // Close HTML
+                            echo '</select>
                                 </div>
                             </div>';
-                        } else { 
+                        } else {
                             // Content when user is a JobSeeker
                             echo '
 
