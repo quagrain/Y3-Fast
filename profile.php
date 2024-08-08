@@ -1,5 +1,7 @@
 <?php
 include './settings/core.php';
+include './functions/getProfileData.php';
+$userData = getProfileData($_SESSION['user_id'], $_SESSION['role']);
 ?>
 
 <!doctype html>
@@ -67,7 +69,11 @@ include './settings/core.php';
                 <div class="col-lg-8 mb-4 mb-lg-0">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h2>Welcome <span id="welcome-username">{username}</span></h2>
+                            <?php if ($_SESSION['role']=='JobSeeker' || $_SESSION['role']=='Employer'): ?>
+                                <h2>Welcome <span id="welcome-username"><?= $userData['username'] ?></span></h2>
+                            <?php else: ?>
+                                <h2>Welcome <span id="welcome-username"></span>ADMIN</h2>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -94,54 +100,55 @@ include './settings/core.php';
                         </div>
 
                         <span id="usertype" style="display: none;"><?= $_SESSION['role'] ?></span>
-                        <?php
-                        // Content to display when the user is an employer
-                        if (isset($_SESSION['role']) && $_SESSION['role'] == 'Employer') {
-                            // Start of HTML block
-                            echo '<div class="form-group row">
-                                    <div class="col-md mb-3 mb-md-0">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email" placeholder="{Replace with current user\'s email}" readonly>
+                        <div class="form-group row">
+                            <div class="col-md mb-3 mb-md-0">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" placeholder=<?= $userData['email'] ?> readonly>
+                            </div>
+                
+                            <div class="col">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder=<?= $userData['username'] ?> readonly>
+                            </div>
+                        </div>
+                        <div class="row form-group mb-4">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label class="text-black" for="passwd">Password</label>
+                                <div class="input-group">
+                                    <h3 id="oldHashPass" style="display: none;"><?= $userData['passwd'] ?></h3>
+                                    <input type="password" id="passwd" class="form-control editable" placeholder="Password" minlength="5" maxlength="50" aria-required="false">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary editable" type="button" id="togglePassword" aria-label="Toggle password visibility">
+                                        <i class="fa fa-eye editable"></i>
+                                        </button>
                                     </div>
-                        
-                                    <div class="col">
-                                        <label for="username">Username</label>
-                                        <input type="text" class="form-control" id="username" placeholder="{Replace with current username}" readonly>
-                                    </div>
-                                </div>
-                                
-                                <div class="row form-group mb-4">
-                                    <div class="col-md-12 mb-3 mb-md-0">
-                                      <label class="text-black" for="passwd">Password</label>
-                                      <div class="input-group">
-                                        <input type="password" id="passwd" class="form-control editable" placeholder="Password" minlength="5" maxlength="50" aria-required="false">
-                                        <div class="input-group-append">
-                                          <button class="btn btn-outline-secondary editable" type="button" id="togglePassword" aria-label="Toggle password visibility">
-                                            <i class="fa fa-eye editable"></i>
-                                          </button>
-                                        </div>
-                                        <div class="invalid-feedback" id="passwordFeedback">
+                                    <div class="invalid-feedback" id="passwordFeedback">
                                         <ul>
                                             <li id="lengthError">Password must be 5-50 characters long.</li>
                                             <li id="letterError">Password must include at least one letter.</li>
                                             <li id="numberError">Password must include at least one number.</li>
                                             <li id="specialError">Password must include at least one special character (@$!%*#?&).</li>
                                         </ul>
-                                </div>
-                                      </div>
                                     </div>
                                 </div>
-                            
-                        
+                            </div>
+                        </div>
+                        <?php
+                        // Content to display when the user is an employer
+                        if (isset($_SESSION['role']) && $_SESSION['role'] == 'Employer') {
+                            // Start of HTML block
+                            echo '                        
                                 <div class="form-group row">
                                     <div class="col-md-6 mb-3 mb-md-0">
                                         <label for="org_name">Company Name</label>
-                                        <input type="text" class="form-control editable" id="org_name" placeholder="{Change to company name}" disabled>
+                                        <input type="text" class="form-control editable" id="org_name" placeholder="' . htmlspecialchars($userData['org_name'], ENT_QUOTES, 'UTF-8') . '" 
+                                            value="' . htmlspecialchars($userData['org_name'], ENT_QUOTES, 'UTF-8') . '" disabled>
                                     </div>
                                     
                                     <div class="col-md-6 mb-3 mb-md-0">
-                                        <label for="org_name">Industry</label>
-                                        <input type="text" class="form-control editable" id="industry" placeholder="{Change to company industry}" disabled>
+                                        <label for="industry">Industry</label>
+                                        <input type="text" class="form-control editable" id="industry" placeholder="' . htmlspecialchars($userData['industry'], ENT_QUOTES, 'UTF-8') . '" 
+                                            value="' . htmlspecialchars($userData['industry'], ENT_QUOTES, 'UTF-8') . '" disabled>
                                     </div>
                                 </div>
                                                                                            
@@ -149,84 +156,89 @@ include './settings/core.php';
                                     <label for="creation_date">
                                         Date Established<span class="icon-calendar pl-2"></span>
                                     </label>
-                                    {Get date created from db}
-                                    <input id="creation_date" class="form-control editable" type="date" disabled>
+                                    ' . htmlspecialchars($userData['creation_date'], ENT_QUOTES, 'UTF-8') . '
+                                    <input id="creation_date" class="form-control editable" type="date" value="' . htmlspecialchars($userData['creation_date'], ENT_QUOTES, 'UTF-8') . '" disabled>
                                 </div>
                                 
                       
                                 <div class="row form-group">
                                     <div class="col-md mb-4 mb-md-0">
-                                {show the tags that have already been selected}
                                         <label for="tag_id">
                                             Search Tags
                                             <span class="icon-info-circle" data-toggle="tooltip" data-placement="right" title="Search tags help categorize and find jobs more easily"></span>
                                         </label>';
 
-                            // Include PHP script
-                            include './actions/get_tags_4_dropdown.php';
+                                    // Include PHP script
+                                    include './actions/get_tags_4_dropdown.php';
 
-                            // Continue HTML block
-                            echo '<select id="tags" class="selectpicker form-control border rounded" multiple>';
+                                    // Continue HTML block
+                                    echo '<select id="tags" class="selectpicker form-control border rounded" multiple>';
 
-                            // Check for tags and output options
-                            if ($tags->num_rows > 0) {
-                                foreach ($tags as $tag) {
-                                    echo '<option value="' . htmlspecialchars($tag['tag_id']) . '">' . htmlspecialchars($tag['tag_name']) . '</option>';
-                                }
-                            } else {
-                                echo '<option disabled>No tags found</option>';
-                            }
+                                    // Check for tags and output options
+                                    if ($tags->num_rows > 0) {
+                                        foreach ($tags as $tag) {
+                                            if (in_array($tag['tag_id'], json_decode($userData['tag_ids'], true))) {
+                                                echo '<option value="' . htmlspecialchars($tag['tag_id']) . '" selected>' . htmlspecialchars($tag['tag_name']) . '</option>';
+                                            } else {
+                                                echo '<option value="' . htmlspecialchars($tag['tag_id']) . '">' . htmlspecialchars($tag['tag_name']) . '</option>';
+                                            }
+                                        }
+                                    } else {
+                                        echo '<option disabled>No tags found</option>';
+                                    }
 
-                            // Close HTML
-                            echo '</select>
+                                    // Close HTML
+                                    echo '</select>
                                 </div>
                             </div>';
-                        } else { // Content when user is a JobSeeker
+                        } else { 
+                            // Content when user is a JobSeeker
                             echo '
-                        <div class="form-group row">
-                            <div class="col-md mb-3 mb-md-0">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email" placeholder="{Replace with current user\'s email}" readonly>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" class="form-control editable" id="fname" placeholder="Jane" 
+                                        value="' . htmlspecialchars($userData['fname'], ENT_QUOTES, 'UTF-8') . '" disabled>
+                                </div>
+
+                                <div class="col-md mb-3 mb-md-0">
+                                    <label for="lname">Last Name</label>
+                                    <input id="lname" type="text" placeholder="Doe" class="form-control editable" 
+                                        value="' . htmlspecialchars($userData['lname'], ENT_QUOTES, 'UTF-8') . '" disabled>
+                                </div>
                             </div>
 
-                            <div class="col">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="{Replace with current username}" readonly>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 mb-3 mb-md-0">
-                                <label for="fname">First Name</label>
-                                <input type="text" class="form-control editable" id="fname" placeholder="Jane" disabled>
+                            <div class="form-group row">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="occupation">Occupation</label>
+                                    <input type="text" class="form-control editable" id="occupation" placeholder="Student" 
+                                        value="' . htmlspecialchars($userData['occupation'], ENT_QUOTES, 'UTF-8') . '" disabled>
+                                </div>
                             </div>
 
-                            <div class="col-md mb-3 mb-md-0">
-                                <label for="lname">Last Name</label>
-                                <input id="lname" type="text" placeholder="Doe" class="form-control editable" disabled>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea id="description" class="form-control no-resize editable" rows="4" style="resize:none" placeholder="Enter some information about yourself" disabled>
+                                    ' . htmlspecialchars($userData['description'], ENT_QUOTES, 'UTF-8') . '
+                                </textarea>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea id="description" class="form-control no-resize editable" rows="4" style="resize:none" placeholder="Enter some information about yourself" disabled>{Fill with description from db}</textarea>
-                        </div>
+                            <div class="form-group">
+                                <label for="date_of_birth">
+                                    Date of Birth <span class="icon-calendar pl-2"></span>
+                                </label>
+                                <input id="date_of_birth" class="form-control editable" type="date" value="' . htmlspecialchars($userData['date_of_birth'], ENT_QUOTES, 'UTF-8') . '" disabled>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="date_of_birth">
-                                Date of Birth <span class="icon-calendar pl-2"></span>
-                            </label>
-                            <input id="date_of_birth" class="form-control editable" type="date" disabled>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="cv">Upload Resume</label> <br>
-                            <label class="btn btn-primary btn-md btn-file">
-                                Browse File <input type="file" id="cv" name="cv" accept=".pdf" class="editable" hidden disabled>
-                            </label>
-                            <span id="cv_name">No file chosen</span>
-                        </div>
-                        ';
+                            <div class="form-group">
+                                <label for="cv">Upload Resume</label> <br>
+                                <label class="btn btn-primary btn-md btn-file">
+                                    Browse File <input type="file" id="cv" name="cv" accept=".pdf" class="editable" hidden disabled>
+                                </label>
+                                <span id="cv_name">No file chosen</span>
+                            </div>
+                            ';
                         }
                         ?>
 
