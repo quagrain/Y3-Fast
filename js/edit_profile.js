@@ -33,12 +33,16 @@ img_file.addEventListener('change', function () {
     }
 })
 
-cv_file.addEventListener('change', function () {
-    hasChangedCV = true;
-})
-
 const userType = document.getElementById('usertype');
-if (userType.innerHTML === "JobSeeker") {
+
+if (userType.textContent === "JobSeeker") {
+    cv_file.addEventListener('change', function () {
+        hasChangedCV = true;
+    })
+}
+
+
+if (userType.textContent === "JobSeeker") {
     // Change the file name beside the resume submission
     let file = document.getElementById("cv");
     let name = document.getElementById("cv_name");
@@ -50,22 +54,59 @@ if (userType.innerHTML === "JobSeeker") {
     })
 }
 
+const oldHashPass = document.getElementById("oldHashPass").textContent
+var passwd;
+var hasPassChanged = false
+
+document.getElementById("passwd").addEventListener('change', function () {
+    passwd = document.getElementById("passwd").value;
+    hasPassChanged = true
+})
 
 // process profile editing
 function handleUpdateProfile(event) {
     event.preventDefault();
 
+    const usertype = document.getElementById("usertype").textContent;
+
+    if (!hasPassChanged) {
+        passwd = oldHashPass;
+    }
+
     // Collect form data
     const formData = new FormData();
+
+    formData.append("usertype", usertype);
     formData.append("profile_picture", document.getElementById("profile_picture").files[0]);
     formData.append("hasChangedPP", hasChangedPP);
-    
-    formData.append("fname", document.getElementById("fname").value);
-    formData.append("lname", document.getElementById("lname").value);
-    formData.append("descrip", document.getElementById("description").value);
-    formData.append("dob", document.getElementById("date_of_birth").value);
-    formData.append("cv", document.getElementById("cv").files[0]);
-    formData.append("hasChangedCV", hasChangedCV);
+    formData.append("passwd", passwd);
+    formData.append("hasPassChanged", hasPassChanged);
+
+    if (usertype==='JobSeeker') {
+
+        formData.append("fname", document.getElementById("fname").value);
+        formData.append("lname", document.getElementById("lname").value);
+        formData.append("occupation", document.getElementById("occupation").value);
+        formData.append("descrip", document.getElementById("description").value);
+        formData.append("dob", document.getElementById("date_of_birth").value);
+        formData.append("cv", document.getElementById("cv").files[0]);
+        formData.append("hasChangedCV", hasChangedCV);
+
+    } else if (usertype==='Employer') {
+
+        formData.append("org_name", document.getElementById("org_name").value);
+        formData.append("industry", document.getElementById("industry").value);
+        formData.append("creation_date", document.getElementById("creation_date").value);
+        var tagIds = [];
+        var select = document.getElementById("tags");
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].selected) {
+            tagIds.push(select.options[i].value);
+            }
+        }
+        formData.append("tagIds", tagIds);
+
+    }
 
     // Send the data to the server
     fetch("./actions/edit_profile.php", {
