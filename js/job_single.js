@@ -53,14 +53,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const applyButtons = document.querySelectorAll(".applyButton");
     const hasApplied = document.getElementById("hasApplied").textContent === 'true';
 
-    // const style = document.createElement('style');
-    // style.innerHTML = `
-    //     .btn[disabled] {
-    //         cursor: not-allowed;
-    //         opacity: 0.6;
-    //     }
-    // `;
-    // document.head.appendChild(style);
 
     if (hasApplied) {
         // Apply changes to all apply buttons
@@ -72,12 +64,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-
-// applyButtons.forEach(function(button) {
-//     button.addEventListener("click", function(event) {
-//         event.preventDefault(); // Prevent the default link behavior
-
-//         // Apply changes to all apply buttons
-        
-//     });
-// });
