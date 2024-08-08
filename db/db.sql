@@ -72,7 +72,7 @@ CREATE TABLE `job_req` (
   `gender` enum('Male','Female','Other','Any') DEFAULT NULL,
   `application_deadline` date DEFAULT NULL,
   `published_on` datetime NOT NULL DEFAULT current_timestamp(),
-  `featured_image` varchar(255) DEFAULT NULL
+  `featured_image` varchar(255) DEFAULT "./images/bm_office_chat.svg"
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
