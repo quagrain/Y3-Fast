@@ -31,9 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Initialize variables
-    $featuredImgPath = "";
+    $featuredImgPath = "DEFAULT";
 
     if (isset($_FILES["featured_image"])) {
+        $featuredImgPath = "";
         if ($_FILES["featured_image"]["error"] === UPLOAD_ERR_OK) {
             // Validate file type and size
             $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
