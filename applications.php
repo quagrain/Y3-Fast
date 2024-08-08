@@ -1,7 +1,7 @@
 <!-- HOME -->
 <?php
 session_start();
-include './functions/jobBoardStats.php';
+include './functions/getApplicantsData.php';
 ?>
 
 <!doctype html>
@@ -54,72 +54,47 @@ include './functions/jobBoardStats.php';
         </div>
     </section>
 
-    <section class="site-section">
+    <section class="site-section" id="applicants">
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-7 text-center">
                     <h2 class="section-title mb-2">
-                        {Number of} Candidates
+                        <?= getNumApplicantsPerJob($_SESSION['user_id'], $_GET['job_id']) ?> Candidates
                     </h2>
                 </div>
             </div>
 
             <?php
-            $totalJobs = getNumJobsPosted();
-            $jobsPerPage = 7;
-            $totalPages = ceil($totalJobs / $jobsPerPage);
+            $totalApplicants = getNumApplicantsPerJob($_SESSION['user_id'], $_GET['job_id']);
+            $applicantsPerPage = 10;
+            $totalPages = ceil($totalApplicants / $applicantsPerPage);
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-            $start = ($currentPage - 1) * $jobsPerPage + 1;
-            $end = min($start + $jobsPerPage - 1, $totalJobs);
+            $start = ($currentPage - 1) * $applicantsPerPage + 1;
+            $end = min($start + $applicantsPerPage - 1, $totalApplicants);
             ?>
 
             <?php
-            include 'functions/getJobListings.php';
-            echo '<ul class="job-listings mb-5">';
-            echo '<li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">';
-            echo '<a href="applications.php?job_id=' . 0 . '"></a>';
-            echo '<div class="applicant-logo">';
-            echo '<img src="images/logo.svg"  alt="Job Logo" class="img-fluid"  width="100px" height="100px"/>';
-            echo '</div>';
-            echo '<div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">';
-            echo '<div class="job-listing-position custom-width w-50 mb-3 mb-sm-0 mt-1">';
-            echo '<h2>{users.fname + users.lname}</h2>';
-            echo '<strong>{applications.date_of_applications}</strong>';
-            echo '</div>';
-            echo '<div class="mb-3 mb-sm-0 custom-width w-50 mt-2">';
-            echo '<span class="btn btn-outline-info dropdown" onclick="{download_Resume}">Resume</span>';
-            echo '</div>';
-            echo '<div class="job-listing-meta">';
-            echo '<span>
-                    <select id="application_status" class="btn-danger p-2 mt-2 dropdown" onchange="changeButton()">
-                        <option value="Rejected">Rejected</option>
-                        <option value="Accepted">Accepted</option>
-                        <option value="Pending" selected>Pending</option>
-                    </select>
-                  </span>';
-            echo '</div>';
-            echo '</div>';
-            echo '</li>';
-            echo '</ul>';
+            include './functions/getApplicantsList.php';
+            getApplicantsList($start, $applicantsPerPage, $_SESSION['user_id'], $_GET['job_id']);
             ?>
 
 
             <div class="row pagination-wrap">
                 <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-                    <span>Showing <?= $start ?>-<?= $end ?> Of <?= $totalJobs ?></span>
+                    <span>Showing <?= $start ?>-<?= $end ?> Of <?= $totalApplicants ?></span>
                 </div>
                 <div class="col-md-6 text-center text-md-right">
                     <div class="custom-pagination ml-auto">
                         <?php if ($currentPage > 1): ?>
-                            <a href="?page=<?= $currentPage - 1 ?>" class="prev">Prev</a>
+                            <a href="?job_id=<?= $_GET['job_id'] ?>&page=<?= $currentPage - 1 ?>#applicants" class="prev">Prev</a>
                         <?php endif; ?>
                         <div class="d-inline-block">
                             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                <a href="?page=<?= $i ?>" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
+                                <a href="?job_id=<?= $_GET['job_id'] ?>&page=<?= $i ?>#applicants" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
                             <?php endfor; ?>
                         </div>
                         <?php if ($currentPage < $totalPages): ?>
-                            <a href="?page=<?= $currentPage + 1 ?>" class="next">Next</a>
+                            <a href="?job_id=<?= $_GET['job_id'] ?>&page=<?= $currentPage + 1 ?>#applicants" class="next">Next</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -146,9 +121,10 @@ include './functions/jobBoardStats.php';
 
 <script src="js/bootstrap-select.min.js"></script>
 <script src="js/custom.js"></script>
+
 <script>
-    function changeButton() {
-        const status = document.getElementById('application_status');
+    function changeButton(event, appId) {
+        const status = document.querySelector(`#application_status_${appId}`);
         switch (status.value) {
             case "Pending":
                 status.classList.remove('btn-danger', 'btn-success');
@@ -160,12 +136,51 @@ include './functions/jobBoardStats.php';
                 break;
             case "Accepted":
                 status.classList.remove('btn-danger', 'btn-warning');
-                status.classList.add('btn-success')
+                status.classList.add('btn-success');
                 break;
         }
+        handleApplication(event, appId);
     }
 
-    document.addEventListener('DOMContentLoaded', () => changeButton());
+    function handleApplication(event, appId) {
+        const selectedStatus = event.target.value;
+
+        console.log('Application status changed to:', selectedStatus, 'for appId:', appId);
+
+        updateApplicationStatus(selectedStatus, appId);
+    }
+
+    function updateApplicationStatus(status, appId) {
+        fetch('./actions/update_application_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                status: status,
+                appId: appId
+            })
+        })
+        .then(response => response.json())
+        .then(response => {
+            if (response.status === 1) {
+                console.log(response.message);
+            } else {
+                throw new Error(response.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const statuses = document.querySelectorAll('.application_status');
+        statuses.forEach((statusElement) => {
+            const appId = statusElement.id.split('_').pop();
+            changeButton(null, appId);
+        });
+    });
 </script>
 
 </body>
