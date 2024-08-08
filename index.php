@@ -211,7 +211,7 @@
             </div>
         </section>
 
-        <section class="site-section" id="jobListings">
+        <section class="site-section" id="jobListingsA">
             <div class="container">
                 <div class="row mb-5 justify-content-center">
                     <div class="col-md-7 text-center">
@@ -244,15 +244,15 @@
                     <div class="col-md-6 text-center text-md-right">
                         <div class="custom-pagination ml-auto">
                             <?php if ($currentPage > 1): ?>
-                                <a href="?page=<?= $currentPage - 1 ?>#jobListings" class="prev">Prev</a>
+                                <a href="?page=<?= $currentPage - 1 ?>#jobListingsA" class="prev">Prev</a>
                             <?php endif; ?>
                             <div class="d-inline-block">
                                 <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                    <a href="?page=<?= $i ?>#jobListings" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
+                                    <a href="?page=<?= $i ?>#jobListingsA" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
                                 <?php endfor; ?>
                             </div>
                             <?php if ($currentPage < $totalPages): ?>
-                                <a href="?page=<?= $currentPage + 1 ?>#jobListings" class="next">Next</a>
+                                <a href="?page=<?= $currentPage + 1 ?>#jobListingsA" class="next">Next</a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -295,7 +295,7 @@
                 <div class="row mb-5 justify-content-center">
                     <div class="col-md-7 text-center">
                         <h2 class="section-title mb-2 text-white">
-                            {Company Name} Application Stats
+                            <?= $emp['org_name'] ?> Application Stats
                         </h2>
                     </div>
                 </div>
@@ -336,18 +336,18 @@
             </div>
         </section>
 
-        <section class="site-section">
+        <section class="site-section" id="jobListingsB">
             <div class="container">
                 <div class="row mb-5 justify-content-center">
                     <div class="col-md-7 text-center">
                         <h2 class="section-title mb-2">
-                            <?= getNumJobsPosted() ?> Posts
+                            <?= getNumJobsPosted($_SESSION['user_id']) ?> Posts
                         </h2>
                     </div>
                 </div>
 
                 <?php
-                $totalJobs = getNumJobsPosted();
+                $totalJobs = getEmpNumJobsPosted($_SESSION['user_id']);
                 $jobsPerPage = 7;
                 $totalPages = ceil($totalJobs / $jobsPerPage);
                 $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -356,8 +356,8 @@
                 ?>
 
                 <?php
-                include 'functions/getJobListings.php';
-                getJobListings($start, $jobsPerPage);
+                include 'functions/getJobsPosted.php';
+                getJobListings($start, $jobsPerPage, $_SESSION['user_id']);
                 ?>
 
                 <div class="row pagination-wrap">
