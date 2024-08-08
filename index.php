@@ -1,6 +1,6 @@
 <?php 
-session_start();
-include './functions/jobBoardStats.php'; 
+    session_start();
+    include './functions/jobBoardStats.php';
 ?>
 
 <!doctype html>
@@ -286,7 +286,10 @@ include './functions/jobBoardStats.php';
         <!--
         SHOW CONTENT FOR EMPLOYER
         -->
-
+        <?php 
+            include './functions/getEmployerStats.php';
+            $emp = getEmployer($_SESSION['user_id']);
+        ?>
         <section class="bg-image overlay-primary fixed overlay" id="next" style="padding-top: 200px">
             <div class="container">
                 <div class="row mb-5 justify-content-center">
@@ -301,7 +304,7 @@ include './functions/jobBoardStats.php';
                         <div
                                 class="d-flex align-items-center justify-content-center mb-2"
                         >
-                            <strong class="number" data-number=<?= getNumCandidates() ?>
+                            <strong class="number" data-number=<?= getEmpNumCandidates() ?>
                             >0</strong
                             >
                         </div>
@@ -312,7 +315,7 @@ include './functions/jobBoardStats.php';
                         <div
                                 class="d-flex align-items-center justify-content-center mb-2"
                         >
-                            <strong class="number" data-number=<?= getNumJobsPosted() ?>
+                            <strong class="number" data-number=<?= getEmpNumJobsPosted($_SESSION['user_id']) ?>
                             >0</strong
                             >
                         </div>
@@ -323,11 +326,11 @@ include './functions/jobBoardStats.php';
                         <div
                                 class="d-flex align-items-center justify-content-center mb-2"
                         >
-                            <strong class="number" data-number=<?= getNumJobsFilled() ?>
+                            <strong class="number" data-number=<?= getEmpNumJobsFilled($_SESSION['user_id']) ?>
                             >0</strong
                             >
                         </div>
-                        <span class="caption">Jobs Filled</span>
+                        <span class="caption">Applications Received</span>
                     </div>
                 </div>
             </div>
