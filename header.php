@@ -63,11 +63,11 @@
                         if ($current_page == 'login.php') {
                             echo '
                             <a href="register.php" class="col btn btn-primary border-width-2 d-none d-lg-inline-block">
-                                    <span class="icon-user-plus"></span>Sign Up</a>';
+                                    <span class="icon-user-plus"></span> Sign Up</a>';
                         } else {
                             echo '
                                 <a href="login.php" class="col btn btn-primary border-width-2 d-none d-lg-inline-block">
-                                    <span class="icon-lock_outline"></span>Login</a>';
+                                    <span class="icon-lock_outline"></span> Login</a>';
                         }
                     }
                     ?>
