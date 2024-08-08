@@ -34,7 +34,7 @@ function getJobListings($start, $jobsPerPage, $userId)
 
             // Display job listing
             echo '<li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">';
-            echo '<a href="job-single.php?job_id=' . $jobId . '"></a>';
+            echo '<a href="applications.php?job_id=' . $jobId . '"></a>';
             echo '<div class="job-listing-logo">';
             echo '<img src=' . $row['profile_pic'] . ' alt="Job Logo" class="img-fluid"  width="150px" height="150px"/>';
             echo '</div>';
