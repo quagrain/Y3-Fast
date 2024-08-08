@@ -146,9 +146,11 @@ $hasApplied = hasApplied($_SESSION['user_id'], $_GET['job_id']);
                 </div>
                 <div class="col-lg-4">
                     <div class="row">
-                        <div class="col">
-                            <a class="btn btn-block btn-primary btn-md applyButton text-white" onclick="handleJobApplication(event, <?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
-                        </div>
+                        <?php if ($_SESSION['role']=='JobSeeker'): ?>
+                          <div class="col">
+                              <a class="btn btn-block btn-primary btn-md applyButton text-white" onclick="handleJobApplication(event, <?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
+                          </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -186,9 +188,11 @@ $hasApplied = hasApplied($_SESSION['user_id'], $_GET['job_id']);
                     </div>
 
                     <div class="row mb-5">
+                      <?php if ($_SESSION['role']=='JobSeeker'): ?>
                         <div class="col">
                             <a class="applyButton btn btn-block btn-primary btn-md text-white" onclick="handleJobApplication(event, <?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
                         </div>
+                      <?php endif; ?>
                     </div>
 
                     <!-- <script></script> -->
