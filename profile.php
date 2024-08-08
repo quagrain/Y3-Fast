@@ -93,7 +93,7 @@ include './settings/core.php';
                             </div>
                         </div>
 
-                        <span id="usertype" style="display: block">{Fill with user type. Change style's display to none when done}</span>
+                        <span id="usertype" style="display: none;"><?= $_SESSION['role'] ?></span>
                         <?php
                         // Content to display when the user is an employer
                         if (isset($_SESSION['role']) && $_SESSION['role'] == 'Employer') {
