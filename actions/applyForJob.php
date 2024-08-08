@@ -1,11 +1,17 @@
 <?php
 
 include "../settings/connection.php";
+header('Content-Type: application/json');
 global $conn;
 
+$response = ["status" => 0, "message" => "default msg", "redirect" => "."];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $userId = $_POST['userID'];
-    $jobId = $_POST['jobId'];
+    $input = file_get_contents('php://input');
+    $data = json_decode($input, true);
+
+    $userId = $data['userId'];
+    $jobId = $data['jobId'];
     $sql = "INSERT INTO applications (job_id, user_id) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
@@ -19,8 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response = ["status" => 0, "message" => "Failed to apply: " . $stmt->error];
     }
     $stmt->close();
-    echo json_encode($response);
 }
 
 $conn->close();
+echo json_encode($response);
 exit();
