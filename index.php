@@ -206,7 +206,7 @@
         </div>
     </section>
 
-    <section class="site-section">
+    <section class="site-section" id="jobListings">
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-7 text-center">
@@ -223,6 +223,8 @@
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $start = ($currentPage - 1) * $jobsPerPage + 1;
             $end = min($start + $jobsPerPage - 1, $totalJobs);
+
+            $currentPage = max(1, min($currentPage, $totalPages));
             ?>
 
             <?php
@@ -237,15 +239,15 @@
                 <div class="col-md-6 text-center text-md-right">
                     <div class="custom-pagination ml-auto">
                         <?php if ($currentPage > 1): ?>
-                            <a href="?page=<?= $currentPage - 1 ?>" class="prev">Prev</a>
+                            <a href="?page=<?= $currentPage - 1 ?>#jobListings" class="prev">Prev</a>
                         <?php endif; ?>
                         <div class="d-inline-block">
                             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                <a href="?page=<?= $i ?>" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
+                                <a href="?page=<?= $i ?>#jobListings" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
                             <?php endfor; ?>
                         </div>
                         <?php if ($currentPage < $totalPages): ?>
-                            <a href="?page=<?= $currentPage + 1 ?>" class="next">Next</a>
+                            <a href="?page=<?= $currentPage + 1 ?>#jobListings" class="next">Next</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -290,5 +292,16 @@
 <script src="js/bootstrap-select.min.js"></script>
 
 <script src="js/custom.js"></script>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.location.hash) {
+            let element = document.querySelector(window.location.hash);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+</script>
 </body>
 </html>
