@@ -48,231 +48,334 @@
     <?php include 'header.php' ?>
 
     <!-- HOME -->
-    <section
-            class="home-section section-hero overlay bg-image"
-            style="background-image: url(&quot;images/hero_1.jpg&quot;)"
-            id="home-section">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-12">
-                    <div class="mb-5 text-center">
-                        <h1 class="text-white font-weight-bold">
-                            The Easiest Way To Get Your Dream Job
-                        </h1>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit. Cupiditate est,
-                            consequuntur perferendis.
-                        </p>
-                    </div>
-                    <form method="post" class="search-jobs-form">
-                        <div class="row mb-5">
-                            <div
-                                    class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0"
-                            >
-                                <input
-                                        type="text"
-                                        class="form-control form-control-lg"
-                                        placeholder="Job title, Company..."
-                                />
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                                <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
-                                        data-live-search="true" title="Select Region">
-                                    <option>Anywhere</option>
-                                    <option>San Francisco</option>
-                                    <option>Palo Alto</option>
-                                    <option>New York</option>
-                                    <option>Manhattan</option>
-                                    <option>Ontario</option>
-                                    <option>Toronto</option>
-                                    <option>Kansas</option>
-                                    <option>Mountain View</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                                <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
-                                        data-live-search="true" title="Select Job Type">
-                                    <option>Part Time</option>
-                                    <option>Full Time</option>
-                                    <option>Contract</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                                <button
-                                        type="submit"
-                                        class="btn btn-primary btn-lg btn-block text-white btn-search">
+    <!-- If the user is not the employer, show the view for JobSeeker -->
+    <?php if ($_SESSION['role'] !== 'Employer'): ?>
+        <section
+                class="home-section section-hero overlay bg-image"
+                style="background-image: url(&quot;images/hero_1.jpg&quot;)"
+                id="home-section">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12">
+                        <div class="mb-5 text-center">
+                            <h1 class="text-white font-weight-bold">
+                                The Easiest Way To Get Your Dream Job
+                            </h1>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Cupiditate est,
+                                consequuntur perferendis.
+                            </p>
+                        </div>
+                        <form method="post" class="search-jobs-form">
+                            <div class="row mb-5">
+                                <div
+                                        class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0"
+                                >
+                                    <input
+                                            type="text"
+                                            class="form-control form-control-lg"
+                                            placeholder="Job title, Company..."
+                                    />
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                                    <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
+                                            data-live-search="true" title="Select Region">
+                                        <option>Anywhere</option>
+                                        <option>San Francisco</option>
+                                        <option>Palo Alto</option>
+                                        <option>New York</option>
+                                        <option>Manhattan</option>
+                                        <option>Ontario</option>
+                                        <option>Toronto</option>
+                                        <option>Kansas</option>
+                                        <option>Mountain View</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                                    <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
+                                            data-live-search="true" title="Select Job Type">
+                                        <option>Part Time</option>
+                                        <option>Full Time</option>
+                                        <option>Contract</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                                    <button
+                                            type="submit"
+                                            class="btn btn-primary btn-lg btn-block text-white btn-search">
                                             <span
                                                     class="icon-search icon mr-2"
                                             ></span
                                             >Search Job
-                                </button>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 popular-keywords">
-                                <h3>Trending Keywords:</h3>
-                                <ul
-                                        class="keywords list-unstyled m-0 p-0"
-                                >
-                                    <li>
-                                        <a href="#" class=""
-                                        >UI Designer</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a href="#" class="">Python</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class=""
-                                        >Developer</a
-                                        >
-                                    </li>
-                                </ul>
+                            <div class="row">
+                                <div class="col-md-12 popular-keywords">
+                                    <h3>Trending Keywords:</h3>
+                                    <ul
+                                            class="keywords list-unstyled m-0 p-0"
+                                    >
+                                        <li>
+                                            <a href="#" class=""
+                                            >UI Designer</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a href="#" class="">Python</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class=""
+                                            >Developer</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#next" class="scroll-button smoothscroll">
+                <span class="icon-keyboard_arrow_down"></span>
+            </a>
+        </section>
+
+        <section
+                class="py-5 bg-image overlay-primary fixed overlay"
+                id="next"
+                style="background-image: url(&quot;images/hero_1.jpg&quot;)">
+            <div class="container">
+                <div class="row mb-5 justify-content-center">
+                    <div class="col-md-7 text-center">
+                        <h2 class="section-title mb-2 text-white">
+                            JobBoard Site Stats
+                        </h2>
+                        <p class="lead text-white">
+                            Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Expedita unde officiis
+                            recusandae sequi excepturi corrupti.
+                        </p>
+                    </div>
+                </div>
+                <div class="row pb-0 block__19738 section-counter">
+                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div
+                                class="d-flex align-items-center justify-content-center mb-2"
+                        >
+                            <strong class="number" data-number=<?= getNumCandidates() ?>
+                            >0</strong
+                            >
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <a href="#next" class="scroll-button smoothscroll">
-            <span class="icon-keyboard_arrow_down"></span>
-        </a>
-    </section>
-
-    <section
-            class="py-5 bg-image overlay-primary fixed overlay"
-            id="next"
-            style="background-image: url(&quot;images/hero_1.jpg&quot;)">
-        <div class="container">
-            <div class="row mb-5 justify-content-center">
-                <div class="col-md-7 text-center">
-                    <h2 class="section-title mb-2 text-white">
-                        JobBoard Site Stats
-                    </h2>
-                    <p class="lead text-white">
-                        Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Expedita unde officiis
-                        recusandae sequi excepturi corrupti.
-                    </p>
-                </div>
-            </div>
-            <div class="row pb-0 block__19738 section-counter">
-                <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-                    <div
-                            class="d-flex align-items-center justify-content-center mb-2"
-                    >
-                        <strong class="number" data-number=<?= getNumCandidates() ?>
-                        >0</strong
-                        >
+                        <span class="caption">Candidates</span>
                     </div>
-                    <span class="caption">Candidates</span>
-                </div>
 
-                <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-                    <div
-                            class="d-flex align-items-center justify-content-center mb-2"
-                    >
-                        <strong class="number" data-number=<?= getNumJobsPosted() ?>
-                        >0</strong
+                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div
+                                class="d-flex align-items-center justify-content-center mb-2"
                         >
-                    </div>
-                    <span class="caption">Jobs Posted</span>
-                </div>
-
-                <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-                    <div
-                            class="d-flex align-items-center justify-content-center mb-2"
-                    >
-                        <strong class="number" data-number=<?= getNumJobsFilled() ?>
-                        >0</strong
-                        >
-                    </div>
-                    <span class="caption">Jobs Filled</span>
-                </div>
-
-                <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-                    <div
-                            class="d-flex align-items-center justify-content-center mb-2"
-                    >
-                        <strong class="number" data-number=<?= getNumCompanies() ?>
-                        >0</strong
-                        >
-                    </div>
-                    <span class="caption">Companies</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="site-section" id="jobListings">
-        <div class="container">
-            <div class="row mb-5 justify-content-center">
-                <div class="col-md-7 text-center">
-                    <h2 class="section-title mb-2">
-                        <?= getNumJobsPosted() ?> Listed
-                    </h2>
-                </div>
-            </div>
-
-            <?php
-            $totalJobs = getNumJobsPosted();
-            $jobsPerPage = 7;
-            $totalPages = ceil($totalJobs / $jobsPerPage);
-            $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-            $start = ($currentPage - 1) * $jobsPerPage + 1;
-            $end = min($start + $jobsPerPage - 1, $totalJobs);
-
-            $currentPage = max(1, min($currentPage, $totalPages));
-            ?>
-
-            <?php
-            include 'functions/getJobListings.php';
-            getJobListings($start, $jobsPerPage);
-            ?>
-
-            <div class="row pagination-wrap">
-                <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-                    <span>Showing <?= $start ?>-<?= $end ?> Of <?= $totalJobs ?></span>
-                </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <div class="custom-pagination ml-auto">
-                        <?php if ($currentPage > 1): ?>
-                            <a href="?page=<?= $currentPage - 1 ?>#jobListings" class="prev">Prev</a>
-                        <?php endif; ?>
-                        <div class="d-inline-block">
-                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                <a href="?page=<?= $i ?>#jobListings" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
-                            <?php endfor; ?>
+                            <strong class="number" data-number=<?= getNumJobsPosted() ?>
+                            >0</strong
+                            >
                         </div>
-                        <?php if ($currentPage < $totalPages): ?>
-                            <a href="?page=<?= $currentPage + 1 ?>#jobListings" class="next">Next</a>
-                        <?php endif; ?>
+                        <span class="caption">Jobs Posted</span>
+                    </div>
+
+                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div
+                                class="d-flex align-items-center justify-content-center mb-2"
+                        >
+                            <strong class="number" data-number=<?= getNumJobsFilled() ?>
+                            >0</strong
+                            >
+                        </div>
+                        <span class="caption">Jobs Filled</span>
+                    </div>
+
+                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div
+                                class="d-flex align-items-center justify-content-center mb-2"
+                        >
+                            <strong class="number" data-number=<?= getNumCompanies() ?>
+                            >0</strong
+                            >
+                        </div>
+                        <span class="caption">Companies</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section
-            class="py-5 bg-image overlay-primary fixed overlay"
-            style="background-image: url(&quot;images/hero_1.jpg&quot;)"
-    >
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <h2 class="text-white">Looking For A Job?</h2>
-                    <p class="mb-0 text-white lead">
-                        Find a variety of jobs from different companies. You might find your dream job here.
-                    </p>
+        <section class="site-section" id="jobListings">
+            <div class="container">
+                <div class="row mb-5 justify-content-center">
+                    <div class="col-md-7 text-center">
+                        <h2 class="section-title mb-2">
+                            <?= getNumJobsPosted() ?> Listed
+                        </h2>
+                    </div>
                 </div>
-                <div class="col-md-3 ml-auto">
-                    <a href="register.php" class="btn btn-warning btn-block btn-lg">Sign Up</a>
+
+                <?php
+                $totalJobs = getNumJobsPosted();
+                $jobsPerPage = 7;
+                $totalPages = ceil($totalJobs / $jobsPerPage);
+                $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                $start = ($currentPage - 1) * $jobsPerPage + 1;
+                $end = min($start + $jobsPerPage - 1, $totalJobs);
+
+                $currentPage = max(1, min($currentPage, $totalPages));
+                ?>
+
+                <?php
+                include 'functions/getJobListings.php';
+                getJobListings($start, $jobsPerPage);
+                ?>
+
+                <div class="row pagination-wrap">
+                    <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+                        <span>Showing <?= $start ?>-<?= $end ?> Of <?= $totalJobs ?></span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-right">
+                        <div class="custom-pagination ml-auto">
+                            <?php if ($currentPage > 1): ?>
+                                <a href="?page=<?= $currentPage - 1 ?>#jobListings" class="prev">Prev</a>
+                            <?php endif; ?>
+                            <div class="d-inline-block">
+                                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                    <a href="?page=<?= $i ?>#jobListings" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
+                                <?php endfor; ?>
+                            </div>
+                            <?php if ($currentPage < $totalPages): ?>
+                                <a href="?page=<?= $currentPage + 1 ?>#jobListings" class="next">Next</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section
+                class="py-5 bg-image overlay-primary fixed overlay"
+                style="background-image: url(&quot;images/hero_1.jpg&quot;)"
+        >
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="text-white">Looking For A Job?</h2>
+                        <p class="mb-0 text-white lead">
+                            Find a variety of jobs from different companies. You might find your dream job here.
+                        </p>
+                    </div>
+                    <div class="col-md-3 ml-auto">
+                        <a href="register.php" class="btn btn-warning btn-block btn-lg">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <?php else: ?>
+
+        <!--
+        SHOW CONTENT FOR EMPLOYER
+        -->
+
+        <section class="bg-image overlay-primary fixed overlay" id="next" style="padding-top: 200px">
+            <div class="container">
+                <div class="row mb-5 justify-content-center">
+                    <div class="col-md-7 text-center">
+                        <h2 class="section-title mb-2 text-white">
+                            {Company Name} Application Stats
+                        </h2>
+                    </div>
+                </div>
+                <div class="row pb-0 block__19738 section-counter pb-5">
+                    <div class="col col-md col-lg mb-5 mb-lg-0 mr-5">
+                        <div
+                                class="d-flex align-items-center justify-content-center mb-2"
+                        >
+                            <strong class="number" data-number=<?= getNumCandidates() ?>
+                            >0</strong
+                            >
+                        </div>
+                        <span class="caption">Candidates</span>
+                    </div>
+
+                    <div class="col col-md col-lg mb-5 mb-lg-0 mr-5">
+                        <div
+                                class="d-flex align-items-center justify-content-center mb-2"
+                        >
+                            <strong class="number" data-number=<?= getNumJobsPosted() ?>
+                            >0</strong
+                            >
+                        </div>
+                        <span class="caption">Jobs Posted</span>
+                    </div>
+
+                    <div class="col col-md col-lg mb-5 mb-lg-0 mr-5">
+                        <div
+                                class="d-flex align-items-center justify-content-center mb-2"
+                        >
+                            <strong class="number" data-number=<?= getNumJobsFilled() ?>
+                            >0</strong
+                            >
+                        </div>
+                        <span class="caption">Jobs Filled</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section">
+            <div class="container">
+                <div class="row mb-5 justify-content-center">
+                    <div class="col-md-7 text-center">
+                        <h2 class="section-title mb-2">
+                            <?= getNumJobsPosted() ?> Posts
+                        </h2>
+                    </div>
+                </div>
+
+                <?php
+                $totalJobs = getNumJobsPosted();
+                $jobsPerPage = 7;
+                $totalPages = ceil($totalJobs / $jobsPerPage);
+                $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                $start = ($currentPage - 1) * $jobsPerPage + 1;
+                $end = min($start + $jobsPerPage - 1, $totalJobs);
+                ?>
+
+                <?php
+                include 'functions/getJobListings.php';
+                getJobListings($start, $jobsPerPage);
+                ?>
+
+                <div class="row pagination-wrap">
+                    <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
+                        <span>Showing <?= $start ?>-<?= $end ?> Of <?= $totalJobs ?></span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-right">
+                        <div class="custom-pagination ml-auto">
+                            <?php if ($currentPage > 1): ?>
+                                <a href="?page=<?= $currentPage - 1 ?>" class="prev">Prev</a>
+                            <?php endif; ?>
+                            <div class="d-inline-block">
+                                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                    <a href="?page=<?= $i ?>" class="<?= $i == $currentPage ? 'active' : '' ?>"><?= $i ?></a>
+                                <?php endfor; ?>
+                            </div>
+                            <?php if ($currentPage < $totalPages): ?>
+                                <a href="?page=<?= $currentPage + 1 ?>" class="next">Next</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    <?php endif; ?>
 
     <?php include 'footer.php' ?>
 </div>
@@ -294,11 +397,11 @@
 <script src="js/custom.js"></script>
 
 <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         if (window.location.hash) {
             let element = document.querySelector(window.location.hash);
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                element.scrollIntoView({behavior: 'smooth'});
             }
         }
     });
