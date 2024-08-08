@@ -17,21 +17,6 @@
                         >
                     </li>
                     <li><a href="about.php">About</a></li>
-                    <li class="has-children">
-                        <a href="job-listings.php">Job Listings</a>
-                        <ul class="dropdown">
-                            <li>
-                                <a href="job-single.php"
-                                >Job Single</a
-                                >
-                            </li>
-                            <li>
-                                <a href="post-job.php"
-                                >Post a Job</a
-                                >
-                            </li>
-                        </ul>
-                    </li>
 
                     <li><a href="contact.html">Contact</a></li>
                     <li class="d-lg-none">
