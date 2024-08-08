@@ -1,4 +1,7 @@
-<?php include './functions/jobBoardStats.php'; ?>
+<?php 
+session_start();
+include './functions/jobBoardStats.php'; 
+?>
 
 <!doctype html>
 <html lang="en">
