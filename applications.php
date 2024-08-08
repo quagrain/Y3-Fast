@@ -86,7 +86,7 @@ include './functions/jobBoardStats.php';
             include 'functions/getJobListings.php';
             echo '<ul class="job-listings mb-5">';
             echo '<li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">';
-            echo '<a href="applicaations.php?job_id=' . 0 . '"></a>';
+            echo '<a href="applications.php?job_id=' . 0 . '"></a>';
             echo '<div class="applicant-logo">';
             echo '<img src="images/logo.svg"  alt="Job Logo" class="img-fluid"  width="100px" height="100px"/>';
             echo '</div>';
