@@ -52,7 +52,7 @@
 
     <!-- HOME -->
     <!-- If the user is not the employer, show the view for JobSeeker -->
-    <?php if (isset($_SESSION['role']) && $_SESSION['role'] !== 'Employer'): ?>
+    <?php if ($_SESSION['role'] !== 'Employer'): ?>
         <section
                 class="home-section section-hero overlay bg-image"
                 style="background-image: url(&quot;images/hero_1.jpg&quot;)"
