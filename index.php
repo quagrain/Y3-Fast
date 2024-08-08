@@ -10,7 +10,7 @@
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
     <meta name="author" content=""/>
-    <link rel="shortcut icon" href="ftco-32x32.png"/>
+    <link rel-="icon" href="images/logo.svg"/>
 
     <!-- CSS styles -->
     <link rel="stylesheet" href="css/custom-bs.css"/>
