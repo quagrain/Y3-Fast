@@ -62,11 +62,11 @@
                         $current_page = basename($_SERVER['PHP_SELF']);
                         if ($current_page == 'login.php') {
                             echo '
-                            <a href="register.php" class="col btn btn-primary border-width-2 d-none d-lg-inline-block">
+                            <a href="register.php" class="col btn btn-outline-white border-width-2 d-none d-lg-inline-block">
                                     <span class="icon-user-plus"></span> Sign Up</a>';
                         } else {
                             echo '
-                                <a href="login.php" class="col btn btn-primary border-width-2 d-none d-lg-inline-block">
+                                <a href="login.php" class="col btn btn-outline-white border-width-2 d-none d-lg-inline-block">
                                     <span class="icon-lock_outline"></span> Login</a>';
                         }
                     }
