@@ -30,18 +30,8 @@
 
 <div class="site-wrap">
 
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close mt-3">
-                <span class="icon-close2 js-menu-toggle"></span>
-            </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-    </div> <!-- .site-mobile-menu -->
-
-
     <!-- NAVBAR -->
-   <?php include "header.php"; ?>
+    <?php include "header.php"; ?>
 
     <!-- HOME -->
     <section class="section-hero overlay inner-page bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
@@ -159,7 +149,7 @@
 
                             <div class="form-group">
                                 <label for="industry">Industry</label>
-                                <input id ="industry" type="text" class="form-control" placeholder="Technology"/>
+                                <input id="industry" type="text" class="form-control" placeholder="Technology"/>
                             </div>
 
                             <div class="form-group">

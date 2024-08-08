@@ -1,6 +1,6 @@
-<?php 
-    session_start();
-    include './functions/jobBoardStats.php';
+<?php
+session_start();
+include './functions/jobBoardStats.php';
 ?>
 
 <!doctype html>
@@ -37,15 +37,6 @@
 </div>
 
 <div class="site-wrap">
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close mt-3">
-                <span class="icon-close2 js-menu-toggle"></span>
-            </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-    </div>
-    <!-- .site-mobile-menu -->
 
     <!-- NAVBAR -->
     <?php include 'header.php' ?>
@@ -286,9 +277,9 @@
         <!--
         SHOW CONTENT FOR EMPLOYER
         -->
-        <?php 
-            include './functions/getEmployerStats.php';
-            $emp = getEmployer($_SESSION['user_id']);
+        <?php
+        include './functions/getEmployerStats.php';
+        $emp = getEmployer($_SESSION['user_id']);
         ?>
         <section class="bg-image overlay-primary fixed overlay" id="next" style="padding-top: 200px">
             <div class="container">
