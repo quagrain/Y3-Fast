@@ -148,7 +148,7 @@
                 <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
               </div>
               <div class="col-6">
-                <a href="#" class="btn btn-block btn-primary btn-md applyButton">Apply Now</a>
+                <a class="btn btn-block btn-primary btn-md applyButton" onclick="handleJobApplication(<?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
               </div>
             </div>
           </div>
@@ -191,7 +191,7 @@
                 <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-heart-o mr-2 text-danger"></span>Save Job</a>
               </div>
               <div class="col-6">
-                <a href="#" class="applyButton btn btn-block btn-primary btn-md">Apply Now</a>
+                <a class="applyButton btn btn-block btn-primary btn-md" onclick="handleJobApplication(<?= $_SESSION['user_id'] ?>, <?= $_GET['job_id'] ?>)">Apply Now</a>
               </div>
             </div>
 
