@@ -265,15 +265,15 @@ INSERT INTO `employers` (`user_id`, `org_name`, `creation_date`, `industry`, `ta
 -- Dumping data for table `job_req`
 --
 
-INSERT INTO `job_req` (`job_title`, `job_description`, `user_id`, `responsibility`, `experience`, `benefits`, `vacancy`, `status`, `job_location`, `salary`, `gender`, `application_deadline`, `published_on`) VALUES
-('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15'),
-('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15');
+INSERT INTO `job_req` (`job_title`, `job_description`, `user_id`, `responsibility`, `experience`, `benefits`, `vacancy`, `status`, `job_location`, `salary`, `gender`, `application_deadline`, `published_on`, `featured_image`) VALUES
+('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15', './images/bm_office_chat.svg'),
+('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15', './images/bm_office_chat.svg'),
+('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15', './images/bm_office_chat.svg'),
+('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15', './images/bm_office_chat.svg'),
+('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15', './images/bm_office_chat.svg'),
+('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15', './images/bm_office_chat.svg'),
+('Back-End Developer', 'JS, PHP, SQL', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15', './images/bm_office_chat.svg'),
+('Product Designer', 'UI/UX Designer', 4, '[\"res1\",\"res2\",\"res3\"]', '1', '[\"benefit1\",\"benefit2\"]', 3, 'Full-Time', 'Tema', 100.00, 'Any', '2024-08-11', '2024-08-04 03:27:15', './images/bm_office_chat.svg');
 
 COMMIT;
 
