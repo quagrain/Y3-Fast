@@ -69,6 +69,8 @@ function handleUpdateProfile(event) {
 
     const usertype = document.getElementById("usertype").textContent;
 
+    passwd = document.getElementById("passwd").value;
+
     if (!hasPassChanged) {
         passwd = oldHashPass;
     }
@@ -82,7 +84,7 @@ function handleUpdateProfile(event) {
     formData.append("passwd", passwd);
     formData.append("hasPassChanged", hasPassChanged);
 
-    if (usertype==='JobSeeker') {
+    if (usertype === 'JobSeeker') {
 
         formData.append("fname", document.getElementById("fname").value);
         formData.append("lname", document.getElementById("lname").value);
@@ -92,7 +94,7 @@ function handleUpdateProfile(event) {
         formData.append("cv", document.getElementById("cv").files[0]);
         formData.append("hasChangedCV", hasChangedCV);
 
-    } else if (usertype==='Employer') {
+    } else if (usertype === 'Employer') {
 
         formData.append("org_name", document.getElementById("org_name").value);
         formData.append("industry", document.getElementById("industry").value);
@@ -101,7 +103,7 @@ function handleUpdateProfile(event) {
         var select = document.getElementById("tags");
         for (var i = 0; i < select.options.length; i++) {
             if (select.options[i].selected) {
-            tagIds.push(select.options[i].value);
+                tagIds.push(select.options[i].value);
             }
         }
         formData.append("tagIds", tagIds);
