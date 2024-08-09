@@ -69,8 +69,6 @@ function handleUpdateProfile(event) {
 
     const usertype = document.getElementById("usertype").textContent;
 
-    passwd = document.getElementById("passwd").value;
-
     if (!hasPassChanged) {
         passwd = oldHashPass;
     }
