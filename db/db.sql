@@ -238,7 +238,7 @@ INSERT INTO `users` (`user_id`, `email`, `passwd`, `username`, `usertype`) VALUE
 
 INSERT INTO `job_seekers` (`user_id`, `fname`, `lname`, `date_of_birth`, `occupation`, `description`, `cv`) VALUES
 (2, 'Tatiana', 'Gordon', '1977-05-18', 'Voluptas illo ea quos mollit enim aliqua', 'Voluptate aliquid li', NULL),
-(3, 'Kwesi', 'Kumi', '2003-11-09', 'Student', 'Ashesi Uni', NULL);
+(3, 'Kwesi', 'Kumi', '2003-11-09', 'Student', 'Ashesi Uni', './uploads/cv/Delali_Nsiah-Asare_Official_Resume.pdf');
 
 --
 -- Dumping data for table `tags`
