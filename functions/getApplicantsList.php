@@ -51,7 +51,7 @@ function getApplicantsList($start, $applicantsPerPage, $userId, $jobId)
                 // Display job listing with applicant details
                 echo '<li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">';
 
-                echo '<h3 id="appId" style="display: none;">'. $row['app_id'] .'</h3>';
+                echo '<h3 id="appId" style="display: none;">' . $row['app_id'] . '</h3>';
 
                 echo '<div class="applicant-logo">';
                 echo '<img src="' . $profilePic . '" alt="Applicant Logo" class="img-fluid" width="100px" height="100px"/>';
@@ -61,32 +61,32 @@ function getApplicantsList($start, $applicantsPerPage, $userId, $jobId)
 
                 echo '<div class="job-listing-position custom-width w-50 mb-3 mb-sm-0 mt-1">';
                 echo '<h2>' . $applicantName . '</h2>';
-                echo '<strong>' . $applicantEmail . '</strong><br>';
+                echo '<div><a href="mailto:' . $applicantEmail . '"style="color:#a91212 !important; border:none; background-color:transparent">' . $applicantEmail . '</a></div><br>';
                 echo '<strong>' . $dateOfApplication . '</strong>';
                 echo '</div>';
 
-                echo '<div class="mb-3 mb-sm-0 custom-width w-50 mt-2">';
-                echo '<span class="btn btn-outline-info dropdown" data-src='. htmlspecialchars($row['cv']) .' onclick="downloadCV(event)">Resume</span>';
+                echo '<div class="mb-3 mb-sm-0 custom-width w-50 mt-4">';
+                echo '<span class="btn btn-outline-info dropdown" data-src=' . htmlspecialchars($row['cv']) . ' onclick="downloadCV(event)">Resume</span>';
                 echo '</div>';
 
                 echo '<div class="job-listing-meta">';
                 echo '<span>
-                    <select id="application_status_' . $row['app_id'] . '" class="application_status btn-danger p-2 mt-2 dropdown" onchange="changeButton(event, ' . $row['app_id'] . ')">';
+                    <select id="application_status_' . $row['app_id'] . '" class="application_status btn-danger p-2 mt-4 dropdown" onchange="changeButton(event, ' . $row['app_id'] . ')">';
 
-                    // Option for "Rejected"
-                    echo '<option value="Rejected" ';
-                    if ($row['app_status'] == 'Rejected') echo 'selected';
-                    echo '>Rejected</option>';
+                // Option for "Rejected"
+                echo '<option value="Rejected" ';
+                if ($row['app_status'] == 'Rejected') echo 'selected';
+                echo '>Rejected</option>';
 
-                    // Option for "Accepted"
-                    echo '<option value="Accepted" ';
-                    if ($row['app_status'] == 'Accepted') echo 'selected';
-                    echo '>Accepted</option>';
+                // Option for "Accepted"
+                echo '<option value="Accepted" ';
+                if ($row['app_status'] == 'Accepted') echo 'selected';
+                echo '>Accepted</option>';
 
-                    // Option for "Pending"
-                    echo '<option value="Pending" ';
-                    if ($row['app_status'] == 'Pending') echo 'selected';
-                    echo '>Pending</option>';
+                // Option for "Pending"
+                echo '<option value="Pending" ';
+                if ($row['app_status'] == 'Pending') echo 'selected';
+                echo '>Pending</option>';
 
                 echo '</select>
                     </span>';
@@ -106,4 +106,5 @@ function getApplicantsList($start, $applicantsPerPage, $userId, $jobId)
     // $stmt->close();
     $conn->close();
 }
+
 ?>
