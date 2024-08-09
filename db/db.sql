@@ -237,7 +237,7 @@ INSERT INTO `users` (`user_id`, `email`, `passwd`, `username`, `usertype`) VALUE
 --
 
 INSERT INTO `job_seekers` (`user_id`, `fname`, `lname`, `date_of_birth`, `occupation`, `description`, `cv`) VALUES
-(2, 'Tatiana', 'Gordon', '1977-05-18', 'Voluptas illo ea quos mollit enim aliqua', 'Voluptate aliquid li', NULL),
+(2, 'Tatiana', 'Gordon', '1977-05-18', 'Professional French Woman', 'I know how to be French.', NULL),
 (3, 'Kwesi', 'Kumi', '2003-11-09', 'Student', 'Ashesi Uni', './uploads/cv/Delali_Nsiah-Asare_Official_Resume.pdf');
 
 --
@@ -260,7 +260,7 @@ INSERT INTO `tags` (`tag_name`) VALUES
 
 INSERT INTO `employers` (`user_id`, `org_name`, `creation_date`, `industry`, `tag_ids`) VALUES
 (1, 'Y3-FAST', '2024-07-28', 'Web Technology', '[\"5\",\"8\"]'),
-(4, 'dry pie', '2024-07-28', 'Web Technology', '[\"3\",\"6\",\"7\",\"8\"]');
+(4, 'Legal Jobs Only Ltd.', '2024-07-28', 'Web Technology', '[\"3\",\"6\",\"7\",\"8\"]');
 
 --
 -- Dumping data for table `job_req`
@@ -278,7 +278,7 @@ INSERT INTO `job_req` (`job_id`, `job_title`, `job_description`, `user_id`, `res
 (9, 'Database Administrator', 'Lead the design, implementation, and maintenance of company-wide database systems', 4, '[\"Optimize database performance and structure\",\"Implement backup and recovery procedures\",\"Ensure data security and compliance\"]', '8', '[\"Competitive salary\",\"Performance bonuses\",\"Comprehensive health coverage\"]', 3, 'Contract', 'Tema', 1230.00, 'Any', '2024-08-25', '2024-08-07 21:27:33', "./uploads/featured_img/delete.png"),
 (10, 'Senior Full Stack Developer', 'Lead development of complex web applications using modern technologies', 4, '[\"Architect scalable web applications\",\"Mentor junior developers\",\"Implement best practices in code quality and testing\"]', '6', '[\"Stock options\",\"Flexible work arrangements\",\"Professional development opportunities\"]', 1, 'Contract', 'Airport Ridge', 1111.00, 'Male', '2024-09-01', '2024-08-07 21:44:37', './images/bm_office_chat.svg'),
 (11, 'Senior Java Developer', 'Design and develop enterprise-level Java applications', 4, '[\"Develop high-performance Java applications\",\"Design and implement RESTful APIs\",\"Optimize application performance\"]', '5', '[\"Competitive salary\",\"Remote work options\",\"Health and dental insurance\"]', 3, 'Contract', 'Remote', 243.15, 'Male', '2024-08-28', '2024-08-07 21:52:31', './images/bm_office_chat.svg'),
-(12, 'Senior Developer', 'WHAT PAYMENT? YOU WORK FOR FREE BRO!', 4, '[\"responsibility1\"]', '0', '[\"benefit1\"]', 1, 'Contract', 'Tema', 1.00, 'Any', '2024-08-25', '2024-08-07 23:25:09', './images/bm_office_chat.svg');
+(12, 'Senior Developer', 'WHAT PAYMENT? YOU WORK FOR FREE BRO!', 4, '[\"Literally nothing\"]', '0', '[\"Brag about working for us.\"]', 1, 'Contract', 'Tema', 1.00, 'Any', '2024-08-25', '2024-08-07 23:25:09', './images/bm_office_chat.svg');
 
 --
 -- Dumping data for table `applications`
