@@ -307,7 +307,7 @@ include './functions/jobBoardStats.php';
                 <div class="row mb-5 justify-content-center">
                     <div class="col-md-7 text-center">
                         <h2 class="section-title mb-2">
-                            <?= getEmpNumJobsPosted($_SESSION['user_id']) ?> Posts
+                            <?= getNumJobsPosted($_SESSION['user_id']) ?> Posts
                         </h2>
                     </div>
                 </div>
