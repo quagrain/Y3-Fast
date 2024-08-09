@@ -211,9 +211,7 @@ $userData = getProfileData($_SESSION['user_id'], $_SESSION['role']);
 
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea id="description" class="form-control no-resize editable" rows="4" style="resize:none" placeholder="Enter some information about yourself" disabled>
-                                    ' . htmlspecialchars($userData['description'], ENT_QUOTES, 'UTF-8') . '
-                                </textarea>
+                                <textarea id="description" class="form-control no-resize editable" rows="4" style="resize:none" placeholder="Enter some information about yourself" disabled>' . htmlspecialchars($userData['description'], ENT_QUOTES, 'UTF-8') . '</textarea>
                             </div>
 
                             <div class="form-group">
