@@ -1,7 +1,8 @@
 <!-- HOME -->
 <?php
 session_start();
-include './functions/jobBoardStats.php';
+// include './functions/jobBoardStats.php';
+include 'functions/getJobListingsPerUser.php';
 ?>
 
 <!doctype html>
@@ -47,7 +48,7 @@ include './functions/jobBoardStats.php';
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-7 text-center">
                     <h2 class="section-title mb-2 text-white">
-                        {First Name} {Last Name} Jobs Applied
+                        Jobs Applied To
                     </h2>
                 </div>
             </div>
@@ -56,18 +57,18 @@ include './functions/jobBoardStats.php';
                     <div
                             class="d-flex align-items-center justify-content-center mb-2"
                     >
-                        <strong class="number" data-number<?= getNumJobsPosted() ?>
+                        <strong class="number" data-number=<?= getNumJobsAppliedTo($_SESSION['user_id']) ?>
                         >0</strong
                         >
                     </div>
-                    <span class="caption">Jobs Applied</span>
+                    <span class="caption">Jobs Applied To</span>
                 </div>
 
                 <div class="col col-md col-lg mb-5 mb-lg-0 mr-5">
                     <div
                             class="d-flex align-items-center justify-content-center mb-2"
                     >
-                        <strong class="number" data-number=<?= getNumJobsFilled() ?>
+                        <strong class="number" data-number=<?= getNumJobsApproved($_SESSION['user_id']) ?>
                         >0</strong
                         >
                     </div>
@@ -82,14 +83,14 @@ include './functions/jobBoardStats.php';
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-7 text-center">
                     <h2 class="section-title mb-2">
-                        <?= getNumJobsPosted() ?> Jobs
+                        <?= getNumJobsAppliedTo($_SESSION['user_id']) ?> Jobs Applied To
                     </h2>
                 </div>
             </div>
 
             <?php
-            $totalJobs = getNumJobsPosted();
-            $jobsPerPage = 7;
+            $totalJobs = getNumJobsAppliedTo($_SESSION['user_id']);
+            $jobsPerPage = 5;
             $totalPages = ceil($totalJobs / $jobsPerPage);
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $start = ($currentPage - 1) * $jobsPerPage + 1;
@@ -97,8 +98,7 @@ include './functions/jobBoardStats.php';
             ?>
 
             <?php
-            include 'functions/getJobListings.php';
-            getJobListings($start, $jobsPerPage);
+            getAppliedJobListings($start, $jobsPerPage, $_SESSION['user_id']);
             ?>
 
             <div class="row pagination-wrap">
