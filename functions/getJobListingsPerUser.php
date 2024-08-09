@@ -18,7 +18,8 @@ function getAppliedJobListings($start, $jobsPerPage, $jobSeekerId)
                 job_req.status, 
                 job_req.published_on, 
                 employers.org_name, 
-                users.profile_pic 
+                users.profile_pic,
+                applications.status AS app_status 
             FROM 
                 job_req 
             INNER JOIN 
@@ -31,7 +32,7 @@ function getAppliedJobListings($start, $jobsPerPage, $jobSeekerId)
                 applications.user_id = ? 
             LIMIT 
                 ?, ?";
-    
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("iii", $jobSeekerId, $offset, $jobsPerPage);
     $stmt->execute();
@@ -54,7 +55,7 @@ function getAppliedJobListings($start, $jobsPerPage, $jobSeekerId)
             echo '<li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">';
             echo '<a href="job-single.php?job_id=' . $jobId . '"></a>';
             echo '<div class="job-listing-logo">';
-            echo '<img src="' . htmlspecialchars($row['profile_pic']) . '" alt="Job Logo" class="img-fluid" width="150px" height="150px"/>';
+            echo '<img src="' . htmlspecialchars($row['profile_pic']) . '" alt="Job Logo" width="150px" height="150px"/>';
             echo '</div>';
             echo '<div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">';
             echo '<div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">';
@@ -66,6 +67,9 @@ function getAppliedJobListings($start, $jobsPerPage, $jobSeekerId)
             echo '</div>';
             echo '<div class="job-listing-meta">';
             echo '<span class="badge badge-danger">' . htmlspecialchars($status) . '</span>';
+            echo '</div>';
+            echo '<div class="job-listing-meta">';
+            echo '<span class="badge badge-danger">' . htmlspecialchars($row['app_status']) . '</span>';
             echo '</div>';
             echo '</div>';
             echo '</li>';
@@ -80,36 +84,38 @@ function getAppliedJobListings($start, $jobsPerPage, $jobSeekerId)
     $conn->close();
 }
 
-function getNumJobsAppliedTo($jobSeekerId) {
+function getNumJobsAppliedTo($jobSeekerId)
+{
     global $conn;
 
     // SQL query to count the number of job applications for the job seeker
     $sql = "SELECT COUNT(*) AS num_applied FROM applications WHERE user_id = ?";
-    
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $jobSeekerId);
     $stmt->execute();
     $stmt->bind_result($numApplied);
     $stmt->fetch();
-    
+
     $stmt->close();
 
     return $numApplied;
 }
 
 
-function getNumJobsApproved($jobSeekerId) {
+function getNumJobsApproved($jobSeekerId)
+{
     global $conn;
 
     // SQL query to count the number of approved job applications for the job seeker
     $sql = "SELECT COUNT(*) AS num_approved FROM applications WHERE user_id = ? AND status = 'Accepted'";
-    
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $jobSeekerId);
     $stmt->execute();
     $stmt->bind_result($numApproved);
     $stmt->fetch();
-    
+
     $stmt->close();
 
     return $numApproved;
