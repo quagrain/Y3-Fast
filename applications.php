@@ -161,30 +161,30 @@ include './functions/getApplicantsData.php';
                 appId: appId
             })
         })
-        .then(response => response.json())
-        .then(response => {
-            if (response.status === 1) {
-                console.log(response.message);
-            } else {
-                throw new Error(response.message);
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+            .then(response => response.json())
+            .then(response => {
+                if (response.status === 1) {
+                    console.log(response.message);
+                } else {
+                    throw new Error(response.message);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
 
     function downloadCV(event) {
         // Prevent default action
         event.preventDefault();
-        
+
         // Get the CV file URL from the data-src attribute
         const cvUrl = $(event.target).attr('data-src');
-        
+
         // Perform an AJAX request or simply redirect to download the file
         if (cvUrl) {
             // Using window.location to trigger the download
-            window.location.href = cvUrl;
+            window.open(cvUrl, '_blank');
         } else {
             console.error('No CV file found for download.');
         }
