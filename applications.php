@@ -174,6 +174,22 @@ include './functions/getApplicantsData.php';
         });
     }
 
+    function downloadCV(event) {
+        // Prevent default action
+        event.preventDefault();
+        
+        // Get the CV file URL from the data-src attribute
+        const cvUrl = $(event.target).attr('data-src');
+        
+        // Perform an AJAX request or simply redirect to download the file
+        if (cvUrl) {
+            // Using window.location to trigger the download
+            window.location.href = cvUrl;
+        } else {
+            console.error('No CV file found for download.');
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         const statuses = document.querySelectorAll('.application_status');
         statuses.forEach((statusElement) => {
