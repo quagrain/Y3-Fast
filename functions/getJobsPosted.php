@@ -36,7 +36,7 @@ function getJobListings($start, $jobsPerPage, $userId)
             echo '<li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">';
             echo '<a href="applications.php?job_id=' . $jobId . '"></a>';
             echo '<div class="job-listing-logo">';
-            echo '<img src=' . $row['profile_pic'] . ' alt="Job Logo" class="" width="150px" height="150px"/>';
+            echo '<img src="' . $row['profile_pic'] . '" alt="Job Logo" class="" width="150px" height="150px"/>';
             echo '</div>';
             echo '<div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">';
             echo '<div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">';
