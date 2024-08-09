@@ -194,7 +194,9 @@ include './functions/getApplicantsData.php';
         const statuses = document.querySelectorAll('.application_status');
         statuses.forEach((statusElement) => {
             const appId = statusElement.id.split('_').pop();
-            changeButton(null, appId);
+            setTimeout(() => {
+                changeButton(null, appId);
+            }, 200);
         });
     });
 </script>
