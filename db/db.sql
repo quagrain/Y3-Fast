@@ -229,7 +229,7 @@ ALTER TABLE `job_seekers`
 INSERT INTO `users` (`user_id`, `email`, `passwd`, `username`, `usertype`) VALUES
 (1, 'facolyjaq@mailinator.com', '$2y$10$sYwC/i1wDSu64NgCib4epuaSn5Kv9vAvYWEk/eeM4dc4A5x3m7zlW', 'zyzozaqo', 'Employer'),
 (2, 'zonihugyle@mailinator.com', '$2y$10$In.XsNGsJ5RWzoe/VHycguGQobeqxCNL2DAfLTyFwmgsd6qCMXwPW', 'xagyj', 'JobSeeker'),
-(3, 'delali.nsiah@ashesi.edu.gh', '$2y$10$jrByyOfR4lBRMEzS9en6q.9tCBcTWKmjRYoMqIrzCvRzRkKoU/uDC', 'purpgem', 'JobSeeker'),
+(3, 'delali.nsiah@ashesi.edu.gh', '$2y$10$zVMdV0IjrJpLloeKvxPNa.tdgVZEMOTJGGVPJ23oSWgcTbLfIrszm', 'purpgem', 'JobSeeker'),
 (4, 'delalinsiah.asare@gmail.com', '$2y$10$zVMdV0IjrJpLloeKvxPNa.tdgVZEMOTJGGVPJ23oSWgcTbLfIrszm', 'purpgem2', 'Employer');
 
 --
