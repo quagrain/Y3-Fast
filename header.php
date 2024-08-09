@@ -51,6 +51,10 @@
                             echo '
                                 <a href="post-job.php" class="col btn btn-outline-white border-width-3 d-none d-lg-inline-block" title="Add Job">
                                 <span class="icon-add"></span></a>';
+                        } else {
+                            echo '
+                              <a href="job-listings.php" class="col btn btn-outline-white border-width-2 d-none d-lg-inline-block" title="Listings">
+                                <span class="icon-list"></span></a>';
                         }
                         echo '
                               <a href="profile.php" class="col btn btn-outline-white border-width-2 d-none d-lg-inline-block" title="Profile">
