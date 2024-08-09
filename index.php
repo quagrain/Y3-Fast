@@ -143,9 +143,7 @@ include './functions/jobBoardStats.php';
                             JobBoard Site Stats
                         </h2>
                         <p class="lead text-white">
-                            Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Expedita unde officiis
-                            recusandae sequi excepturi corrupti.
+                            Good-To-Know Statistics
                         </p>
                     </div>
                 </div>
