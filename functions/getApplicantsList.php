@@ -23,7 +23,8 @@ function getApplicantsList($start, $applicantsPerPage, $userId, $jobId)
                 u.email, 
                 a.date_of_application,
                 a.status AS app_status,
-                a.app_id 
+                a.app_id,
+                js.cv 
             FROM job_req jr 
             INNER JOIN employers e ON jr.user_id = e.user_id 
             INNER JOIN applications a ON jr.job_id = a.job_id 
@@ -65,7 +66,7 @@ function getApplicantsList($start, $applicantsPerPage, $userId, $jobId)
                 echo '</div>';
 
                 echo '<div class="mb-3 mb-sm-0 custom-width w-50 mt-2">';
-                echo '<span class="btn btn-outline-info dropdown">Resume</span>';
+                echo '<span class="btn btn-outline-info dropdown" data-src='. htmlspecialchars($row['cv']) .' onclick="downloadCV(event)">Resume</span>';
                 echo '</div>';
 
                 echo '<div class="job-listing-meta">';
