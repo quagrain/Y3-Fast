@@ -165,7 +165,7 @@ $userData = getProfileData($_SESSION['user_id'], $_SESSION['role']);
 
                             // Continue HTML block
                             echo '<select id="tags" class="selectpicker form-control border rounded" multiple>';
-
+                            global $tags;
                             // Check for tags and output options
                             if ($tags->num_rows > 0) {
                                 foreach ($tags as $tag) {
