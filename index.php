@@ -13,7 +13,7 @@ include './functions/jobBoardStats.php';
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
     <meta name="author" content=""/>
-    <link rel-="icon" href="images/logo.svg"/>
+    <link rel="icon" href="images/logo.svg"/>
 
     <!-- CSS styles -->
     <link rel="stylesheet" href="css/custom-bs.css"/>
@@ -60,23 +60,23 @@ include './functions/jobBoardStats.php';
                             <div class="row mb-5">
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                                     <input
-                                        type="text"
-                                        id="jobTitle"
-                                        class="form-control form-control-lg"
-                                        placeholder="Job title, Company..."
+                                            type="text"
+                                            id="jobTitle"
+                                            class="form-control form-control-lg"
+                                            placeholder="Job title, Company..."
                                     />
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                                     <input
-                                        type="text"
-                                        id="location"
-                                        class="form-control form-control-lg"
-                                        placeholder="Location"
+                                            type="text"
+                                            id="location"
+                                            class="form-control form-control-lg"
+                                            placeholder="Location"
                                     />
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                                     <select id="jobType" class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
-                                        data-live-search="true" title="Select Job Type">
+                                            data-live-search="true" title="Select Job Type">
                                         <option value="">All Job Types</option>
                                         <option>Part Time</option>
                                         <option>Full Time</option>
@@ -85,9 +85,9 @@ include './functions/jobBoardStats.php';
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                                     <button
-                                        type="button"
-                                        class="btn btn-primary btn-lg btn-block text-white btn-search"
-                                        id="searchButton"
+                                            type="button"
+                                            class="btn btn-primary btn-lg btn-block text-white btn-search"
+                                            id="searchButton"
                                     >
                                         <span class="icon-search icon mr-2"></span>Search Job
                                     </button>
@@ -372,8 +372,8 @@ include './functions/jobBoardStats.php';
 <script src="js/custom.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#searchButton').on('click', function() {
+    $(document).ready(function () {
+        $('#searchButton').on('click', function () {
             var jobTitle = $('#jobTitle').val();
             var location = $('#location').val();
             var jobType = $('#jobType').val();
@@ -386,11 +386,11 @@ include './functions/jobBoardStats.php';
                     location: location,
                     job_type: jobType
                 },
-                success: function(response) {
+                success: function (response) {
                     // Handle the response and update the job listings section
                     $('#jobListingsA').html(response);
                 },
-                error: function() {
+                error: function () {
                     alert('An error occurred while searching for jobs.');
                 }
             });
