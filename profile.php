@@ -108,7 +108,7 @@ $userData = getProfileData($_SESSION['user_id'], $_SESSION['role']);
                                 <label class="text-black" for="passwd">Password</label>
                                 <div class="input-group">
                                     <h3 id="oldHashPass" style="display: none;"><?= $userData['passwd'] ?></h3>
-                                    <input type="password" id="passwd" class="form-control editable" placeholder="Password" value="<?= $userData['passwd'] ?>" minlength="5" maxlength="50" aria-required="false" hidden="hidden"/>
+                                    <input type="password" id="passwd" class="form-control editable" placeholder="Password" value="<?= $userData['passwd'] ?>" minlength="5" maxlength="50" aria-required="false" hidden/>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary editable" type="button" id="togglePassword" aria-label="Toggle password visibility">
                                             <i class="fa fa-eye editable"></i>
