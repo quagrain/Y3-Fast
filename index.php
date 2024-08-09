@@ -56,34 +56,28 @@ include './functions/jobBoardStats.php';
                                 The Fastest Path To A Dream Job
                             </h1>
                         </div>
-                        <form method="post" class="search-jobs-form">
+                        <form method="post" class="search-jobs-form" id="jobSearchForm">
                             <div class="row mb-5">
-                                <div
-                                        class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0"
-                                >
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                                     <input
-                                            type="text"
-                                            class="form-control form-control-lg"
-                                            placeholder="Job title, Company..."
+                                        type="text"
+                                        id="jobTitle"
+                                        class="form-control form-control-lg"
+                                        placeholder="Job title, Company..."
                                     />
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                                    <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
-                                            data-live-search="true" title="Select Region">
-                                        <option>Anywhere</option>
-                                        <option>San Francisco</option>
-                                        <option>Palo Alto</option>
-                                        <option>New York</option>
-                                        <option>Manhattan</option>
-                                        <option>Ontario</option>
-                                        <option>Toronto</option>
-                                        <option>Kansas</option>
-                                        <option>Mountain View</option>
-                                    </select>
+                                    <input
+                                        type="text"
+                                        id="location"
+                                        class="form-control form-control-lg"
+                                        placeholder="Location"
+                                    />
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                                    <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
-                                            data-live-search="true" title="Select Job Type">
+                                    <select id="jobType" class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
+                                        data-live-search="true" title="Select Job Type">
+                                        <option value="">All Job Types</option>
                                         <option>Part Time</option>
                                         <option>Full Time</option>
                                         <option>Contract</option>
@@ -91,38 +85,26 @@ include './functions/jobBoardStats.php';
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                                     <button
-                                            type="submit"
-                                            class="btn btn-primary btn-lg btn-block text-white btn-search">
-                                            <span
-                                                    class="icon-search icon mr-2"
-                                            ></span
-                                            >Search Job
+                                        type="button"
+                                        class="btn btn-primary btn-lg btn-block text-white btn-search"
+                                        id="searchButton"
+                                    >
+                                        <span class="icon-search icon mr-2"></span>Search Job
                                     </button>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 popular-keywords">
                                     <h3>Trending Keywords:</h3>
-                                    <ul
-                                            class="keywords list-unstyled m-0 p-0"
-                                    >
-                                        <li>
-                                            <a href="#" class=""
-                                            >UI Designer</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a href="#" class="">Python</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class=""
-                                            >Developer</a
-                                            >
-                                        </li>
+                                    <ul class="keywords list-unstyled m-0 p-0">
+                                        <li><a href="#" class="">UI Designer</a></li>
+                                        <li><a href="#" class="">Python</a></li>
+                                        <li><a href="#" class="">Developer</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -390,6 +372,32 @@ include './functions/jobBoardStats.php';
 <script src="js/custom.js"></script>
 
 <script type="text/javascript">
+    $(document).ready(function() {
+        $('#searchButton').on('click', function() {
+            var jobTitle = $('#jobTitle').val();
+            var location = $('#location').val();
+            var jobType = $('#jobType').val();
+
+            $.ajax({
+                url: './actions/search_jobs.php',
+                type: 'POST',
+                data: {
+                    job_title: jobTitle,
+                    location: location,
+                    job_type: jobType
+                },
+                success: function(response) {
+                    // Handle the response and update the job listings section
+                    $('#jobListingsA').html(response);
+                },
+                error: function() {
+                    alert('An error occurred while searching for jobs.');
+                }
+            });
+        });
+    });
+
+
     document.addEventListener('DOMContentLoaded', function () {
         if (window.location.hash) {
             let element = document.querySelector(window.location.hash);
